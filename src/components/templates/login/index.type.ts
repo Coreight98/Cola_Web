@@ -12,3 +12,8 @@ export interface InvalidFormInterface {
   email?: InvalidType | undefined;
   password?: InvalidType | undefined;
 }
+
+export const SignInType = {
+  email: { placeholder: '이메일', type: 'text' },
+  password: { placeholder: '비밀번호', type: 'password' },
+};
