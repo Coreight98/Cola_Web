@@ -1,8 +1,11 @@
 import { ReactChild, ReactChildren } from 'react';
 
+import Header from './molecules/header';
+
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
   return (
     <>
+      <Header />
       <div className="children">{children}</div>
       <style jsx>
         {`
