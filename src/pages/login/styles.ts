@@ -29,11 +29,7 @@ const FormWrapper = styled.form`
   /* display: flex;
   flex-direction: column;
   align-items: center; */
-  p {
-    color: red;
-    text-align: start;
-    padding: 5px 0;
-  }
+
   button {
     /* width: 10vw; */
     padding: 10px 5vh;
@@ -56,5 +52,9 @@ const FormWrapper = styled.form`
     padding: 5px;
   }
 `;
-
-export { Container, Header, FormWrapper };
+const ErrorMessage = styled.p`
+  color: red;
+  text-align: start;
+  padding: 5px 0;
+`;
+export { Container, Header, FormWrapper, ErrorMessage };

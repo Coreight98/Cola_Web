@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
@@ -7,6 +5,7 @@ import * as yup from 'yup';
 import { LoginFormInterface } from './index.type';
 import { Container, Header, FormWrapper } from './styles';
 
+import Input from '@components/atoms/input';
 import Seo from '@components/Seo';
 
 const schema = yup
@@ -36,14 +35,8 @@ const Login = () => {
       <Seo title="Login" />
       <Header>로그인</Header>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input placeholder="아이디" type="text" {...register('email')} />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div>
-          <input placeholder="비밀번호" type="password" {...register('password')} />
-          <p>{errors.password?.message}</p>
-        </div>
+        <Input placeholder="아이디" type="text" error={errors.email?.message} {...register('email')} />
+        <Input placeholder="비밀번호" type="password" error={errors.password?.message} {...register('password')} />
         <button>로그인</button>
       </FormWrapper>
       {/* <div>소셜로그인자리</div> */}
