@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { LoginFormInterface } from './index.type';
-import { Container, Header, FormWrapper } from './styles';
+import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
 
 import Seo from '@components/Seo';
 
@@ -17,6 +16,7 @@ const schema = yup
   .required();
 
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -46,7 +46,22 @@ const Login = () => {
         </div>
         <button>로그인</button>
       </FormWrapper>
-      {/* <div>소셜로그인자리</div> */}
+      <AuthContentWrapper>
+        <RouterText
+          onClick={() => {
+            router.push('/signup');
+          }}
+        >
+          회원가입
+        </RouterText>
+        <SocialLogin>
+          <p>소셜 로그인</p>
+          <ul>
+            <li>깃허브</li>
+            <li>깃랩</li>
+          </ul>
+        </SocialLogin>
+      </AuthContentWrapper>
     </Container>
   );
 };

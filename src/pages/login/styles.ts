@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   text-align: -webkit-center;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 70px);
   display: grid;
   grid-template:
     '. Title .' 1fr
     '. Form .' 1fr
-    '. . .' 6fr
+    '. Auth .' 6fr
     /2fr 1fr 2fr;
 
   /* display: flex;
@@ -37,17 +37,17 @@ const FormWrapper = styled.form`
   button {
     /* width: 10vw; */
     padding: 10px 5vh;
-    background: #2d31fa;
+    background: #151d3b;
     color: white;
     border: none;
     border-radius: 20px;
-    transition: 0.4s;
+    transition: 0.2s ease-in-out;
     &:hover {
       cursor: pointer;
-      background-color: #5d8bf4;
+      background-color: #084594;
     }
     &:active {
-      background-color: #2d31fa;
+      background-color: #151d3b;
     }
   }
   input {
@@ -56,5 +56,35 @@ const FormWrapper = styled.form`
     padding: 5px;
   }
 `;
+const AuthContentWrapper = styled.div`
+  grid-area: Auth;
+  width: 300px;
+  padding: 10px 0;
 
-export { Container, Header, FormWrapper };
+  p {
+    color: #222;
+    font-size: 14px;
+  }
+`;
+
+const SocialLogin = styled.div`
+  width: 100%;
+  p {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+    li {
+      cursor: pointer;
+    }
+  }
+`;
+
+const RouterText = styled.span`
+  cursor: pointer;
+`;
+export { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText };
