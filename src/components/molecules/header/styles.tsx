@@ -13,6 +13,9 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const MenuWrapper = styled.div`
+  display: flex;
+`;
 const Title = styled.span`
   font-size: 36px;
   font-weight: 600;
@@ -32,4 +35,4 @@ const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export { Container, TitleWrapper, Title, SubTitle, HeaderBtn };
+export { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn };

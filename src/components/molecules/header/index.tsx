@@ -1,21 +1,33 @@
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
 
-import { Container, TitleWrapper, Title, SubTitle, HeaderBtn } from './styles';
+import { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn } from './styles';
+
+import { sideBarState } from '@components/atoms/sidebar';
 
 const Header = () => {
   const router = useRouter();
 
+  const [sidebar, setSideBar] = useRecoilState(sideBarState);
+
   return (
     <Container>
-      <TitleWrapper>
-        <Title onClick={() => router.push('/')}>Cola</Title>
-        <SubTitle>아주대학교 개발자 커뮤니티</SubTitle>
-      </TitleWrapper>
-      {router.route !== '/login' && (
-        <HeaderBtn type="button" onClick={() => router.push('/login')}>
-          로그인
-        </HeaderBtn>
-      )}
+      <div style={{ display: 'flex' }}>
+        <button type="button" onClick={() => setSideBar(!sidebar)}>
+          메뉴
+        </button>
+        <TitleWrapper>
+          <Title onClick={() => router.push('/')}>Cola</Title>
+          <SubTitle>아주대학교 개발자 커뮤니티</SubTitle>
+        </TitleWrapper>
+      </div>
+      <MenuWrapper>
+        {router.route !== '/login' && (
+          <HeaderBtn type="button" onClick={() => router.push('/login')}>
+            로그인
+          </HeaderBtn>
+        )}
+      </MenuWrapper>
     </Container>
   );
 };
