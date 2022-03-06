@@ -22,7 +22,7 @@ const SubFormWrapper = styled.div`
   input {
     width: 250px;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 `;
 const InputWrapper = styled.div`
@@ -33,6 +33,7 @@ const InputWrapper = styled.div`
 const ErrorMsg = styled.p`
   width: 100%;
   margin: 0;
+  padding: 5px 0 10px 0;
   color: red;
 `;
 const EmailAuthBtn = styled.button`

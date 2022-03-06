@@ -1,19 +1,11 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import * as yup from 'yup';
 
 import { LoginFormInterface } from './index.type';
 import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
 
 import Seo from '@components/Seo';
-
-const schema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).required(),
-  })
-  .required();
+import Auth from '@utils/api/main';
 
 const Login = () => {
   const router = useRouter();
@@ -21,14 +13,11 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormInterface>({ resolver: yupResolver(schema) });
-  // register : input에 필요한 onChange, onBlur, value 등을 반환해주는 함수
-  // watch : form의 모든 값들의 변화를 주시한다.
-  // console.log(watch());
-  // handleSubmit : onSubmit이 발생했을 때 validation을 담당한다.
+  } = useForm<LoginFormInterface>({});
 
-  const onSubmit: SubmitHandler<LoginFormInterface> = (data) => {
-    console.log('submit', data);
+  const onSubmit: SubmitHandler<LoginFormInterface> = ({ email, password }: LoginFormInterface) => {
+    const res = Auth.singIn({ email, password });
+    console.log(res.message);
   };
 
   return (
@@ -37,11 +26,23 @@ const Login = () => {
       <Header>로그인</Header>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <input placeholder="아이디" type="text" {...register('email')} />
+          <input
+            placeholder="이메일"
+            type="text"
+            {...register('email', {
+              required: '이메일을 입력해주세요.',
+            })}
+          />
           <p>{errors.email?.message}</p>
         </div>
         <div>
-          <input placeholder="비밀번호" type="password" {...register('password')} />
+          <input
+            placeholder="비밀번호"
+            type="password"
+            {...register('password', {
+              required: '비밀번호를 입력해주세요.',
+            })}
+          />
           <p>{errors.password?.message}</p>
         </div>
         <button>로그인</button>
