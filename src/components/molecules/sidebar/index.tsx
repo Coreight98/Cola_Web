@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { Container, ProfileWrapper, Username, CategoryTitle, CategoryItem } from './styles';
 
 import { sideBarSelector } from '@atoms/sidebar';
-import CategoryChip from '@components/atoms/categoryChip';
+import HashtagChip from '@components/atoms/hashtagChip';
 
 const SideBar = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const SideBar = () => {
       <hr />
       <CategoryTitle isSideBarOpen={sideBarWidth === 200}>관심목록</CategoryTitle>
       <section>
-        <CategoryChip
+        <HashtagChip
           title="C"
           onClick={() => {
             console.log('onClick Category chip');
