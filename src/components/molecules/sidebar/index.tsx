@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { Container, ProfileWrapper, Username, CategoryTitle, CategoryItem } from './styles';
 
 import { sideBarSelector } from '@atoms/sidebar';
+import CategoryChip from '@components/atoms/categoryChip';
 
 const SideBar = () => {
   const router = useRouter();
@@ -12,14 +13,36 @@ const SideBar = () => {
   return (
     <Container sideBarWidth={sideBarWidth}>
       <ProfileWrapper>
-        <Username>은승균 님</Username>
+        <Username isSideBarOpen={sideBarWidth === 200}>
+          은<span>승균 님</span>
+        </Username>
       </ProfileWrapper>
 
-      <CategoryTitle>카테고리</CategoryTitle>
+      <CategoryTitle isSideBarOpen={sideBarWidth === 200}>카테고리</CategoryTitle>
       <section>
-        <CategoryItem onClick={() => router.push('/')}>Home</CategoryItem>
-        <CategoryItem onClick={() => router.push('/board')}>Board</CategoryItem>
-        <CategoryItem onClick={() => router.push('/todomate')}>ToDo Mate</CategoryItem>
+        <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/')}>
+          H<span>ome</span>
+        </CategoryItem>
+        <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/board')}>
+          B<span>oard</span>
+        </CategoryItem>
+        <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/todomate')}>
+          T<span>oDo Mate</span>
+        </CategoryItem>
+      </section>
+      <hr />
+      <CategoryTitle isSideBarOpen={sideBarWidth === 200}>관심목록</CategoryTitle>
+      <section>
+        <CategoryChip
+          title="C"
+          onClick={() => {
+            console.log('onClick Category chip');
+          }}
+          onRemoveChip={() => {
+            console.log('onRemove Chip');
+          }}
+          size={sideBarWidth === 200 ? 'full' : 'small'}
+        />
       </section>
     </Container>
   );
