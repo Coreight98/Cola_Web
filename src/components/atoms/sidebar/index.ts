@@ -13,8 +13,8 @@ export const sideBarSelector = selector({
       console.log('sidebar', 200);
       return 200;
     } else {
-      console.log('sidebar', 0);
-      return 0;
+      console.log('sidebar', 80);
+      return 80;
     }
   },
 });
