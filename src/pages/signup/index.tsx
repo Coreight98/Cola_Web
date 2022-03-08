@@ -1,9 +1,23 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { SignupFormInterface } from './index.type';
-import { Container, Title, SubTitle, FormWrapper, SubFormWrapper, EmailAuthBtn, SubmitBtn } from './styles';
+import {
+  Container,
+  Title,
+  SubTitle,
+  FormWrapper,
+  SubFormWrapper,
+  InputWrapper,
+  ErrorMsg,
+  EmailAuthBtn,
+  SubmitBtn,
+} from './styles';
 
 const SignUp = () => {
+  const [checkEmail, setCheckEmail] = useState(false);
+  const [emailCode, setEmailCode] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(false);
   const {
     register,
     handleSubmit,
@@ -16,6 +30,19 @@ const SignUp = () => {
     },
   });
 
+  const onClickEmailAuth = () => {
+    if (!checkEmail) {
+      // 이메일 인증 필요
+      setCheckEmail(true);
+    } else {
+      // 이메일 인증 코드 확인
+      console.log(emailCode);
+
+      // TODO: email code 비교 및 체크하기
+      setEmailCode('');
+      setIsEmailValid(true);
+    }
+  };
   const onSubmit = (data: SignupFormInterface) => {
     console.log(data);
   };
@@ -26,43 +53,8 @@ const SignUp = () => {
       <Title>회원가입</Title>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <SubFormWrapper>
-          <SubTitle>아이디/비밀번호</SubTitle>
-          <div>
-            <input
-              type="text"
-              placeholder="아이디"
-              {...register('id', {
-                required: '아이디를 입력해주세요.',
-              })}
-            />
-            {errors?.id?.message}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="비밀번호"
-              {...register('password', {
-                required: '비밀번호를 입력해주세요.',
-                // TODO: 비밀번호 형식 pattern
-              })}
-            />
-            {errors?.password?.message}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="비밀번호 확인"
-              {...register('passwordCheck', {
-                required: '비밀번호를 다시 입력해주세요.',
-                // TODO: 비밀번호 형식 pattern, password와 같은지 검증
-              })}
-            />
-            {errors?.passwordCheck?.message}
-          </div>
-        </SubFormWrapper>
-        <SubFormWrapper>
           <SubTitle>아주대 메일 인증</SubTitle>
-          <div>
+          <InputWrapper>
             <input
               type="text"
               placeholder="아주대 메일"
@@ -72,16 +64,64 @@ const SignUp = () => {
                   value: /^[A-Za-z0-9._%+-]+@ajou.ac.kr$/,
                   message: '아주대 이메일만 사용할 수 있습니다.',
                 },
+                onChange: () => {
+                  setIsEmailValid(false);
+                  setCheckEmail(false);
+                },
               })}
             />
-            {errors?.email?.message}
-          </div>
-
-          <EmailAuthBtn type="button">인증</EmailAuthBtn>
+            <ErrorMsg>{errors?.email?.message}</ErrorMsg>
+            {!checkEmail && !isEmailValid && (
+              <EmailAuthBtn type="button" onClick={onClickEmailAuth}>
+                인증
+              </EmailAuthBtn>
+            )}
+            {checkEmail && !isEmailValid && (
+              <>
+                <input
+                  placeholder="인증번호를 입력하세요"
+                  type="text"
+                  value={emailCode}
+                  onChange={(e) => setEmailCode(e.target.value)}
+                />
+                <EmailAuthBtn onClick={onClickEmailAuth}>인증하기</EmailAuthBtn>
+              </>
+            )}
+            {isEmailValid && <p>아주대 메일이 확인되었습니다.</p>}
+          </InputWrapper>
+        </SubFormWrapper>
+        <SubFormWrapper>
+          <SubTitle>비밀번호</SubTitle>
+          <InputWrapper>
+            <input
+              type="password"
+              placeholder="비밀번호"
+              {...register('password', {
+                required: '비밀번호를 입력해주세요.',
+                pattern: {
+                  value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                  message: '비밀번호는 대소문자, 숫자 포함 8자 이상이여야 합니다.',
+                },
+              })}
+            />
+            <ErrorMsg>{errors?.password?.message}</ErrorMsg>
+            <input
+              type="password"
+              placeholder="비밀번호 확인"
+              {...register('passwordCheck', {
+                required: '비밀번호를 다시 입력해주세요.',
+                pattern: {
+                  value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                  message: '비밀번호는 대소문자, 숫자 포함 8자 이상이여야 합니다.',
+                },
+              })}
+            />
+            <ErrorMsg>{errors?.passwordCheck?.message}</ErrorMsg>
+          </InputWrapper>
         </SubFormWrapper>
         <SubFormWrapper>
           <SubTitle>학생 정보</SubTitle>
-          <div>
+          <InputWrapper>
             <input
               type="text"
               placeholder="이름"
@@ -89,10 +129,8 @@ const SignUp = () => {
                 required: '이름을 입력해주세요',
               })}
             />
-            {errors?.name?.message}
-          </div>
+            <ErrorMsg>{errors?.name?.message}</ErrorMsg>
 
-          <div>
             <input
               type="text"
               placeholder="학과"
@@ -100,10 +138,8 @@ const SignUp = () => {
                 required: '학과를 입력해주세요',
               })}
             />
-            {errors?.department?.message}
-          </div>
+            <ErrorMsg>{errors?.department?.message}</ErrorMsg>
 
-          <div>
             <input
               type="text"
               placeholder="학번"
@@ -115,8 +151,8 @@ const SignUp = () => {
                 },
               })}
             />
-            {errors?.studentId?.message}
-          </div>
+            <ErrorMsg>{errors?.studentId?.message}</ErrorMsg>
+          </InputWrapper>
         </SubFormWrapper>
 
         <SubmitBtn>회원가입</SubmitBtn>

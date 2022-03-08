@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -12,6 +12,9 @@ const Container = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+const MenuWrapper = styled.div`
+  display: flex;
 `;
 const Title = styled.span`
   font-size: 36px;
@@ -32,4 +35,4 @@ const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export { Container, TitleWrapper, Title, SubTitle, HeaderBtn };
+export { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn };

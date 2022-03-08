@@ -43,7 +43,16 @@ const Todomate = () => {
                   <div key={element}>{element}</div>
                 </CheckBoxWrapper>
               ) : (
-                <input ref={inputRef} onBlur={() => handleFocus(target)} autoFocus />
+                <input
+                  ref={inputRef}
+                  onBlur={() => handleFocus(target)}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleFocus(target);
+                    }
+                  }}
+                  autoFocus
+                />
               ),
             )}
           </>
