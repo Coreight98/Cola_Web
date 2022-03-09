@@ -1,16 +1,15 @@
+import { string } from 'yup';
+
 export interface SignUpFormInterface {
-  id: string;
   password: string;
   passwordCheck: string;
   email: string;
+  emailCheck: string;
   name: string;
   department: string;
   studentId: string;
 }
 export const SignUpData = {
-  id: {
-    required: '아이디를 입력해주세요.',
-  },
   password: {
     required: '비밀번호를 입력해주세요.',
     // TODO: 비밀번호 형식 pattern
@@ -26,6 +25,7 @@ export const SignUpData = {
       message: '아주대 이메일만 사용할 수 있습니다.',
     },
   },
+  emailCheck: {},
   name: {
     required: '이름을 입력해주세요',
   },
@@ -42,10 +42,10 @@ export const SignUpData = {
 };
 
 export const SignUpType = {
-  id: { type: 'text', placeholder: '아이디' },
   password: { type: 'password', placeholder: '비밀번호' },
   passwordCheck: { type: 'password', placeholder: '비밀번호 확인' },
   email: { type: 'text', placeholder: '아주대 메일' },
+  emailCheck: { type: 'text', placeholder: '인증번호를 입력하세요' },
   name: { type: 'text', placeholder: '이름' },
   department: { type: 'text', placeholder: '학과' },
   studentId: { type: 'text', placeholder: '학번' },
