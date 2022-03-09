@@ -16,6 +16,12 @@ const TitleWrapper = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
 `;
+const MenuBtn = styled.button`
+  border: none;
+  background: none;
+  padding: 0 1rem;
+  cursor: pointer;
+`;
 const Title = styled.span`
   font-size: 36px;
   font-weight: 600;
@@ -35,4 +41,4 @@ const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn };
+export { Container, TitleWrapper, MenuWrapper, MenuBtn, Title, SubTitle, HeaderBtn };

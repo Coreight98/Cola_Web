@@ -1,14 +1,9 @@
 import { ReactChild, ReactChildren } from 'react';
 
-import { useRecoilValue } from 'recoil';
-
-import { sideBarState } from '@atoms/sidebar';
 import Header from '@molecules/header';
 import SideBar from '@molecules/sidebar';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
-  const isSideBarOpen = useRecoilValue(sideBarState);
-
   return (
     <>
       <Header />
@@ -19,7 +14,8 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
           .children {
             display: flex;
             justify-content: center;
-            padding-left: ${isSideBarOpen ? '200px' : '0'};
+            padding-left: 70px;
+            transition: 0.3s ease-in-out;
           }
         `}
       </style>

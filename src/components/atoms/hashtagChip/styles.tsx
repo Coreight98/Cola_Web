@@ -29,6 +29,7 @@ const RemoveBtn = styled.button`
   border-radius: 100%;
   transition: 0.1s;
   color: whitesmoke;
+  cursor: pointer;
   &:hover {
     background-color: #282f91;
     opacity: 0.8;
