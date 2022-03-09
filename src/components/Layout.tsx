@@ -2,9 +2,9 @@ import { ReactChild, ReactChildren } from 'react';
 
 import { useRecoilValue } from 'recoil';
 
-import { sideBarState } from './atoms/sidebar';
-import Header from './molecules/header';
-import SideBar from './molecules/sidebar';
+import { sideBarState } from '@atoms/sidebar';
+import Header from '@molecules/header';
+import SideBar from '@molecules/sidebar';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
   const isSideBarOpen = useRecoilValue(sideBarState);
