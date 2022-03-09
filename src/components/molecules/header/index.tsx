@@ -22,8 +22,8 @@ const Header = () => {
         </TitleWrapper>
       </div>
       <MenuWrapper>
-        {router.route !== '/login' && (
-          <HeaderBtn type="button" onClick={() => router.push('/login')}>
+        {router.route !== '/signIn' && (
+          <HeaderBtn type="button" onClick={() => router.push('/signIn')}>
             로그인
           </HeaderBtn>
         )}

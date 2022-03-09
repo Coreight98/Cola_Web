@@ -1,56 +1,43 @@
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { LoginFormInterface } from './index.type';
+import { SignInFormInterface, SignInData, SignInType } from './index.type';
 import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
 
+import Input from '@components/atoms/input';
 import Seo from '@components/Seo';
 import Auth from '@utils/api/main';
 
-const LoginTemp = () => {
+const SignInTemp = () => {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormInterface>({});
+  } = useForm<SignInFormInterface>({});
 
-  const onSubmit: SubmitHandler<LoginFormInterface> = ({ email, password }: LoginFormInterface) => {
+  const onSubmit: SubmitHandler<SignInFormInterface> = ({ email, password }: SignInFormInterface) => {
     const res = Auth.singIn({ email, password });
     console.log(res.message);
   };
+  const SignUpProps = (value: keyof typeof SignInData) => {
+    return { ...SignInType[value], ...register(value, SignInData[value]) };
+  };
+  const ErrorMessage = (value: keyof typeof errors) => errors[value]?.message;
 
   return (
     <Container>
-      <Seo title="Login" />
+      <Seo title="SignIn" />
       <Header>로그인</Header>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input
-            placeholder="이메일"
-            type="text"
-            {...register('email', {
-              required: '이메일을 입력해주세요.',
-            })}
-          />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div>
-          <input
-            placeholder="비밀번호"
-            type="password"
-            {...register('password', {
-              required: '비밀번호를 입력해주세요.',
-            })}
-          />
-          <p>{errors.password?.message}</p>
-        </div>
+        <Input {...SignUpProps('email')} error={ErrorMessage('email')} />
+        <Input {...SignUpProps('password')} error={ErrorMessage('password')} />
         <button>로그인</button>
       </FormWrapper>
       <AuthContentWrapper>
         <RouterText
           onClick={() => {
-            router.push('/signup');
+            router.push('/signUp');
           }}
         >
           회원가입
@@ -67,4 +54,4 @@ const LoginTemp = () => {
   );
 };
 
-export default LoginTemp;
+export default SignInTemp;
