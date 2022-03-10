@@ -1,11 +1,26 @@
-import '@toast-ui/editor/dist/toastui-editor.css';
-import 'prismjs/themes/prism.css';
+import { marked } from 'marked';
 
-import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
-import { Viewer } from '@toast-ui/react-editor';
-import Prism from 'prismjs';
-import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
+import { ViewArea, Wrapper } from './styles';
 
-export default function PostView() {
-  return <Viewer plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]} />;
+import Hashtag from '@components/atoms/chip/hashtag';
+interface Props {
+  markdownContent: string;
+  title?: string;
+  chipList: string[];
 }
+
+const Preview = ({ markdownContent, title, chipList }: Props) => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <p>{title}</p>
+      <Wrapper>
+        {chipList.map((text) => (
+          <Hashtag key={text} title={text} />
+        ))}
+      </Wrapper>
+      <ViewArea dangerouslySetInnerHTML={{ __html: marked(markdownContent) }} />
+    </div>
+  );
+};
+
+export default Preview;
