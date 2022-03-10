@@ -13,4 +13,10 @@ const Container = styled.div`
   }
 `;
 
-export { Container };
+const HashtagContainer = styled.div`
+  border: 1px solid green;
+  padding: 0.2vw;
+  border-radius: 2vw;
+`;
+
+export { Container, HashtagContainer };
