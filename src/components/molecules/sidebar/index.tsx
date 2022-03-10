@@ -17,7 +17,6 @@ const SideBar = () => {
           은<span>승균 님</span>
         </Username>
       </ProfileWrapper>
-
       <CategoryTitle isSideBarOpen={sideBarWidth === 200}>카테고리</CategoryTitle>
       <section>
         <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/')}>
@@ -26,7 +25,7 @@ const SideBar = () => {
         <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/board')}>
           B<span>oard</span>
         </CategoryItem>
-        <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/todomate')}>
+        <CategoryItem isSideBarOpen={sideBarWidth === 200} onClick={() => router.push('/todolist')}>
           T<span>oDo Mate</span>
         </CategoryItem>
       </section>
