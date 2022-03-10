@@ -19,7 +19,7 @@ const Header = ({ setSidebar }: IHeader) => {
         <MenuBtn onClick={() => setSidebar((prev: boolean) => !prev)}>
           <MenuIcon fill="#f5f5f5" />
         </MenuBtn>
-        <Title>Cola</Title>
+        <Title onClick={() => router.push('/')}>Cola</Title>
       </TitleWrapper>
       <div style={{ display: 'flex', margin: '0 2rem', justifyContent: 'space-around' }}>
         <div style={{ display: 'flex', margin: '0 2rem' }}>
