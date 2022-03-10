@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  width: 100%;
-  height: 80px;
+  width: 100vw;
+  height: 5rem;
+  padding: 0 1rem;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background: #151d3b;
@@ -11,7 +13,9 @@ const Container = styled.div`
 `;
 const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
 `;
 const MenuWrapper = styled.div`
   display: flex;

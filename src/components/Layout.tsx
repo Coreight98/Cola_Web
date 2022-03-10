@@ -1,21 +1,20 @@
 import { ReactChild, ReactChildren } from 'react';
 
-import Header from '@molecules/header';
-import SideBar from '@molecules/sidebar';
+import Navigation from './organisms/Navigation';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
   return (
     <>
-      <Header />
-      <SideBar />
+      <Navigation />
       <div className="children">{children}</div>
       <style jsx>
         {`
           .children {
             display: flex;
             justify-content: center;
-            padding-left: 70px;
-            transition: 0.3s ease-in-out;
+            padding-top: 5rem;
+            padding-left: 4rem;
+            transition: 0.2s ease-in-out;
           }
         `}
       </style>

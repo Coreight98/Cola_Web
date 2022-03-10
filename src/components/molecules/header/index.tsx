@@ -1,41 +1,40 @@
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
+import { Dispatch, SetStateAction } from 'react';
 
-import { Container, TitleWrapper, MenuWrapper, MenuBtn, Title, SubTitle, HeaderBtn } from './styles';
+import { useRouter } from 'next/router';
+
+import { Container, TitleWrapper, MenuBtn, Title, HeaderBtn } from './styles';
 
 import MenuIcon from '@assets/icon/menu.svg';
-import { sideBarState } from '@components/atoms/sidebar';
 
-const Header = () => {
+export interface IHeader {
+  setSidebar: Dispatch<SetStateAction<boolean>>;
+}
+
+const Header = ({ setSidebar }: IHeader) => {
   const router = useRouter();
-
-  const [sidebar, setSideBar] = useRecoilState(sideBarState);
 
   return (
     <Container>
-      <div style={{ display: 'flex' }}>
-        <MenuBtn type="button" onClick={() => setSideBar(!sidebar)}>
-          <MenuIcon fill="#ffffff" />
+      <TitleWrapper>
+        <MenuBtn onClick={() => setSidebar((prev: boolean) => !prev)}>
+          <MenuIcon fill="#f5f5f5" />
         </MenuBtn>
-        <TitleWrapper>
-          <Title onClick={() => router.push('/')}>Cola</Title>
-          <SubTitle>아주대학교 개발자 커뮤니티</SubTitle>
-        </TitleWrapper>
-      </div>
-      <MenuWrapper>
-        {/* SearchBar Component */}
+        <Title>Cola</Title>
+      </TitleWrapper>
+      <div style={{ display: 'flex', margin: '0 2rem', justifyContent: 'space-around' }}>
         <div style={{ display: 'flex', margin: '0 2rem' }}>
           <input type="text" name="" id="" style={{ width: '300px', height: '40px' }} />
-          <button type="button" style={{ border: 'none' }}>
+          <HeaderBtn type="button" style={{ border: 'none' }}>
             검색
-          </button>
+          </HeaderBtn>
         </div>
+        <HeaderBtn>알림</HeaderBtn>
         {router.route !== '/signIn' && (
           <HeaderBtn type="button" onClick={() => router.push('/signIn')}>
             로그인
           </HeaderBtn>
         )}
-      </MenuWrapper>
+      </div>
     </Container>
   );
 };

@@ -1,76 +1,73 @@
 import styled from '@emotion/styled';
 
-export interface SideBarTheme {
-  sideBarWidth?: number;
-  isSideBarOpen?: boolean;
+export interface SidebarProps {
+  sidebar: boolean;
 }
 
-const SimpleContainer = styled.div<SideBarTheme>`
-  width: 70px;
-  padding: 20px;
-  display: block;
-  height: calc(100vh - 80px);
-  background-color: whitesmoke;
+const Container = styled.div`
   position: fixed;
-  z-index: ${(props) => (props.isSideBarOpen ? '0' : '100')};
-  transition-delay: ${(props) => (props.isSideBarOpen ? '0' : '.3s')};
-  box-shadow: 2px 0px 4px 0px #7a7a7a32;
-  div {
-    justify-content: center;
-  }
-`;
-const Container = styled.div<SideBarTheme>`
-  width: 200px;
-  display: block;
-  height: calc(100vh - 80px);
-  background-color: whitesmoke;
-  padding: 20px;
-  position: fixed;
-  left: ${(props) => (props.isSideBarOpen ? '0' : '-130px')};
-  transition: 0.3s ease-in-out;
-  z-index: ${(props) => (props.isSideBarOpen ? '100' : '0')};
-  box-shadow: 2px 0px 4px 0px #00000033;
-`;
-const ProfileWrapper = styled.section`
+  margin-top: 5rem;
+  height: calc(100vh - 5rem);
+  width: 12rem;
   display: flex;
-  align-items: center;
-  margin: 1rem 0;
 `;
-const Username = styled.p<SideBarTheme>`
-  padding: 0 0.5rem;
-  font-size: 18px;
-  font-weight: 600;
-  overflow-x: hidden;
-`;
-const SingInText = styled.p`
-  padding: 0.5 0rem;
-  font-size: 12px;
-  cursor: pointer;
-  &:hover {
-    color: #666666;
-  }
-`;
-const CategoryTitle = styled.div<SideBarTheme>`
+const SidebarContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
   align-items: center;
-  gap: 0.7rem;
-  margin: 1rem 0;
-  overflow-x: hidden;
-  span {
-    font-weight: 600;
-    font-size: 20px;
-  }
+  background: whitesmoke;
 `;
-const CategoryItem = styled.p<SideBarTheme>`
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-  padding: 10px;
-  cursor: pointer;
-  /* transition: 0.5s ease-in-out; */
-  &:hover {
-    color: #151d3b;
-  }
+const SidebarIconContainer = styled(SidebarContainer)`
+  width: 4rem;
+`;
+const SidebarTextContainer = styled(SidebarContainer)<SidebarProps>`
+  display: ${(props) => (props.sidebar ? 'flex' : 'none')};
+  transition: 200ms all;
+  width: ${(props) => (props.sidebar ? '8rem' : '0')};
+  box-shadow: 2px 4px 1px 0px rgb(212 211 211 / 80%);
+  position: relative;
 `;
 
-export { SimpleContainer, Container, ProfileWrapper, Username, SingInText, CategoryTitle, CategoryItem };
+const SidebarItem = styled.span`
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+const ProfileWrapper = styled.div`
+  height: 4rem;
+  display: flex;
+  align-items: center;
+`;
+const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100%;
+  }
+`;
+const CategoryItem = styled(SidebarItem)`
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  margin: 0;
+`;
+
+export {
+  Container,
+  SidebarIconContainer,
+  SidebarTextContainer,
+  ProfileWrapper,
+  CategoryWrapper,
+  SidebarItem,
+  CategoryItem,
+};
