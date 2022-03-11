@@ -14,8 +14,10 @@ const Container = styled.div`
 `;
 
 const HashtagContainer = styled.div`
+  min-width: 4vw;
+  text-align: center;
   border: 1px solid green;
-  padding: 0.2vw;
+  padding: 0px 0.2vw;
   border-radius: 2vw;
 `;
 

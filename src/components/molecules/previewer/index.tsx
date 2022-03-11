@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 
-import { ViewArea, Wrapper } from './styles';
+import { ViewArea, Wrapper, Container } from './styles';
 
 import Hashtag from '@components/atoms/chip/hashtag';
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 const Preview = ({ markdownContent, title, chipList }: Props) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <Container>
       <p>{title}</p>
       <Wrapper>
         {chipList.map((text) => (
@@ -19,7 +19,7 @@ const Preview = ({ markdownContent, title, chipList }: Props) => {
         ))}
       </Wrapper>
       <ViewArea dangerouslySetInnerHTML={{ __html: marked(markdownContent) }} />
-    </div>
+    </Container>
   );
 };
 
