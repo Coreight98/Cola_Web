@@ -1,5 +1,6 @@
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+
 import { useRouter } from 'next/router';
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 import {
   Container,
@@ -14,8 +15,6 @@ import {
 import CategoryIcon from '@assets/icon/category_sidebar.svg';
 import EditIcon from '@assets/icon/edit.svg';
 import HashtagIcon from '@assets/icon/hashtag.svg';
-import UserDefault from '@assets/icon/user_default.svg';
-import { sideBarState } from '@atoms/sidebar';
 import HashtagChip from '@components/atoms/hashtagChip';
 
 const categories = [
@@ -61,19 +60,29 @@ const hashtags = [
 
 export interface ISidebar {
   sidebar: boolean;
+  setSidebar: Dispatch<SetStateAction<boolean>>;
 }
-const SideBar = ({ sidebar }: ISidebar) => {
+const SideBar = ({ sidebar, setSidebar }: ISidebar) => {
   const router = useRouter();
+
+  const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  useEffect(() => {
+    const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setSidebar(false);
+      }
+    };
+    document.addEventListener('click', handleSidebarClose, true);
+    return () => {
+      document.removeEventListener('click', handleSidebarClose);
+    };
+  });
 
   return (
     <>
       <Container>
         <SidebarIconContainer>
-          <ProfileWrapper>
-            <SidebarItem>
-              <UserDefault width="40px" height="40px" />
-            </SidebarItem>
-          </ProfileWrapper>
           <CategoryWrapper>
             <CategoryIcon />
           </CategoryWrapper>
@@ -81,7 +90,7 @@ const SideBar = ({ sidebar }: ISidebar) => {
             <HashtagIcon width="20px" height="20px" />
           </CategoryWrapper>
         </SidebarIconContainer>
-        <SidebarTextContainer sidebar={sidebar}>
+        <SidebarTextContainer ref={sidebarRef} sidebar={sidebar}>
           <ProfileWrapper onClick={() => router.push('/signIn')}>
             <SidebarItem>로그인</SidebarItem>
           </ProfileWrapper>

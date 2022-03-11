@@ -25,7 +25,7 @@ const Navigation = () => {
   }, []);
   return (
     <Container>
-      <SideBar sidebar={sidebar} />
+      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
       <Header setSidebar={setSidebar} />
     </Container>
   );
