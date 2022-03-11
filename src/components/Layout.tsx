@@ -1,25 +1,20 @@
 import { ReactChild, ReactChildren } from 'react';
 
-import { useRecoilValue } from 'recoil';
-
-import { sideBarState } from '@atoms/sidebar';
-import Header from '@molecules/header';
-import SideBar from '@molecules/sidebar';
+import Navigation from './organisms/Navigation';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
-  const isSideBarOpen = useRecoilValue(sideBarState);
-
   return (
     <>
-      <Header />
-      <SideBar />
+      <Navigation />
       <div className="children">{children}</div>
       <style jsx>
         {`
           .children {
             display: flex;
             justify-content: center;
-            padding-left: ${isSideBarOpen ? '200px' : '0'};
+            padding-top: 5rem;
+            padding-left: 4rem;
+            transition: 0.2s ease-in-out;
           }
         `}
       </style>

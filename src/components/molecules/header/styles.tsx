@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  width: 100%;
-  height: 80px;
+  width: 100vw;
+  height: 5rem;
+  padding: 0 1rem;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background: #151d3b;
@@ -11,10 +13,18 @@ const Container = styled.div`
 `;
 const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
 `;
 const MenuWrapper = styled.div`
   display: flex;
+`;
+const MenuBtn = styled.button`
+  border: none;
+  background: none;
+  padding: 0 1rem;
+  cursor: pointer;
 `;
 const Title = styled.span`
   font-size: 36px;
@@ -35,4 +45,4 @@ const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn };
+export { Container, TitleWrapper, MenuWrapper, MenuBtn, Title, SubTitle, HeaderBtn };
