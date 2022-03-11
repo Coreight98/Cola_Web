@@ -16,6 +16,7 @@ import CategoryIcon from '@assets/icon/category_sidebar.svg';
 import EditIcon from '@assets/icon/edit.svg';
 import HashtagIcon from '@assets/icon/hashtag.svg';
 import HashtagChip from '@components/atoms/hashtagChip';
+import { ISidebarStateProps } from '@organisms/Navigation';
 
 const categories = [
   {
@@ -58,11 +59,7 @@ const hashtags = [
   },
 ];
 
-export interface ISidebar {
-  sidebar: boolean;
-  setSidebar: Dispatch<SetStateAction<boolean>>;
-}
-const SideBar = ({ sidebar, setSidebar }: ISidebar) => {
+const SideBar = ({ sidebar, setSidebar }: ISidebarStateProps) => {
   const router = useRouter();
 
   const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>;

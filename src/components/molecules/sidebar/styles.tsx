@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export interface SidebarProps {
-  sidebar: boolean;
+  sidebar: boolean | undefined;
 }
 
 const Container = styled.div`

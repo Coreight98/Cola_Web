@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -15,12 +15,9 @@ import {
 
 import MenuIcon from '@assets/icon/menu.svg';
 import UserDefault from '@assets/icon/user_default.svg';
+import { ISidebarStateProps } from '@organisms/Navigation';
 
-export interface IHeader {
-  setSidebar: Dispatch<SetStateAction<boolean>>;
-}
-
-const Header = ({ setSidebar }: IHeader) => {
+const Header = ({ setSidebar }: ISidebarStateProps) => {
   const router = useRouter();
 
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;

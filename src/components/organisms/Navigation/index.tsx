@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
@@ -12,6 +12,11 @@ const Container = styled.div`
   height: 5rem;
   background: salmon;
 `;
+
+export interface ISidebarStateProps {
+  sidebar?: boolean | undefined;
+  setSidebar: Dispatch<SetStateAction<boolean>>;
+}
 
 const Navigation = () => {
   const [sidebar, setSidebar] = useState(false);
