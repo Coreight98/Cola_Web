@@ -1,33 +1,40 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
 
-import { Container, TitleWrapper, MenuWrapper, Title, SubTitle, HeaderBtn } from './styles';
+import { Container, TitleWrapper, MenuBtn, Title, HeaderBtn } from './styles';
 
-import { sideBarState } from '@components/atoms/sidebar';
+import MenuIcon from '@assets/icon/menu.svg';
 
-const Header = () => {
+export interface IHeader {
+  setSidebar: Dispatch<SetStateAction<boolean>>;
+}
+
+const Header = ({ setSidebar }: IHeader) => {
   const router = useRouter();
-
-  const [sidebar, setSideBar] = useRecoilState(sideBarState);
 
   return (
     <Container>
-      <div style={{ display: 'flex' }}>
-        <button type="button" onClick={() => setSideBar(!sidebar)}>
-          메뉴
-        </button>
-        <TitleWrapper>
-          <Title onClick={() => router.push('/')}>Cola</Title>
-          <SubTitle>아주대학교 개발자 커뮤니티</SubTitle>
-        </TitleWrapper>
-      </div>
-      <MenuWrapper>
+      <TitleWrapper>
+        <MenuBtn onClick={() => setSidebar((prev: boolean) => !prev)}>
+          <MenuIcon fill="#f5f5f5" />
+        </MenuBtn>
+        <Title onClick={() => router.push('/')}>Cola</Title>
+      </TitleWrapper>
+      <div style={{ display: 'flex', margin: '0 2rem', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex', margin: '0 2rem' }}>
+          <input type="text" name="" id="" style={{ width: '300px', height: '40px' }} />
+          <HeaderBtn type="button" style={{ border: 'none' }}>
+            검색
+          </HeaderBtn>
+        </div>
+        <HeaderBtn>알림</HeaderBtn>
         {router.route !== '/signIn' && (
           <HeaderBtn type="button" onClick={() => router.push('/signIn')}>
             로그인
           </HeaderBtn>
         )}
-      </MenuWrapper>
+      </div>
     </Container>
   );
 };
