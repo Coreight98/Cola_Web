@@ -1,4 +1,4 @@
-import SignUpTemp from '@templates/signUp/index';
+import SignUpTemp from '@components/templates/signUp/index';
 const SignUp = () => {
   return <SignUpTemp />;
 };

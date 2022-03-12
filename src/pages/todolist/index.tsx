@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Container, Wrapper, CheckBoxWrapper } from './styles';
 
@@ -8,7 +8,7 @@ import Calender from '@molecules/calender';
 interface Props {
   [key: string]: string[];
 }
-const Todomate = () => {
+const Todolist = () => {
   const [focus, setFocus] = useState(false);
   const [date, setDate] = useState(new Date());
   const [feed, setFeed] = useState<Props>({});
@@ -30,7 +30,7 @@ const Todomate = () => {
   return (
     <>
       <Container>
-        <Calender {...{ date: date, handleChangeMonth }} />
+        <Calender {...{ date, handleChangeMonth }} />
       </Container>
       <Wrapper>
         {targetList.map((target: string) => (
@@ -62,4 +62,4 @@ const Todomate = () => {
   );
 };
 
-export default Todomate;
+export default Todolist;

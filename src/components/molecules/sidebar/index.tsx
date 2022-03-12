@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 import {
   Container,
@@ -12,10 +11,8 @@ import {
 } from './styles';
 
 import CategoryIcon from '@assets/icon/category_sidebar.svg';
-import EditIcon from '@assets/icon/edit.svg';
 import HashtagIcon from '@assets/icon/hashtag.svg';
 import UserDefault from '@assets/icon/user_default.svg';
-import { sideBarState } from '@atoms/sidebar';
 import HashtagChip from '@components/atoms/hashtagChip';
 
 const categories = [
