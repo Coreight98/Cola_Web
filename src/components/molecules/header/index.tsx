@@ -41,7 +41,7 @@ const Header = ({ setSidebar }: ISidebarStateProps) => {
   return (
     <Container>
       <TitleWrapper>
-        <MenuBtn onClick={() => setSidebar((prev: boolean) => !prev)}>
+        <MenuBtn onClick={() => setSidebar((prev) => !prev)}>
           <MenuIcon fill="#f5f5f5" />
         </MenuBtn>
         <Title onClick={() => router.push('/')}>Cola</Title>

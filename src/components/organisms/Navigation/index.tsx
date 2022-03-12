@@ -7,6 +7,7 @@ import Header from '@molecules/header';
 import SideBar from '@molecules/sidebar';
 
 const Container = styled.div`
+  z-index: 100;
   position: fixed;
   width: 100vw;
   height: 5rem;
@@ -28,10 +29,15 @@ const Navigation = () => {
     };
     router.events.on('routeChangeStart', handleRouteChange);
   }, []);
+
+  useEffect(() => {
+    console.log('sidebar changed', sidebar);
+  }, [sidebar]);
+
   return (
     <Container>
-      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
       <Header setSidebar={setSidebar} />
+      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
     </Container>
   );
 };

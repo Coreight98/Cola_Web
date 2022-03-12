@@ -5,8 +5,7 @@ export interface SidebarProps {
 }
 
 const Container = styled.div`
-  position: fixed;
-  margin-top: 5rem;
+  position: absolute;
   height: calc(100vh - 5rem);
   width: 12rem;
   display: flex;

@@ -64,17 +64,19 @@ const SideBar = ({ sidebar, setSidebar }: ISidebarStateProps) => {
 
   const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  useEffect(() => {
-    const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        setSidebar(false);
-      }
-    };
-    document.addEventListener('click', handleSidebarClose, true);
-    return () => {
-      document.removeEventListener('click', handleSidebarClose);
-    };
-  });
+  // useEffect(() => {
+  //   const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
+  //     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+  //       if (sidebar) {
+  //         setSidebar(false);
+  //       }
+  //     }
+  //   };
+  //   document.addEventListener('click', handleSidebarClose, true);
+  //   return () => {
+  //     document.removeEventListener('click', handleSidebarClose);
+  //   };
+  // });
 
   return (
     <>
