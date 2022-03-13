@@ -20,7 +20,7 @@ const TitleWrapper = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
 `;
-const MenuBtn = styled.button`
+const MenuBtn = styled.span`
   border: none;
   background: none;
   padding: 0 1rem;
@@ -83,7 +83,6 @@ export {
   Container,
   TitleWrapper,
   MenuWrapper,
-  MenuBtn,
   Title,
   SubTitle,
   HeaderBtn,

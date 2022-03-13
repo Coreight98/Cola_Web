@@ -14,6 +14,7 @@ import {
 
 import CategoryIcon from '@assets/icon/category_sidebar.svg';
 import EditIcon from '@assets/icon/edit.svg';
+import MenuIcon from '@assets/icon/menu.svg';
 import HashtagIcon from '@assets/icon/hashtag.svg';
 import HashtagChip from '@components/atoms/hashtagChip';
 import { ISidebarStateProps } from '@organisms/Navigation';
@@ -64,62 +65,63 @@ const SideBar = ({ sidebar, setSidebar }: ISidebarStateProps) => {
 
   const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  // useEffect(() => {
-  //   const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
-  //     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-  //       if (sidebar) {
-  //         setSidebar(false);
-  //       }
-  //     }
-  //   };
-  //   document.addEventListener('click', handleSidebarClose, true);
-  //   return () => {
-  //     document.removeEventListener('click', handleSidebarClose);
-  //   };
-  // });
+  useEffect(() => {
+    const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setSidebar(false);
+      }
+    };
+    document.addEventListener('click', handleSidebarClose, true);
+    return () => {
+      document.removeEventListener('click', handleSidebarClose);
+    };
+  }, []);
 
   return (
     <>
-      <Container>
-        <SidebarIconContainer>
-          <CategoryWrapper>
-            <CategoryIcon />
-          </CategoryWrapper>
-          <CategoryWrapper>
-            <HashtagIcon width="20px" height="20px" />
-          </CategoryWrapper>
-        </SidebarIconContainer>
-        <SidebarTextContainer ref={sidebarRef} sidebar={sidebar}>
-          <ProfileWrapper onClick={() => router.push('/signIn')}>
-            <SidebarItem>로그인</SidebarItem>
-          </ProfileWrapper>
-          <CategoryWrapper>
-            <h4 style={{ padding: 0, margin: 0, marginBottom: '1rem' }}>카테고리</h4>
-            {categories.map((category) => (
-              <CategoryItem key={category.id} onClick={() => router.push(category.link)}>
-                {category.title}
-              </CategoryItem>
-            ))}
-          </CategoryWrapper>
-          <CategoryWrapper>
-            <section style={{}}>
-              {hashtags.map((hashtag) => (
-                <HashtagChip
-                  key={hashtag.id}
-                  title={hashtag.title}
-                  size="full"
-                  onClick={() => {
-                    console.log('onClick Category chip');
-                  }}
-                  onRemoveChip={() => {
-                    console.log('onRemove Chip');
-                  }}
-                />
+      <div ref={sidebarRef}>
+        <MenuIcon cursor="pointer" fill="#f5f5f5" onClick={() => setSidebar((prev) => !prev)} />
+        <Container>
+          <SidebarIconContainer>
+            <CategoryWrapper>
+              <CategoryIcon />
+            </CategoryWrapper>
+            <CategoryWrapper>
+              <HashtagIcon width="20px" height="20px" />
+            </CategoryWrapper>
+          </SidebarIconContainer>
+          <SidebarTextContainer sidebar={sidebar}>
+            <ProfileWrapper onClick={() => router.push('/signIn')}>
+              <SidebarItem>로그인</SidebarItem>
+            </ProfileWrapper>
+            <CategoryWrapper>
+              <h4 style={{ padding: 0, margin: 0, marginBottom: '1rem' }}>카테고리</h4>
+              {categories.map((category) => (
+                <CategoryItem key={category.id} onClick={() => router.push(category.link)}>
+                  {category.title}
+                </CategoryItem>
               ))}
-            </section>
-          </CategoryWrapper>
-        </SidebarTextContainer>
-      </Container>
+            </CategoryWrapper>
+            <CategoryWrapper>
+              <section style={{}}>
+                {hashtags.map((hashtag) => (
+                  <HashtagChip
+                    key={hashtag.id}
+                    title={hashtag.title}
+                    size="full"
+                    onClick={() => {
+                      console.log('onClick Category chip');
+                    }}
+                    onRemoveChip={() => {
+                      console.log('onRemove Chip');
+                    }}
+                  />
+                ))}
+              </section>
+            </CategoryWrapper>
+          </SidebarTextContainer>
+        </Container>
+      </div>
       {/* <Container isSideBarOpen={isSideBarOpen}>
         <ProfileWrapper>
           <UserDefault width="40px" height="40px" />

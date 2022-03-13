@@ -30,14 +30,10 @@ const Navigation = () => {
     router.events.on('routeChangeStart', handleRouteChange);
   }, []);
 
-  useEffect(() => {
-    console.log('sidebar changed', sidebar);
-  }, [sidebar]);
-
   return (
     <Container>
-      <Header setSidebar={setSidebar} />
-      <SideBar sidebar={sidebar} setSidebar={setSidebar} />
+      <Header sidebar={sidebar} setSidebar={setSidebar} />
+      {/* <SideBar sidebar={sidebar} setSidebar={setSidebar} /> */}
     </Container>
   );
 };
