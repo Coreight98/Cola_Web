@@ -93,82 +93,11 @@ const SideBar = () => {
           ))}
         </ListWrapper>
       </Container>
-
       <style jsx>
         {`
           @import url(https://use.fontawesome.com/releases/v5.2.0/css/all.css);
         `}
       </style>
-      {/* <Container isSideBarOpen={isSideBarOpen}>
-        <ProfileWrapper>
-          <UserDefault width="40px" height="40px" />
-          <SingInText onClick={() => router.push('/signIn')}>로그인이 필요합니다</SingInText>
-        </ProfileWrapper>
-
-        <CategoryTitle>
-          <CategoryIcon />
-          <span>카테고리</span>
-        </CategoryTitle>
-        <section>
-          {categories.map((category) => (
-            <CategoryItem key={category.id} onClick={() => router.push(category.link)}>
-              {category.title}
-            </CategoryItem>
-          ))}
-        </section>
-        <hr />
-        <CategoryTitle>
-          <HashtagIcon width="20px" height="20px" />
-          <span>관심목록</span>
-
-          <EditIcon width="20px" height="20px" cursor="pointer" />
-        </CategoryTitle>
-        <section style={{ display: 'flex', width: '180px', flexWrap: 'wrap' }}>
-          {hashtags.map((hashtag) => (
-            <HashtagChip
-              key={hashtag.id}
-              title={hashtag.title}
-              size="full"
-              onClick={() => {
-                console.log('onClick Category chip');
-              }}
-              onRemoveChip={() => {
-                console.log('onRemove Chip');
-              }}
-            />
-          ))}
-        </section>
-      </Container>
-      <SimpleContainer onClick={() => setSideBar(true)} isSideBarOpen={isSideBarOpen}>
-        <ProfileWrapper>
-          <UserDefault width="40px" height="40px" />
-        </ProfileWrapper>
-
-        <CategoryTitle>
-          <CategoryIcon />
-        </CategoryTitle>
-        <section>
-          <CategoryItem onClick={() => router.push('/')}>H</CategoryItem>
-          <CategoryItem onClick={() => router.push('/board')}>B</CategoryItem>
-          <CategoryItem onClick={() => router.push('/todomate')}>T</CategoryItem>
-        </section>
-        <hr />
-        <CategoryTitle>
-          <HashtagIcon width="20px" height="20px" />
-        </CategoryTitle>
-        <section>
-          <HashtagChip
-            title="C"
-            onClick={() => {
-              console.log('onClick Category chip');
-            }}
-            onRemoveChip={() => {
-              console.log('onRemove Chip');
-            }}
-            size="small"
-          />
-        </section>
-      </SimpleContainer> */}
     </>
   );
 };
