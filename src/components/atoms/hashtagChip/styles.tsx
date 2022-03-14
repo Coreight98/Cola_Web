@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
 
 export interface HashtagChipInterface {
-  size?: string;
+  size?: 'full' | 'small';
 }
 const Container = styled.div<HashtagChipInterface>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ size }) => (size === 'full' ? 'space-between' : 'space-around')};
   align-items: center;
   height: 30px;
-  width: 100%;
+  min-width: ${({ size }) => (size === 'full' ? '100%' : '4vw')};
   border-radius: 15px;
   background-color: #4b48e7;
   opacity: 0.9;
