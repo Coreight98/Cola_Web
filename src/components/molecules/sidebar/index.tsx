@@ -54,26 +54,26 @@ const SideBar = () => {
         <ListWrapper>
           <ListItem>
             <a href="javascript:void(0)" onClick={() => router.push('/board')}>
-              <i className="fa fa-home fa-2x"></i>
+              <i className="fa fa-book fa-2x"></i>
               <span className="nav-text">자유게시판</span>
             </a>
           </ListItem>
-          <ListItem className="has-subnav">
+          <ListItem>
             <a href="javascript:void(0)" onClick={() => router.push('/board')}>
-              <i className="fa fa-laptop fa-2x"></i>
-              <span className="nav-text">질문게시판</span>
+              <i className="fa fa-question fa-2x"></i>
+              <span>질문게시판</span>
             </a>
           </ListItem>
-          <ListItem className="has-subnav">
+          <ListItem>
             <a href="javascript:void(0)" onClick={() => router.push('/board')}>
-              <i className="fa fa-list fa-2x"></i>
-              <span className="nav-text">정보게시판</span>
+              <i className="fa fa-file-invoice fa-2x"></i>
+              <span>정보게시판</span>
             </a>
           </ListItem>
-          <ListItem className="has-subnav">
+          <ListItem>
             <a href="javascript:void(0)" onClick={() => router.push('/todomate')}>
-              <i className="fa fa-folder-open fa-2x"></i>
-              <span className="nav-text">TodoList</span>
+              <i className="fa fa-calendar-check fa-2x"></i>
+              <span>TodoList</span>
             </a>
           </ListItem>
         </ListWrapper>
@@ -96,7 +96,7 @@ const SideBar = () => {
 
       <style jsx>
         {`
-          @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+          @import url(https://use.fontawesome.com/releases/v5.2.0/css/all.css);
         `}
       </style>
       {/* <Container isSideBarOpen={isSideBarOpen}>
