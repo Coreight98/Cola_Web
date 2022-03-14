@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { useRouter } from 'next/router';
 
+import SearchBar from '../searchBar';
+
 import { Container, TitleWrapper, MenuBtn, Title, HeaderBtn } from './styles';
 
 import MenuIcon from '@assets/icon/menu.svg';
@@ -22,12 +24,7 @@ const Header = ({ setSidebar }: IHeader) => {
         <Title onClick={() => router.push('/')}>Cola</Title>
       </TitleWrapper>
       <div style={{ display: 'flex', margin: '0 2rem', justifyContent: 'space-around' }}>
-        <div style={{ display: 'flex', margin: '0 2rem' }}>
-          <input type="text" name="" id="" style={{ width: '300px', height: '40px' }} />
-          <HeaderBtn type="button" style={{ border: 'none' }}>
-            검색
-          </HeaderBtn>
-        </div>
+        <SearchBar />
         <HeaderBtn>알림</HeaderBtn>
         {router.route !== '/signIn' && (
           <HeaderBtn type="button" onClick={() => router.push('/signIn')}>
