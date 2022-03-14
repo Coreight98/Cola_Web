@@ -1,23 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
-
 import { useRouter } from 'next/router';
 
-import {
-  Container,
-  SidebarIconContainer,
-  SidebarTextContainer,
-  ProfileWrapper,
-  CategoryWrapper,
-  SidebarItem,
-  CategoryItem,
-} from './styles';
+import { Container, ListWrapper, ListItem } from './styles';
 
-import CategoryIcon from '@assets/icon/category_sidebar.svg';
-import EditIcon from '@assets/icon/edit.svg';
-import MenuIcon from '@assets/icon/menu.svg';
-import HashtagIcon from '@assets/icon/hashtag.svg';
 import HashtagChip from '@components/atoms/hashtagChip';
-import { ISidebarStateProps } from '@organisms/Navigation';
 
 const categories = [
   {
@@ -60,68 +45,60 @@ const hashtags = [
   },
 ];
 
-const SideBar = ({ sidebar, setSidebar }: ISidebarStateProps) => {
+const SideBar = () => {
   const router = useRouter();
-
-  const sidebarRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-
-  useEffect(() => {
-    const handleSidebarClose = (event: MouseEvent | React.BaseSyntheticEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        setSidebar(false);
-      }
-    };
-    document.addEventListener('click', handleSidebarClose, true);
-    return () => {
-      document.removeEventListener('click', handleSidebarClose);
-    };
-  }, []);
 
   return (
     <>
-      <div ref={sidebarRef}>
-        <MenuIcon cursor="pointer" fill="#f5f5f5" onClick={() => setSidebar((prev) => !prev)} />
-        <Container>
-          <SidebarIconContainer>
-            <CategoryWrapper>
-              <CategoryIcon />
-            </CategoryWrapper>
-            <CategoryWrapper>
-              <HashtagIcon width="20px" height="20px" />
-            </CategoryWrapper>
-          </SidebarIconContainer>
-          <SidebarTextContainer sidebar={sidebar}>
-            <ProfileWrapper onClick={() => router.push('/signIn')}>
-              <SidebarItem>로그인</SidebarItem>
-            </ProfileWrapper>
-            <CategoryWrapper>
-              <h4 style={{ padding: 0, margin: 0, marginBottom: '1rem' }}>카테고리</h4>
-              {categories.map((category) => (
-                <CategoryItem key={category.id} onClick={() => router.push(category.link)}>
-                  {category.title}
-                </CategoryItem>
-              ))}
-            </CategoryWrapper>
-            <CategoryWrapper>
-              <section style={{}}>
-                {hashtags.map((hashtag) => (
-                  <HashtagChip
-                    key={hashtag.id}
-                    title={hashtag.title}
-                    size="full"
-                    onClick={() => {
-                      console.log('onClick Category chip');
-                    }}
-                    onRemoveChip={() => {
-                      console.log('onRemove Chip');
-                    }}
-                  />
-                ))}
-              </section>
-            </CategoryWrapper>
-          </SidebarTextContainer>
-        </Container>
-      </div>
+      <Container>
+        <ListWrapper>
+          <ListItem>
+            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+              <i className="fa fa-home fa-2x"></i>
+              <span className="nav-text">자유게시판</span>
+            </a>
+          </ListItem>
+          <ListItem className="has-subnav">
+            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+              <i className="fa fa-laptop fa-2x"></i>
+              <span className="nav-text">질문게시판</span>
+            </a>
+          </ListItem>
+          <ListItem className="has-subnav">
+            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+              <i className="fa fa-list fa-2x"></i>
+              <span className="nav-text">정보게시판</span>
+            </a>
+          </ListItem>
+          <ListItem className="has-subnav">
+            <a href="javascript:void(0)" onClick={() => router.push('/todomate')}>
+              <i className="fa fa-folder-open fa-2x"></i>
+              <span className="nav-text">TodoList</span>
+            </a>
+          </ListItem>
+        </ListWrapper>
+
+        <ListWrapper className="logout">
+          {hashtags.map((hashtag) => (
+            <HashtagChip
+              key={hashtag.id}
+              title={hashtag.title}
+              onClick={() => {
+                console.log('onClick Category chip');
+              }}
+              onRemoveChip={() => {
+                console.log('onRemove Chip');
+              }}
+            />
+          ))}
+        </ListWrapper>
+      </Container>
+
+      <style jsx>
+        {`
+          @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        `}
+      </style>
       {/* <Container isSideBarOpen={isSideBarOpen}>
         <ProfileWrapper>
           <UserDefault width="40px" height="40px" />

@@ -6,9 +6,8 @@ import { Container, TitleWrapper, Title, HeaderBtn, DropDownWrapper, DropDownCon
 
 import UserDefault from '@assets/icon/user_default.svg';
 import SideBar from '@molecules/sidebar';
-import { ISidebarStateProps } from '@organisms/Navigation';
 
-const Header = ({ sidebar, setSidebar }: ISidebarStateProps) => {
+const Header = () => {
   const router = useRouter();
 
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -37,7 +36,7 @@ const Header = ({ sidebar, setSidebar }: ISidebarStateProps) => {
   return (
     <Container>
       <TitleWrapper>
-        <SideBar sidebar={sidebar} setSidebar={setSidebar} />
+        <SideBar />
         <Title onClick={() => router.push('/')}>Cola</Title>
       </TitleWrapper>
       <div style={{ display: 'flex', margin: '0 2rem', justifyContent: 'space-around', alignItems: 'center' }}>
