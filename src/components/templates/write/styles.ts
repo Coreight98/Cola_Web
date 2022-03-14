@@ -8,6 +8,7 @@ const Container = styled.div`
 
 const EditorWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 const Wrapper = styled.div`
   display: flex;
