@@ -1,8 +1,10 @@
+import { useCallback } from 'react';
+
 import { marked } from 'marked';
 
 import { ViewArea, Wrapper, Container } from './styles';
 
-import Hashtag from '@components/atoms/chip/hashtag';
+import HashtagChip from '@components/atoms/hashtagChip';
 interface Props {
   markdownContent: string;
   title?: string;
@@ -15,7 +17,7 @@ const Preview = ({ markdownContent, title, chipList }: Props) => {
       <p>{title}</p>
       <Wrapper>
         {chipList.map((text) => (
-          <Hashtag key={text} title={text} />
+          <HashtagChip key={text} title={text} size="small" />
         ))}
       </Wrapper>
       <ViewArea dangerouslySetInnerHTML={{ __html: marked(markdownContent) }} />
