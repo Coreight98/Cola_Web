@@ -8,7 +8,5 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const CheckBoxWrapper = styled(Wrapper)`
-  flex-direction: row;
-`;
-export { Container, Wrapper, CheckBoxWrapper };
+
+export { Container, Wrapper };

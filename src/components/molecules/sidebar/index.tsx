@@ -34,7 +34,7 @@ const categories = [
   {
     id: 4,
     title: 'Todo Mate',
-    link: '/todomate',
+    link: '/todolist',
   },
 ];
 const hashtags = [

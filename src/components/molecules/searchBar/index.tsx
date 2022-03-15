@@ -24,6 +24,10 @@ const SearchBar = () => {
     setFocus((v) => (v ? false : v));
   };
 
+  const handleSubmit = () => {
+    console.log(inputRef.current?.value);
+  };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -43,7 +47,7 @@ const SearchBar = () => {
           </InputModal>
         )}
       </div>
-      <HeaderBtn type="button" style={{ border: 'none' }}>
+      <HeaderBtn type="button" style={{ border: 'none' }} onClick={handleSubmit}>
         검색
       </HeaderBtn>
     </Container>
