@@ -1,9 +1,7 @@
-export const emailOption = { required: true };
+export const MODE = ['edit', 'all', 'view'];
+export const WRITE_EXAMPLE = '자유롭게 작성해보세요.';
 
-export const PwdOption = {
-  required: true,
-  minLength: {
-    value: 5,
-    message: 'Password should be longer than 5',
-  },
-};
+export enum writeRef {
+  title = 0,
+  hashtag = 1,
+}
