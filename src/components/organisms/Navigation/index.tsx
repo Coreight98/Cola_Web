@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
-
 import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 
 import Header from '@molecules/header';
-import SideBar from '@molecules/sidebar';
 
 const Container = styled.div`
+  z-index: 100;
   position: fixed;
   width: 100vw;
   height: 5rem;
@@ -14,19 +11,9 @@ const Container = styled.div`
 `;
 
 const Navigation = () => {
-  const [sidebar, setSidebar] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setSidebar(false);
-    };
-    router.events.on('routeChangeStart', handleRouteChange);
-  }, []);
   return (
     <Container>
-      <SideBar sidebar={sidebar} />
-      <Header setSidebar={setSidebar} />
+      <Header />
     </Container>
   );
 };

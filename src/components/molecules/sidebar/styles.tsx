@@ -1,73 +1,67 @@
 import styled from '@emotion/styled';
 
-export interface SidebarProps {
-  sidebar: boolean;
-}
-
-const Container = styled.div`
-  position: fixed;
-  margin-top: 5rem;
+const Container = styled.nav`
+  position: absolute;
+  top: 5rem;
+  bottom: 0;
+  left: 0;
   height: calc(100vh - 5rem);
-  width: 12rem;
-  display: flex;
-`;
-const SidebarContainer = styled.div`
+  width: 80px;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: #f5f5f5;
+  color: #222;
+  user-select: none;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
-  align-items: center;
-  background: whitesmoke;
-`;
-const SidebarIconContainer = styled(SidebarContainer)`
-  width: 4rem;
-`;
-const SidebarTextContainer = styled(SidebarContainer)<SidebarProps>`
-  display: ${(props) => (props.sidebar ? 'flex' : 'none')};
-  transition: 200ms all;
-  width: ${(props) => (props.sidebar ? '8rem' : '0')};
-  box-shadow: 2px 4px 1px 0px rgb(212 211 211 / 80%);
-  position: relative;
-`;
-
-const SidebarItem = styled.span`
-  cursor: pointer;
+  justify-content: flex-start;
+  gap: 3rem;
+  transition: all 150ms ease-in-out;
   &:hover {
-    opacity: 0.7;
+    width: 260px;
   }
 `;
-const ProfileWrapper = styled.div`
-  height: 4rem;
-  display: flex;
-  align-items: center;
-`;
-const CategoryWrapper = styled.div`
+const ListWrapper = styled.ul`
+  outline: 0;
+  margin: 0;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem 0;
-  width: 100%;
-  height: 400px;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 100%;
-  }
+  gap: 1rem;
 `;
-const CategoryItem = styled(SidebarItem)`
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
+const ListItem = styled.li`
+  outline: 0;
   margin: 0;
+  padding: 0 10px;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  transition: all 100ms ease-in-out;
+  &:hover {
+    color: #fefefe;
+    background: #dcdcdc;
+  }
+  a {
+    position: relative;
+    display: table;
+    i {
+      width: 20px;
+      padding: 0 10px;
+      position: relative;
+      display: table-cell;
+      width: 60px;
+      height: 48px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 20px;
+    }
+    span {
+      display: table-cell;
+      vertical-align: middle;
+      width: 180px;
+      padding: 0 10px;
+    }
+  }
 `;
 
-export {
-  Container,
-  SidebarIconContainer,
-  SidebarTextContainer,
-  ProfileWrapper,
-  CategoryWrapper,
-  SidebarItem,
-  CategoryItem,
-};
+export { Container, ListWrapper, ListItem };

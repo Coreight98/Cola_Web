@@ -20,7 +20,7 @@ const TitleWrapper = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
 `;
-const MenuBtn = styled.button`
+const MenuBtn = styled.span`
   border: none;
   background: none;
   padding: 0 1rem;
@@ -45,4 +45,48 @@ const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export { Container, TitleWrapper, MenuWrapper, MenuBtn, Title, SubTitle, HeaderBtn };
+export interface IDropdownMenu {
+  isOpen: boolean;
+}
+const DropDownWrapper = styled.div`
+  position: relative;
+`;
+const DropDownContent = styled.div<IDropdownMenu>`
+  cursor: pointer;
+  z-index: 100;
+  position: absolute;
+  right: 0.5rem;
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: 10rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: #f3f5f7;
+  color: #242424;
+  /* transition: all 300ms linear; */
+`;
+const DropDownItem = styled.span`
+  width: 100%;
+  padding: 0.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid #929292;
+  &:nth-last-child(1) {
+    border-bottom: 0px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+export {
+  Container,
+  TitleWrapper,
+  MenuWrapper,
+  Title,
+  SubTitle,
+  HeaderBtn,
+  DropDownWrapper,
+  DropDownContent,
+  DropDownItem,
+};
