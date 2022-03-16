@@ -23,7 +23,7 @@ const categories = [
   {
     id: 4,
     title: 'Todo Mate',
-    link: '/todomate',
+    link: '/todolist',
   },
 ];
 const hashtags = [
@@ -71,7 +71,7 @@ const SideBar = () => {
             </a>
           </ListItem>
           <ListItem>
-            <a href="javascript:void(0)" onClick={() => router.push('/todomate')}>
+            <a href="javascript:void(0)" onClick={() => router.push('/todolist')}>
               <i className="fa fa-calendar-check fa-2x"></i>
               <span>TodoList</span>
             </a>
@@ -89,6 +89,7 @@ const SideBar = () => {
               onRemoveChip={() => {
                 console.log('onRemove Chip');
               }}
+              size={'small'}
             />
           ))}
         </ListWrapper>

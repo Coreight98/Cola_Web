@@ -1,17 +1,26 @@
 import { Container, RemoveBtn } from './styles';
 
-const HashtagChip = ({ title, onClick, onRemoveChip, size }: any) => {
+interface Props {
+  title: string;
+  size: 'full' | 'small';
+  onClick?: () => void;
+  onRemoveChip?: () => void;
+}
+
+const HashtagChip = ({ title, onClick, onRemoveChip, size }: Props) => {
   return (
     <Container onClick={onClick} size={size}>
       <p style={{ textOverflow: 'ellipsis' }}>{title}</p>
-      <RemoveBtn
-        onClick={(e) => {
-          e.stopPropagation();
-          onRemoveChip();
-        }}
-      >
-        x
-      </RemoveBtn>
+      {onRemoveChip !== undefined && (
+        <RemoveBtn
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemoveChip();
+          }}
+        >
+          x
+        </RemoveBtn>
+      )}
     </Container>
   );
 };

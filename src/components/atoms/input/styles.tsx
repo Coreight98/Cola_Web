@@ -4,5 +4,12 @@ const ErrorMessage = styled.p`
   text-align: start;
   padding: 5px 0;
 `;
-
-export { ErrorMessage };
+interface Props {
+  width: string;
+  height: string;
+}
+const DefaultInput = styled.input<Props>`
+  min-width: ${({ width }) => width};
+  min-height: ${({ height }) => height};
+`;
+export { ErrorMessage, DefaultInput };

@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
 
-import { Container, Wrapper, CheckBoxWrapper } from './styles';
+import { Container, Wrapper } from './styles';
 
 import Chip from '@atoms/chip';
+import TodoCheckBox from '@components/atoms/todoCheckBox';
 import Calender from '@molecules/calender';
 
 interface Props {
@@ -13,6 +14,7 @@ const Todolist = () => {
   const [date, setDate] = useState(new Date());
   const [feed, setFeed] = useState<Props>({});
   const inputRef = useRef<HTMLInputElement>(null);
+
   const targetList = ['목표', '아침'];
   const handleChangeMonth = (condition: number) => setDate(new Date(date.getFullYear(), date.getMonth() + condition));
   const handleClick = (key: string) => {
@@ -36,25 +38,15 @@ const Todolist = () => {
         {targetList.map((target: string) => (
           <>
             <Chip key={target} title={target} handleClick={() => !focus && handleClick(target)} />
-            {feed[target]?.map((element) =>
-              element !== '' ? (
-                <CheckBoxWrapper>
-                  <input type="checkbox" />
-                  <div key={element}>{element}</div>
-                </CheckBoxWrapper>
-              ) : (
-                <input
-                  ref={inputRef}
-                  onBlur={() => handleFocus(target)}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      handleFocus(target);
-                    }
-                  }}
-                  autoFocus
-                />
-              ),
-            )}
+            {feed[target]?.map((content) => (
+              <TodoCheckBox
+                key={content}
+                content={content}
+                target={target}
+                handleFocus={handleFocus}
+                inputRef={inputRef}
+              />
+            ))}
           </>
         ))}
       </Wrapper>
