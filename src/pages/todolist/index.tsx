@@ -1,57 +1,66 @@
-import { useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Container, Wrapper } from './styles';
+import { GetServerSideProps } from 'next';
+import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd';
+import { useRecoilState } from 'recoil';
 
-import Chip from '@atoms/chip';
-import TodoCheckBox from '@components/atoms/todoCheckBox';
+import { Container, CalendarContainer } from './styles';
+
 import Calender from '@molecules/calender';
+import TodoArea from '@molecules/todoArea';
+import { todoState } from 'src/store';
 
-interface Props {
-  [key: string]: string[];
-}
 const Todolist = () => {
-  const [focus, setFocus] = useState(false);
+  const [isWindowReady, setWindowReady] = useState(false);
+  useEffect(() => {
+    setWindowReady(true);
+  }, []);
   const [date, setDate] = useState(new Date());
-  const [feed, setFeed] = useState<Props>({});
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const targetList = ['목표', '아침'];
   const handleChangeMonth = (condition: number) => setDate(new Date(date.getFullYear(), date.getMonth() + condition));
-  const handleClick = (key: string) => {
-    setFeed({ ...feed, [key]: feed[key] === undefined ? [''] : [...feed[key], ''] });
-    setFocus(true);
-  };
-  const handleFocus = (key: string) => {
-    if (inputRef.current === null) return;
-    inputRef.current.value !== ''
-      ? setFeed({ ...feed, [key]: [...feed[key].slice(0, -1), inputRef.current.value] })
-      : setFeed({ ...feed, [key]: feed[key].slice(0, -1) });
-    setFocus(false);
-  };
 
+  const [toDos, setToDos] = useRecoilState(todoState);
+
+  const onDragEnd = (info: DropResult) => {
+    console.log(info);
+    const { destination, draggableId, source } = info;
+    if (!destination) return;
+    if (destination?.droppableId === source.droppableId) {
+      console.log('same');
+    }
+    if (destination.droppableId !== source.droppableId) {
+      // cross board movement
+      console.log('cross');
+    }
+  };
   return (
-    <>
-      <Container>
+    <Container>
+      <CalendarContainer>
         <Calender {...{ date, handleChangeMonth }} />
-      </Container>
-      <Wrapper>
-        {targetList.map((target: string) => (
-          <>
-            <Chip key={target} title={target} handleClick={() => !focus && handleClick(target)} />
-            {feed[target]?.map((content) => (
-              <TodoCheckBox
-                key={content}
-                content={content}
-                target={target}
-                handleFocus={handleFocus}
-                inputRef={inputRef}
-              />
-            ))}
-          </>
-        ))}
-      </Wrapper>
-    </>
+      </CalendarContainer>
+      {isWindowReady && (
+        <DragDropContext onDragEnd={onDragEnd}>
+          {Object.keys(toDos).map((board: string, idx) => (
+            <Droppable key={board + (idx + '')} droppableId={board}>
+              {(provided, snapshot) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <TodoArea area={board} idx={idx} dragMode={true}>
+                    {provided.placeholder}
+                  </TodoArea>
+                </div>
+              )}
+            </Droppable>
+          ))}
+        </DragDropContext>
+      )}
+    </Container>
   );
 };
 
 export default Todolist;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  resetServerContext();
+
+  return { props: { data: [] } };
+};
