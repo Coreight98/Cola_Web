@@ -53,25 +53,25 @@ const SideBar = () => {
       <Container>
         <ListWrapper>
           <ListItem>
-            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+            <a href="#" onClick={() => router.push('/board')}>
               <i className="fa fa-book fa-2x"></i>
               <span className="nav-text">자유게시판</span>
             </a>
           </ListItem>
           <ListItem>
-            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+            <a href="#" onClick={() => router.push('/board')}>
               <i className="fa fa-question fa-2x"></i>
               <span>질문게시판</span>
             </a>
           </ListItem>
           <ListItem>
-            <a href="javascript:void(0)" onClick={() => router.push('/board')}>
+            <a href="#" onClick={() => router.push('/board')}>
               <i className="fa fa-file-invoice fa-2x"></i>
               <span>정보게시판</span>
             </a>
           </ListItem>
           <ListItem>
-            <a href="javascript:void(0)" onClick={() => router.push('/todolist')}>
+            <a href="#" onClick={() => router.push('/todolist')}>
               <i className="fa fa-calendar-check fa-2x"></i>
               <span>TodoList</span>
             </a>

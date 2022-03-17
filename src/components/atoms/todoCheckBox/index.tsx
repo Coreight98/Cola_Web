@@ -6,10 +6,10 @@ import { resetServerContext } from 'react-beautiful-dnd';
 import { CheckBoxWrapper, CheckBox } from './styles';
 
 import { theme } from '@styles/theme';
-import { IToDo } from 'src/store';
 
 export interface Props {
-  item: IToDo;
+  toDoId: number;
+  toDoContent: string;
   target: string;
   inputRef: RefObject<HTMLInputElement>;
   handleFocus: (key: string) => void;
@@ -22,7 +22,7 @@ export const Type = {
   done: theme.colors.Begonia,
 };
 
-const TodoCheckBox = ({ item, target, handleFocus, inputRef, index }: Props) => {
+const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {
   const [typeStatus, setTypeStatus] = useState<keyof typeof Type>('todo');
 
   const handleChangeType = () =>
@@ -30,11 +30,11 @@ const TodoCheckBox = ({ item, target, handleFocus, inputRef, index }: Props) => 
 
   return (
     <>
-      {item !== null ? (
+      {toDoId !== null ? (
         <CheckBoxWrapper>
           {/* <input type="checkbox" /> */}
           <CheckBox onClick={handleChangeType} typeColor={Type[typeStatus]}></CheckBox>
-          <div key={item.id}>{item.content}</div>
+          <div key={toDoId}>{toDoContent}</div>
         </CheckBoxWrapper>
       ) : (
         <input

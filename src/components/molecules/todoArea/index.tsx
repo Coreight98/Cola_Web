@@ -54,11 +54,12 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
       <Wrapper>
         {
           // dragMode에 따라 드래그 가능한 컴포넌트 or 일반 컴포넌트 렌더링
-          feed[area]?.map((item, index) =>
+          feed[area]?.map(({ id, content }, index) =>
             dragMode ? (
               <DraggableTodo
-                key={item.id}
-                item={item}
+                key={id}
+                toDoId={id}
+                toDoContent={content}
                 target={area}
                 handleFocus={handleFocus}
                 inputRef={inputRef}
@@ -66,8 +67,9 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
               />
             ) : (
               <TodoCheckBox
-                key={item.id}
-                item={item}
+                key={id}
+                toDoId={id}
+                toDoContent={content}
                 target={area}
                 handleFocus={handleFocus}
                 inputRef={inputRef}

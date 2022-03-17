@@ -1,17 +1,16 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
 
-import { GetServerSideProps } from 'next';
-import { Draggable, resetServerContext } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 import TodoCheckBox, { Props } from './index';
 
-const DraggableTodoCheckBox = ({ item, target, handleFocus, inputRef, index }: Props) => {
+const DraggableTodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {
   return (
-    <Draggable draggableId={item.id + ''} index={index}>
+    <Draggable draggableId={toDoId + ''} index={index}>
       {(provided, snapshot) => (
         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <TodoCheckBox {...{ item, target, handleFocus, inputRef, index }}></TodoCheckBox>
+          <TodoCheckBox {...{ toDoId, toDoContent, target, handleFocus, inputRef, index }}></TodoCheckBox>
         </div>
       )}
     </Draggable>
