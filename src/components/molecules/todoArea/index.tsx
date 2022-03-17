@@ -29,21 +29,26 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = (key: string) => {
-    // setFeed({ ...feed, [key]: feed[key] === undefined ? [''] : [...feed[key], ''] });
+    console.log(key);
+    setFeed({ ...feed, [key]: [...feed[key], { id: Date.now(), content: '' }] });
     setFocus(true);
   };
   const handleFocus = (key: string) => {
-    if (inputRef.current === null) return;
-    // inputRef.current.value !== ''
-    //   ? setFeed({
-    //       ...feed,
-    //       [key]: [
-    //         ...feed[key].slice(0, -1),
-    //         { id: Number(new Date().getTime()), content: inputRef.current.value + '' },
-    //       ],
-    //     })
-    //   : setFeed({ ...feed, [key]: feed[key].slice(0, -1) });
     setFocus(false);
+    if (inputRef.current === null) return;
+
+    if (inputRef.current.value) {
+      const newToDo = {
+        id: Date.now(),
+        content: inputRef.current.value + '',
+      };
+      setFeed((prev) => ({
+        ...prev,
+        [key]: [...prev[key].slice(0, -1), newToDo],
+      }));
+    } else {
+      setFeed({ ...feed, [key]: feed[key].slice(0, -1) });
+    }
   };
   return (
     <Container>

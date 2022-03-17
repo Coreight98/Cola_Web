@@ -30,7 +30,7 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
 
   return (
     <>
-      {toDoId !== null ? (
+      {toDoContent && toDoId ? (
         <CheckBoxWrapper>
           {/* <input type="checkbox" /> */}
           <CheckBox onClick={handleChangeType} typeColor={Type[typeStatus]}></CheckBox>
