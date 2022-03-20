@@ -1,23 +1,28 @@
 import { RefObject, useRef, useState } from 'react';
 
+import { GetServerSideProps } from 'next';
+import { resetServerContext } from 'react-beautiful-dnd';
+
 import { CheckBoxWrapper, CheckBox } from './styles';
 
 import { theme } from '@styles/theme';
 
-interface Props {
-  content: string;
+export interface Props {
+  toDoId: number;
+  toDoContent: string;
   target: string;
   inputRef: RefObject<HTMLInputElement>;
   handleFocus: (key: string) => void;
+  index: number;
 }
 
-const Type = {
+export const Type = {
   todo: theme.colors.White,
   inProgress: theme.colors.Emerald,
   done: theme.colors.Begonia,
 };
 
-const TodoCheckBox = ({ content, target, handleFocus, inputRef }: Props) => {
+const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {
   const [typeStatus, setTypeStatus] = useState<keyof typeof Type>('todo');
 
   const handleChangeType = () =>
@@ -25,11 +30,11 @@ const TodoCheckBox = ({ content, target, handleFocus, inputRef }: Props) => {
 
   return (
     <>
-      {content !== '' ? (
+      {toDoContent && toDoId ? (
         <CheckBoxWrapper>
           {/* <input type="checkbox" /> */}
           <CheckBox onClick={handleChangeType} typeColor={Type[typeStatus]}></CheckBox>
-          <div key={content}>{content}</div>
+          <div key={toDoId}>{toDoContent}</div>
         </CheckBoxWrapper>
       ) : (
         <input
@@ -48,3 +53,9 @@ const TodoCheckBox = ({ content, target, handleFocus, inputRef }: Props) => {
 };
 
 export default TodoCheckBox;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  resetServerContext();
+
+  return { props: { data: [] } };
+};

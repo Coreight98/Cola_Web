@@ -6,6 +6,10 @@ const CheckBoxWrapper = styled.div`
   min-width: 6vw;
   column-gap: 1vw;
   align-items: center;
+  background: #ecdbba;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
 `;
 
 const CheckBox = styled.div<{ typeColor: string }>`
