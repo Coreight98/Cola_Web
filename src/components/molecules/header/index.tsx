@@ -7,6 +7,7 @@ import SearchBar from '../searchBar';
 import { Container, TitleWrapper, Title, HeaderBtn, DropDownWrapper, DropDownContent, DropDownItem } from './styles';
 
 import UserDefault from '@assets/icon/user_default.svg';
+import LogInOut from '@atoms/button/logInOut';
 import SideBar from '@molecules/sidebar';
 
 const Header = () => {
@@ -49,7 +50,8 @@ const Header = () => {
             <UserDefault fill="white" width="40px" height="40px" />
           </HeaderBtn>
           <DropDownContent isOpen={profileMenu} ref={dropdownRef}>
-            <DropDownItem>로그아웃</DropDownItem>
+            <LogInOut />
+            {/* <DropDownItem>로그아웃</DropDownItem> */}
             <DropDownItem onClick={() => router.push('/mypage')}>마이페이지</DropDownItem>
           </DropDownContent>
         </DropDownWrapper>
