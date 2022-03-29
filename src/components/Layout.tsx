@@ -1,11 +1,14 @@
-import { ReactChild, ReactChildren } from 'react';
+import { ReactChild, ReactChildren, isValidElement } from 'react';
 
 import Navigation from './organisms/Navigation';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
+  const NOT_NAVIGATION_LIST = ['SignUp', 'SignIn'];
   return (
     <>
-      <Navigation />
+      {isValidElement(children) &&
+        typeof children.type !== 'string' &&
+        !NOT_NAVIGATION_LIST.includes(children.type.name) && <Navigation />}
       <div className="children">{children}</div>
       <style jsx>
         {`
