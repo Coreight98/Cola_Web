@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs "node14"
+        nodejs "node 16"
         git "git"
     }
     stages {
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                    dir('myapp'){
+                    dir('COLA_WEB'){
                         sh 'ls -al'
                         sh "yarn install"
                         sh "CI=false yarn build"
