@@ -60,6 +60,7 @@ const SignUpTemp = () => {
           <InputWrapper>
             <Input
               {...SignUpProps('email')}
+              type="small"
               error={ErrorMessage('email')}
               onChange={() => {
                 setIsEmailValid(false);
@@ -75,6 +76,7 @@ const SignUpTemp = () => {
               <>
                 <Input
                   {...SignUpProps('emailCheck')}
+                  type="small"
                   value={emailCode}
                   onChange={(e) => setEmailCode(e.target.value)}
                 />
@@ -87,16 +89,16 @@ const SignUpTemp = () => {
         <SubFormWrapper>
           <SubTitle>아이디/비밀번호</SubTitle>
           <InputWrapper>
-            <Input {...SignUpProps('password')} error={ErrorMessage('password')} />
-            <Input {...SignUpProps('passwordCheck')} error={ErrorMessage('passwordCheck')} />
+            <Input {...SignUpProps('password')} type="small" error={ErrorMessage('password')} />
+            <Input {...SignUpProps('passwordCheck')} type="small" error={ErrorMessage('passwordCheck')} />
           </InputWrapper>
         </SubFormWrapper>
         <SubFormWrapper>
           <SubTitle>학생 정보</SubTitle>
           <InputWrapper>
-            <Input {...SignUpProps('name')} error={ErrorMessage('name')} />
-            <Input {...SignUpProps('department')} error={ErrorMessage('department')} />
-            <Input {...SignUpProps('studentId')} error={ErrorMessage('studentId')} />
+            <Input {...SignUpProps('name')} type="small" error={ErrorMessage('name')} />
+            <Input {...SignUpProps('department')} type="small" error={ErrorMessage('department')} />
+            <Input {...SignUpProps('studentId')} type="small" error={ErrorMessage('studentId')} />
           </InputWrapper>
         </SubFormWrapper>
         <SubmitBtn>회원가입</SubmitBtn>
