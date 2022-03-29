@@ -1,11 +1,10 @@
-import { NextResponse, NextRequest, NextFetchEvent } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
-export const middleware = async (req: NextRequest, ev: NextFetchEvent) => {
+export const middleware = async (req: NextRequest) => {
   const { pathname } = req.nextUrl;
   const cookie = req.cookies;
   const token = cookie.token;
   const notLoginUrlList = ['/', '/login', '/enter', '/join'];
-  const notNavigationBarList = ['/signIn', 'signUp'];
   const loginUrlList = ['/mypage', '/lobby'];
 
   if (token && notLoginUrlList.some((path) => pathname === path)) return NextResponse.redirect('/lobby');

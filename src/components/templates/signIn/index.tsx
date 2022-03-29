@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { SignInFormInterface, SignInData, SignInType } from './index.type';
 import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
@@ -12,7 +12,6 @@ const SignInTemp = () => {
   const router = useRouter();
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm<SignInFormInterface>({});
 

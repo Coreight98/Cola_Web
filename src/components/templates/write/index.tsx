@@ -13,7 +13,7 @@ const WriteTemp = () => {
   const [editMode, setEditMode] = useState<typeof MODE[number]>('all');
   const [chipList, setChipList] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement[]>([]);
-  const selectRef = (el: HTMLInputElement | null) => (value: WRITE_REF) =>
+  const selectRef = (el: HTMLInputElement | null) => (value: number) =>
     (inputRef.current[value] = el as HTMLInputElement);
 
   const handleChangeMode = (v: typeof MODE[number]) => setEditMode(v);

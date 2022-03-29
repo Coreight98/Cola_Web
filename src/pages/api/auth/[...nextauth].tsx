@@ -15,4 +15,5 @@ const options = {
   ],
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (req: any, res: any) => NextAuth(req, res, options);

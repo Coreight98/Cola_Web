@@ -1,12 +1,12 @@
+import { useState } from 'react';
+
 import { useRouter } from 'next/router';
 
 import { Container, BoardList } from './styles';
 
-import BoardCard from '@molecules/boardCard';
-import BoardPreviewItem from '@molecules/boardPreviewItem';
-import BoardSimpleItem from '@molecules/boardSimpleItem';
-
-import { useState } from 'react';
+// import BoardCard from '@molecules/boardCard';
+// import BoardPreviewItem from '@molecules/boardPreviewItem';
+// import BoardSimpleItem from '@molecules/boardSimpleItem';
 
 enum BoardLayout {
   'TILE',
@@ -49,11 +49,11 @@ const Board = () => {
       <section>
         <button onClick={() => router.push('/write')}>게시글 작성</button>
         <BoardList>
-          {[...new Array(20)].map((_, i) => {
+          {/* {[...new Array(20)].map((_, i) => {
             if (currentLayout === BoardLayout.TILE) return <BoardCard key={i} id={i} />;
             else if (currentLayout === BoardLayout.PREVIEW_LIST) return <BoardPreviewItem key={i} id={i} />;
             else if (currentLayout === BoardLayout.SIMPLE_LIST) return <BoardSimpleItem key={i} id={i} />;
-          })}
+          })} */}
         </BoardList>
       </section>
     </Container>
