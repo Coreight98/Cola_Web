@@ -7,16 +7,32 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
   return (
     <>
       {isValidElement(children) &&
-        typeof children.type !== 'string' &&
-        !NOT_NAVIGATION_LIST.includes(children.type.name) && <Navigation />}
-      <div className="children">{children}</div>
+      typeof children.type !== 'string' &&
+      !NOT_NAVIGATION_LIST.includes(children.type.name) ? (
+        <>
+          <Navigation />
+          <div className="children">{children}</div>
+        </>
+      ) : (
+        <div className="not">{children}</div>
+      )}
+
       <style jsx>
         {`
           .children {
             display: flex;
             justify-content: center;
+            width: 100vw;
+            height: 100vh;
             padding-top: 5rem;
             padding-left: 4rem;
+            transition: 0.2s ease-in-out;
+          }
+          .not {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
             transition: 0.2s ease-in-out;
           }
         `}
