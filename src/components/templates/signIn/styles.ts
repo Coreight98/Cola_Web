@@ -25,7 +25,6 @@ const Header = styled.h1`
 `;
 const FormWrapper = styled.form`
   grid-area: Form;
-  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

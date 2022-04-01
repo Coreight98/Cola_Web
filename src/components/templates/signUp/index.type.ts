@@ -7,8 +7,9 @@ export interface SignUpFormInterface {
   emailCheck: string;
   name: string;
   department: string;
-  studentId: string;
+  gitEmailId: string;
 }
+
 export const SignUpData = {
   password: {
     required: '비밀번호를 입력해주세요.',
@@ -32,11 +33,11 @@ export const SignUpData = {
   department: {
     required: '학과를 입력해주세요',
   },
-  studentId: {
-    required: '학번을 입력해주세요',
+  gitEmailId: {
+    required: '이메일을 입력해주세요',
     pattern: {
-      value: /^[0-9]{9}$/,
-      message: '학번을 제대로 입력해주세요.',
+      value: /^[A-Za-z0-9._%+-]+@[\S+.]+$/,
+      message: '이메일만 사용할 수 있습니다.',
     },
   },
 };
@@ -48,5 +49,5 @@ export const SignUpType = {
   emailCheck: { type: 'text', placeholder: '인증번호를 입력하세요' },
   name: { type: 'text', placeholder: '이름' },
   department: { type: 'text', placeholder: '학과' },
-  studentId: { type: 'text', placeholder: '학번' },
+  gitEmailId: { type: 'text', placeholder: 'GIT 이메일' },
 };

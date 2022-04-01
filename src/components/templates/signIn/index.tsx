@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { SignInFormInterface, SignInData, SignInType } from './index.type';
 import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
 
-import Input from '@components/atoms/input';
+import Input from '@molecules/input';
 import Seo from '@components/Seo';
 // import Auth from '@utils/api/main';
 
@@ -30,18 +30,12 @@ const SignInTemp = () => {
       <Seo title="SignIn" />
       <Header>로그인</Header>
       <FormWrapper>
-        <Input {...SignUpProps('email')} type="small" error={ErrorMessage('email')} />
-        <Input {...SignUpProps('password')} type="small" error={ErrorMessage('password')} />
+        <Input {...SignUpProps('email')} error={ErrorMessage('email')} />
+        <Input {...SignUpProps('password')} error={ErrorMessage('password')} />
         <button>로그인</button>
       </FormWrapper>
       <AuthContentWrapper>
-        <RouterText
-          onClick={() => {
-            router.push('/signUp');
-          }}
-        >
-          회원가입
-        </RouterText>
+        <RouterText onClick={() => router.push('/signUp')}>회원가입</RouterText>
         <SocialLogin>
           <p>소셜 로그인</p>
           <ul>
