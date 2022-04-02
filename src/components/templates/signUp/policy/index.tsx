@@ -4,8 +4,10 @@ import { Container, Title, PolicyWrapper, NextBtn } from './styles';
 
 import PolicySection from '@components/molecules/section/PolicySection';
 import { policyDummy1, policyDummy2 } from '@constants/singupPolicy';
+import { useRouter } from 'next/router';
 
 const SignUpPolicy = () => {
+  const router = useRouter();
   const [policy1, setPolicy1] = useState(false);
   const [policy2, setPolicy2] = useState(false);
 
@@ -36,8 +38,7 @@ const SignUpPolicy = () => {
           checkboxLabel="[필수] 개인정보처리방침을 확인했으며 개인정보수집 및 이용에 동의합니다"
         />
       </PolicyWrapper>
-
-      <NextBtn>NEXT</NextBtn>
+      <NextBtn onClick={() => policy1 && policy2 && router.push('/signUp')}>NEXT</NextBtn>
     </Container>
   );
 };
