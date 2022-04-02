@@ -17,16 +17,18 @@ const Title = styled.h1`
   font-size: 5rem;
   color: ${theme.colors.VeryLightBlue};
 `;
+
 const SubTitle = styled.h3`
   margin-top: 1vh;
   color: ${theme.colors.JordyBlue};
   width: 8vw;
 `;
+
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
-  align-items: center;
+  align-items: flex-start;
 `;
 const SubFormWrapper = styled.div`
   width: 100%;
