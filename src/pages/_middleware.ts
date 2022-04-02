@@ -5,6 +5,7 @@ export const middleware = async (req: NextRequest, ev: NextFetchEvent) => {
   const cookie = req.cookies;
   const token = cookie.token;
   const notLoginUrlList = ['/', '/login', '/enter', '/join'];
+  const notNavigationBarList = ['/signIn', 'signUp'];
   const loginUrlList = ['/mypage', '/lobby'];
 
   if (token && notLoginUrlList.some((path) => pathname === path)) return NextResponse.redirect('/lobby');

@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
-
+const ErrorMessage = styled.p`
+  color: red;
+  margin-left: 8vw;
+  text-align: start;
+  padding: 5px 0;
+`;
 interface Props {
   width: string | number;
   height: string | number;
@@ -10,4 +15,4 @@ const InputStyle = styled.input<Props>`
   min-width: ${({ width }) => width};
   min-height: ${({ height }) => height};
 `;
-export { InputStyle };
+export { ErrorMessage, InputStyle };

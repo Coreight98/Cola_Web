@@ -4,9 +4,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { SignInFormInterface, SignInData, SignInType } from './index.type';
 import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from './styles';
 
-import Input from '@components/atoms/input';
+import Input from '@molecules/input';
 import Seo from '@components/Seo';
-import Auth from '@utils/api/main';
+// import Auth from '@utils/api/main';
 
 const SignInTemp = () => {
   const router = useRouter();
@@ -16,10 +16,10 @@ const SignInTemp = () => {
     formState: { errors },
   } = useForm<SignInFormInterface>({});
 
-  const onSubmit: SubmitHandler<SignInFormInterface> = ({ email, password }: SignInFormInterface) => {
-    const res = Auth.singIn({ email, password });
-    console.log(res.message);
-  };
+  // const onSubmit: SubmitHandler<SignInFormInterface> = ({ email, password }: SignInFormInterface) => {
+  //   const res = Auth.singIn({ email, password });
+  //   console.log(res.message);
+  // };
   const SignUpProps = (value: keyof typeof SignInData) => {
     return { ...SignInType[value], ...register(value, SignInData[value]) };
   };
@@ -29,19 +29,13 @@ const SignInTemp = () => {
     <Container>
       <Seo title="SignIn" />
       <Header>로그인</Header>
-      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+      <FormWrapper>
         <Input {...SignUpProps('email')} error={ErrorMessage('email')} />
         <Input {...SignUpProps('password')} error={ErrorMessage('password')} />
         <button>로그인</button>
       </FormWrapper>
       <AuthContentWrapper>
-        <RouterText
-          onClick={() => {
-            router.push('/signUp');
-          }}
-        >
-          회원가입
-        </RouterText>
+        <RouterText onClick={() => router.push('/signUp')}>회원가입</RouterText>
         <SocialLogin>
           <p>소셜 로그인</p>
           <ul>
