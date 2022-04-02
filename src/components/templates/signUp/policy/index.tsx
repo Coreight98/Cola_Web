@@ -20,20 +20,20 @@ const SignUpPolicy = () => {
       <Title>SIGN UP</Title>
       <PolicyWrapper>
         <PolicySection
-          policyCheck={policy1}
-          setPolicyCheck={setPolicy1}
+          checked={policy1}
+          setCheck={setPolicy1}
           checkboxId="singup-policy1"
           policyTitle={policyDummy1.title}
           policyContent={policyDummy1.content}
-          checkLabel="[필수] 이용약관에 동의하였으며 약관에 동의합니다"
+          checkboxLabel="[필수] 이용약관에 동의하였으며 약관에 동의합니다"
         />
         <PolicySection
-          policyCheck={policy2}
-          setPolicyCheck={setPolicy2}
+          checked={policy2}
+          setCheck={setPolicy2}
           checkboxId="singup-policy2"
           policyTitle={policyDummy2.title}
           policyContent={policyDummy2.content}
-          checkLabel="[필수] 개인정보처리방침을 확인했으며 개인정보수집 및 이용에 동의합니다"
+          checkboxLabel="[필수] 개인정보처리방침을 확인했으며 개인정보수집 및 이용에 동의합니다"
         />
       </PolicyWrapper>
 
