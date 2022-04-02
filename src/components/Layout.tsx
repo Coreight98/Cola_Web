@@ -1,9 +1,10 @@
 import { ReactChild, ReactChildren, isValidElement } from 'react';
 
 import Navigation from './organisms/Navigation';
+import AuthNavigation from './organisms/Navigation/AuthNavigation';
 
 export default function Layout({ children }: { children: ReactChild | ReactChildren }) {
-  const NOT_NAVIGATION_LIST = ['SignUp', 'SignIn'];
+  const NOT_NAVIGATION_LIST = ['SignUp', 'SignIn', 'SignUpPolicy'];
   return (
     <>
       {isValidElement(children) &&
@@ -14,7 +15,10 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
           <div className="children">{children}</div>
         </>
       ) : (
-        <div className="not">{children}</div>
+        <>
+          <AuthNavigation />
+          <div className="not">{children}</div>
+        </>
       )}
 
       <style jsx>
@@ -22,8 +26,6 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
           .children {
             display: flex;
             justify-content: center;
-            width: 100vw;
-            height: 100vh;
             padding-top: 5rem;
             padding-left: 4rem;
             transition: 0.2s ease-in-out;
@@ -31,8 +33,6 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
           .not {
             display: flex;
             justify-content: center;
-            width: 100vw;
-            height: 100vh;
             transition: 0.2s ease-in-out;
           }
         `}
