@@ -33,7 +33,9 @@ const WriteTemp = () => {
         <Input {...InputProps.title} ref={(el) => selectRef(el)(WRITE_REF.title)} autoFocus />
         <Wrapper>
           {MODE.map((mode: string) => (
-            <Button key={mode} title={mode} onClick={() => handleChangeMode(mode)} />
+            <Button key={mode} onClick={() => handleChangeMode(mode)}>
+              {mode}
+            </Button>
           ))}
         </Wrapper>
       </Wrapper>

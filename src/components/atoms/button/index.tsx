@@ -1,9 +1,12 @@
-interface Props {
-  title: string;
-  onClick?: () => void;
+import { ReactNode } from 'react';
+import { ButtonStyle } from './styles';
+
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
 }
-const Button = ({ title, onClick }: Props) => {
-  return <button onClick={onClick}>{title}</button>;
+
+const Button = ({ children, ...props }: Props) => {
+  return <ButtonStyle {...props}>{children}</ButtonStyle>;
 };
 
 export default Button;
