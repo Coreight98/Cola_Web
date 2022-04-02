@@ -1,25 +1,14 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
+import { EventType, useForm } from 'react-hook-form';
 
 import AuthBtn from '@components/atoms/button/auth';
 import SubmitBtn from '@components/atoms/button/submit';
 import { MAJOR_TYPE } from '@constants/index';
 
 import { SignUpFormInterface, SignUpData, SignUpType } from './index.type';
-import {
-  Container,
-  SubContainer,
-  Title,
-  SubTitle,
-  FormWrapper,
-  SubFormWrapper,
-  BtnWrapper,
-  Wrapper,
-  Select,
-  Triangle,
-} from './styles';
+import { Container, Title, FormWrapper, Select, Triangle, SubTitle } from './styles';
 
 import Input from '@molecules/input';
 import Arrow from 'public/arrow.svg';
@@ -27,6 +16,7 @@ import Logo from 'public/cola_logo.svg';
 import Check from 'public/check.svg';
 import Modal from '@components/molecules/modal';
 import MajorModal from '@components/molecules/modal/majorModal';
+import { FlexWrapper } from '@styles/global';
 
 const SignUpTemp = () => {
   const router = useRouter();
@@ -38,15 +28,21 @@ const SignUpTemp = () => {
   const {
     register,
     handleSubmit,
+    trigger,
     formState: { errors },
   } = useForm<SignUpFormInterface>({
     mode: 'onBlur',
+    reValidateMode: 'onChange',
     defaultValues: {
       email: '@ajou.ac.kr',
     },
   });
 
-  const onClickEmailAuth = () => {
+  const onClickEmailAuth = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    // onSubmit이 아니기때문에 validation을 trigger한다.
+    const result = await trigger('email');
+    if (!result) return;
     if (!checkEmail) {
       // 이메일 인증 필요
       setCheckEmail(true);
@@ -60,8 +56,9 @@ const SignUpTemp = () => {
     }
   };
 
-  const onSubmit = (data: SignUpFormInterface) => {
-    console.log(data);
+  const onSubmit = (dd: any) => {
+    if (!isEmailValid) return;
+    console.log(dd);
   };
   const SignUpProps = (value: keyof typeof SignUpData) => {
     return { ...SignUpType[value], ...register(value, SignUpData[value]) };
@@ -78,62 +75,32 @@ const SignUpTemp = () => {
   return (
     <>
       <Container>
-        <BtnWrapper>
-          <Arrow onClick={() => router.back()} />
-          <Logo onClick={() => router.push('/')} />
-        </BtnWrapper>
-        <SubContainer>
-          <Title>SIGN UP</Title>
-          <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-            <SubFormWrapper>
-              <Input {...SignUpProps('name')} error={ErrorMessage('name')}>
-                <SubTitle>이름</SubTitle>
-              </Input>
-            </SubFormWrapper>
-            <Wrapper>
-              <SubFormWrapper>
-                <div style={{ position: 'relative' }}>
-                  <Input {...SignUpProps('email')} error={ErrorMessage('email')} onChange={handleChange}>
-                    <SubTitle>이메일 인증</SubTitle>
-                  </Input>
-                  {isEmailValid && <Check style={{ position: 'absolute', right: '20px', top: '20px' }} />}
-                </div>
-              </SubFormWrapper>
+        <Title>SIGN UP</Title>
+        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+          <Input {...SignUpProps('name')} error={ErrorMessage('name')} />
+          <FlexWrapper style={{ position: 'relative' }}>
+            <Input {...SignUpProps('email')} error={ErrorMessage('email')} onChange={handleChange}>
               {!isEmailValid && <AuthBtn onClick={onClickEmailAuth}>인증</AuthBtn>}
-            </Wrapper>
-            {checkEmail && (
-              <SubFormWrapper>
-                {!isEmailValid && (
-                  <Input
-                    style={{ marginLeft: '8vw' }}
-                    {...SignUpProps('emailCheck')}
-                    value={emailCode}
-                    onChange={(e) => setEmailCode(e.target.value)}
-                  />
-                )}
-              </SubFormWrapper>
-            )}
-            <SubFormWrapper>
-              <div style={{ display: 'flex' }}>
-                <SubTitle>학과</SubTitle>
-                <div style={{ position: 'relative' }}>
-                  <Select onClick={handleModalOnOff} {...register('department', SignUpData.department)}>
-                    <option id="selected" value={MAJOR_TYPE[major]} selected hidden>
-                      {MAJOR_TYPE[major]}
-                    </option>
-                  </Select>
-                  <Triangle />
-                </div>
-              </div>
-            </SubFormWrapper>
-            <SubFormWrapper>
-              <Input {...SignUpProps('gitEmailId')} error={ErrorMessage('gitEmailId')}>
-                <SubTitle>GIT 계정</SubTitle>
-              </Input>
-            </SubFormWrapper>
-            <SubmitBtn>SAVE</SubmitBtn>
-          </FormWrapper>
-        </SubContainer>
+            </Input>
+            {isEmailValid && <Check style={{ position: 'absolute', right: '20px', top: '20px' }} />}
+          </FlexWrapper>
+          {checkEmail && !isEmailValid && (
+            <Input {...SignUpProps('emailCheck')} value={emailCode} onChange={(e) => setEmailCode(e.target.value)} />
+          )}
+          <FlexWrapper>
+            <SubTitle>학과</SubTitle>
+            <div style={{ position: 'relative' }}>
+              <Select onClick={handleModalOnOff} {...register('department', SignUpData.department)}>
+                <option value={MAJOR_TYPE[major]} hidden>
+                  {MAJOR_TYPE[major]}
+                </option>
+              </Select>
+              <Triangle />
+            </div>
+          </FlexWrapper>
+          <Input {...SignUpProps('gitEmailId')} error={ErrorMessage('gitEmailId')} />
+          <SubmitBtn>SAVE</SubmitBtn>
+        </FormWrapper>
       </Container>
       {modalOnOff && (
         <Modal>

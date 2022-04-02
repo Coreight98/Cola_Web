@@ -1,4 +1,12 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
+
+const Title = styled.h3`
+  margin-top: 1vh;
+  color: ${theme.colors.JordyBlue};
+  width: 8vw;
+`;
+
 const ErrorMessage = styled.p`
   color: red;
   margin-left: 8vw;
@@ -15,4 +23,4 @@ const InputStyle = styled.input<Props>`
   min-width: ${({ width }) => width};
   min-height: ${({ height }) => height};
 `;
-export { ErrorMessage, InputStyle };
+export { Title, ErrorMessage, InputStyle };

@@ -18,7 +18,7 @@ const MajorModal = ({ major, setMajor, setModalOnOff }: Props) => {
       <Title>학과</Title>
       <MajorWrapper>
         {Object.entries(MAJOR_TYPE).map(([key, value]) => (
-          <label onClick={() => setTempMajor(key as keyof typeof MAJOR_TYPE)}>
+          <label key={key} onClick={() => setTempMajor(key as keyof typeof MAJOR_TYPE)}>
             <CheckBox selected={tempMajor === key} />
             <Span selected={tempMajor === key}>{value}</Span>
           </label>
