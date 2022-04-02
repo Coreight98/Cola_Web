@@ -1,7 +1,7 @@
 import { MouseEvent, useState } from 'react';
 
 import { useRouter } from 'next/router';
-import { EventType, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import AuthBtn from '@components/atoms/button/auth';
 import SubmitBtn from '@components/atoms/button/submit';
@@ -61,9 +61,9 @@ const SignUpTemp = () => {
     console.log(dd);
   };
   const SignUpProps = (value: keyof typeof SignUpData) => {
-    return { ...SignUpType[value], ...register(value, SignUpData[value]) };
+    return { ...SignUpType[value], ...register(value, SignUpData[value]), error: errors[value]?.message };
   };
-  const ErrorMessage = (value: keyof typeof errors) => errors[value]?.message;
+  // const ErrorMessage = (value: keyof typeof errors) => errors[value]?.message;
 
   const handleModalOnOff = () => setModalOnOff(!modalOnOff);
 
@@ -77,9 +77,9 @@ const SignUpTemp = () => {
       <Container>
         <Title>SIGN UP</Title>
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-          <Input {...SignUpProps('name')} error={ErrorMessage('name')} />
+          <Input {...SignUpProps('name')} />
           <FlexWrapper style={{ position: 'relative' }}>
-            <Input {...SignUpProps('email')} error={ErrorMessage('email')} onChange={handleChange}>
+            <Input {...SignUpProps('email')} onChange={handleChange}>
               {!isEmailValid && <AuthBtn onClick={onClickEmailAuth}>인증</AuthBtn>}
             </Input>
             {isEmailValid && <Check style={{ position: 'absolute', right: '20px', top: '20px' }} />}
@@ -98,7 +98,7 @@ const SignUpTemp = () => {
               <Triangle />
             </div>
           </FlexWrapper>
-          <Input {...SignUpProps('gitEmailId')} error={ErrorMessage('gitEmailId')} />
+          <Input {...SignUpProps('gitEmailId')} />
           <SubmitBtn>SAVE</SubmitBtn>
         </FormWrapper>
       </Container>
