@@ -45,9 +45,9 @@ export const SignUpData = {
 export const SignUpType = {
   password: { type: 'password', placeholder: '비밀번호' },
   passwordCheck: { type: 'password', placeholder: '비밀번호 확인' },
-  email: { type: 'text', placeholder: '아주대 메일' },
+  email: { type: 'text', label: '이메일 인증', placeholder: '아주대 메일' },
   emailCheck: { type: 'text', placeholder: '인증번호를 입력하세요' },
-  name: { type: 'text', placeholder: '이름' },
+  name: { type: 'text', label: '이름', placeholder: '이름' },
   department: { type: 'text', placeholder: '학과' },
-  gitEmailId: { type: 'text', placeholder: 'GIT 이메일' },
+  gitEmailId: { type: 'text', label: 'GIT 계정', placeholder: 'GIT 이메일' },
 };

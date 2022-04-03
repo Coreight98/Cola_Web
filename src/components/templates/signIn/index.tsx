@@ -6,6 +6,7 @@ import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, Router
 
 import Input from '@molecules/input';
 import Seo from '@components/Seo';
+import LoginBtn from '@components/atoms/button/login';
 // import Auth from '@utils/api/main';
 
 const SignInTemp = () => {
@@ -29,19 +30,10 @@ const SignInTemp = () => {
     <Container>
       <Seo title="SignIn" />
       <Header>로그인</Header>
-      <FormWrapper>
-        <Input {...SignUpProps('email')} error={ErrorMessage('email')} />
-        <Input {...SignUpProps('password')} error={ErrorMessage('password')} />
-        <button>로그인</button>
-      </FormWrapper>
       <AuthContentWrapper>
-        <RouterText onClick={() => router.push('/signUp')}>회원가입</RouterText>
         <SocialLogin>
-          <p>소셜 로그인</p>
-          <ul>
-            <li>깃허브</li>
-            <li>깃랩</li>
-          </ul>
+          <LoginBtn type="google" />
+          <LoginBtn type="github" />
         </SocialLogin>
       </AuthContentWrapper>
     </Container>

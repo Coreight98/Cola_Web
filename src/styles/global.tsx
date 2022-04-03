@@ -29,3 +29,7 @@ export const basicStyles = css`
   margin: 3rem 0;
   padding: 1rem 0.5rem;
 `;
+
+export const FlexWrapper = styled.div`
+  display: flex;
+`;

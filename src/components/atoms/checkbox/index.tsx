@@ -4,18 +4,24 @@ import { CheckboxWarpper, Checkbox, CustomCheckbox, CheckboxLabel } from './styl
 
 interface ICheckbox {
   checked: boolean;
-  onChange: Dispatch<SetStateAction<boolean>>;
-  id: string;
-  name?: string;
-  label: string;
+  setCheck: Dispatch<SetStateAction<boolean>>;
+  checkboxId: string;
+  checkboxName?: string;
+  checkboxLabel: string;
 }
 
-const CheckboxInput = ({ checked, onChange, name, id, label }: ICheckbox) => {
+const CheckboxInput = ({ checked, setCheck, checkboxName, checkboxId, checkboxLabel }: ICheckbox) => {
   return (
     <CheckboxWarpper>
-      <Checkbox type={'checkbox'} checked={checked} onChange={(e) => onChange(e.target.checked)} id={id} name={name} />
-      <CustomCheckbox htmlFor={id} id={`custom-${id}`} />
-      <CheckboxLabel htmlFor={id}>{label}</CheckboxLabel>
+      <Checkbox
+        type={'checkbox'}
+        checked={checked}
+        onChange={(e) => setCheck(e.currentTarget.checked)}
+        id={checkboxId}
+        name={checkboxName}
+      />
+      <CustomCheckbox htmlFor={checkboxId} id={`custom-${checkboxId}`} />
+      <CheckboxLabel htmlFor={checkboxId}>{checkboxLabel}</CheckboxLabel>
     </CheckboxWarpper>
   );
 };

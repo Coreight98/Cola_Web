@@ -12,6 +12,7 @@ const SubmitBtn = styled(Button)`
   font-size: 1.2rem;
   font-weight: 600;
   color: white;
+  align-self: center;
   background-color: ${theme.colors.VeryLightBlue};
 `;
 

@@ -9,26 +9,18 @@ import CheckBox from '@components/atoms/checkbox';
 interface IPolicyCheckProps {
   policyTitle: string;
   policyContent: string;
-  policyCheck: boolean;
-  setPolicyCheck: Dispatch<SetStateAction<boolean>>;
-  checkLabel: string;
+  checked: boolean;
+  setCheck: Dispatch<SetStateAction<boolean>>;
+  checkboxLabel: string;
   checkboxId: string;
 }
 
-const PolicySection = ({
-  policyTitle,
-  policyContent,
-  policyCheck,
-  setPolicyCheck,
-  checkboxId,
-  checkLabel,
-}: IPolicyCheckProps) => {
+const PolicySection = ({ policyTitle, policyContent, ...rest }: IPolicyCheckProps) => {
   return (
     <CommonSection title={policyTitle}>
       <>
         <SectionContent>{policyContent}</SectionContent>
-
-        <CheckBox checked={policyCheck} onChange={setPolicyCheck} id={checkboxId} label={checkLabel} />
+        <CheckBox {...rest} />
       </>
     </CommonSection>
   );
