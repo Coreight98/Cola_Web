@@ -75,7 +75,7 @@ const DropDownItem = styled.span`
   padding: 0.5rem 0;
   text-align: center;
   border-bottom: 1px solid #929292;
-  &:nth-last-child(1) {
+  &:nth-last-of-type(1) {
     border-bottom: 0px;
   }
   &:hover {
