@@ -20,10 +20,10 @@ export const todoState = atom<ITodoState>({
 
 export const accessTokenState = atom<string>({
   key: 'accessToken',
-  default: '',
+  default: 'dummy',
 });
 export const loginSelector = selector<boolean>({
-  key: 'isLogin',
+  key: 'loginState',
   get: ({ get }) => {
     const token = get(accessTokenState);
     if (token) return true;
