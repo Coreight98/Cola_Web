@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';
 
+import { loginSelector } from '../../../store';
 import SearchBar from '../searchBar';
 
 import { Container, TitleWrapper, Title, HeaderBtn, DropDownWrapper, DropDownContent, DropDownItem } from './styles';
@@ -12,6 +14,7 @@ import SideBar from '@molecules/sidebar';
 const Header = () => {
   const router = useRouter();
 
+  const isLogin = useRecoilValue(loginSelector);
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [profileMenu, setProfileMenu] = useState(false);
 
@@ -32,7 +35,9 @@ const Header = () => {
     };
   }, []);
   const openMenu = () => {
-    setProfileMenu((prev) => !prev);
+    if (isLogin) {
+      setProfileMenu((prev) => !prev);
+    }
   };
 
   return (
