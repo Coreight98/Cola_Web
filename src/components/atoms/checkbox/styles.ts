@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const CheckboxWarpper = styled.div`
+const CheckboxWrapper = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
@@ -41,4 +41,4 @@ const CheckboxLabel = styled.label`
   cursor: pointer;
 `;
 
-export { CheckboxWarpper, Checkbox, CustomCheckbox, CheckboxLabel };
+export { CheckboxWrapper, Checkbox, CustomCheckbox, CheckboxLabel };

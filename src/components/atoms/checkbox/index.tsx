@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { CheckboxWarpper, Checkbox, CustomCheckbox, CheckboxLabel } from './styles';
+import { CheckboxWrapper, Checkbox, CustomCheckbox, CheckboxLabel } from './styles';
 
 interface ICheckbox {
   checked: boolean;
@@ -12,7 +12,7 @@ interface ICheckbox {
 
 const CheckboxInput = ({ checked, setCheck, checkboxName, checkboxId, checkboxLabel }: ICheckbox) => {
   return (
-    <CheckboxWarpper>
+    <CheckboxWrapper>
       <Checkbox
         type={'checkbox'}
         checked={checked}
@@ -22,7 +22,7 @@ const CheckboxInput = ({ checked, setCheck, checkboxName, checkboxId, checkboxLa
       />
       <CustomCheckbox htmlFor={checkboxId} id={`custom-${checkboxId}`} />
       <CheckboxLabel htmlFor={checkboxId}>{checkboxLabel}</CheckboxLabel>
-    </CheckboxWarpper>
+    </CheckboxWrapper>
   );
 };
 export default CheckboxInput;
