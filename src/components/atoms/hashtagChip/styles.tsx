@@ -4,13 +4,15 @@ export interface HashtagChipInterface {
   size?: 'full' | 'small';
 }
 const Container = styled.div<HashtagChipInterface>`
+  position: relative;
   display: flex;
   justify-content: ${({ size }) => (size === 'full' ? 'space-between' : 'space-around')};
   align-items: center;
   height: 30px;
+  width: 140px;
   min-width: ${({ size }) => (size === 'full' ? '100%' : '4vw')};
-  border-radius: 15px;
-  background-color: #4b48e7;
+  border-radius: 5px 0px 0px 5px;
+  background: ${(props) => props.theme.colors.primaryLightColor};
   opacity: 0.9;
   transition: 0.1s;
   padding: 0 5px 0 10px;
@@ -18,19 +20,27 @@ const Container = styled.div<HashtagChipInterface>`
   color: whitesmoke;
   cursor: pointer;
   &:hover {
-    background-color: #5f5cec;
+    background-color: ${(props) => props.theme.colors.secondaryColor};
+  }
+  &:hover > button {
+    visibility: visible;
   }
 `;
 const RemoveBtn = styled.button`
-  background: none;
-  border-radius: 100%;
-  transition: 0.1s;
-  color: whitesmoke;
+  position: absolute;
+  right: -30px;
   cursor: pointer;
   border: none;
+  visibility: hidden;
+  width: 30px;
+  height: 30px;
+  border-radius: 0px 5px 5px 0px;
+  background-color: ${(props) => props.theme.colors.White};
+  color: ${(props) => props.theme.colors.primaryColor};
+  transition: 0.1s;
   &:hover {
-    background-color: #282f91;
-    opacity: 0.8;
+    background-color: ${(props) => props.theme.colors.secondaryColor};
+    color: ${(props) => props.theme.colors.White};
   }
 `;
 export { Container, RemoveBtn };

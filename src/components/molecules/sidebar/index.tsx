@@ -1,4 +1,8 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+import HomeIcon from '../../../assets/icon/home.svg';
+import CloseSidebar from '../../../assets/icon/left_cursor.svg';
 
 import { Container, Section, ListWrapper, ListItem, MenuWrapper } from './styles';
 
@@ -53,6 +57,8 @@ interface ICategoryItem {
 const SideBar = () => {
   const router = useRouter();
 
+  // const onClickClose = () => {};
+
   const CategoryCrossLine = () => (
     <div className="cross-line">
       <div className="circle-wrapper">
@@ -68,12 +74,18 @@ const SideBar = () => {
       <CategoryCrossLine />
     </ListItem>
   );
+
   return (
     <>
       <Container>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem' }}>
-          <span>Home</span>
-          <span>뒤로가기</span>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '0 55px' }}>
+          <Link href="/">
+            <a style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+              <HomeIcon />
+              <span style={{ color: 'white', fontSize: '1.6rem' }}>HOME</span>
+            </a>
+          </Link>
+          {/* <CloseSidebar onClick={onClickClose} /> */}
         </div>
         <Section>
           <MenuWrapper>

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const Container = styled.nav`
   position: absolute;
-  padding-top: 3rem;
+  padding-top: 3.5rem;
   top: 1.5rem;
   bottom: 0;
   left: 0;
@@ -73,7 +73,7 @@ const ListItem = styled.li`
     position: absolute;
     width: 250px;
     height: 1px;
-    background: #8693ff;
+    background: ${(props) => props.theme.colors.primaryLightColor};
 
     .circle-wrapper {
       background-color: ${(props) => props.theme.colors.primaryColor};
@@ -89,7 +89,7 @@ const ListItem = styled.li`
       height: 22px;
       padding: 0 10px;
       border-radius: 100%;
-      background: #8693ff;
+      background: ${(props) => props.theme.colors.primaryLightColor};
     }
   }
 
