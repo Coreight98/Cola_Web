@@ -2,7 +2,7 @@ import { Container, RemoveBtn } from './styles';
 
 interface Props {
   title: string;
-  size: 'full' | 'small';
+  size: 'full' | 'sidebar' | 'small';
   onClick?: () => void;
   onRemoveChip?: () => void;
 }
@@ -16,6 +16,7 @@ const HashtagChip = ({ title, onClick, onRemoveChip, size }: Props) => {
       </p>
       {onRemoveChip !== undefined && (
         <RemoveBtn
+          size={size}
           onClick={(e) => {
             e.stopPropagation();
             onRemoveChip();

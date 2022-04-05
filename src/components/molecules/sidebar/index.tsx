@@ -129,7 +129,7 @@ const SideBar = () => {
                 onRemoveChip={() => {
                   console.log('onRemove Chip');
                 }}
-                size={'small'}
+                size={'sidebar'}
               />
             ))}
           </ListWrapper>
