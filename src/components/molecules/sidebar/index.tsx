@@ -1,8 +1,13 @@
+import { ReactElement } from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import FreeBoardIcon from '../../../assets/icon/free_board.svg';
 import HomeIcon from '../../../assets/icon/home.svg';
-import CloseSidebar from '../../../assets/icon/left_cursor.svg';
+import InfoBoardIcon from '../../../assets/icon/info.svg';
+import QuestionBoardIcon from '../../../assets/icon/question.svg';
+import TodoIcon from '../../../assets/icon/todo.svg';
 
 import { Container, Section, ListWrapper, ListItem, MenuWrapper } from './styles';
 
@@ -52,6 +57,7 @@ const hashtags = [
 interface ICategoryItem {
   content: string;
   link: string;
+  children?: ReactElement;
 }
 
 const SideBar = () => {
@@ -66,9 +72,10 @@ const SideBar = () => {
       </div>
     </div>
   );
-  const CategoryItem = ({ content, link }: ICategoryItem) => (
+  const CategoryItem = ({ content, link, children }: ICategoryItem) => (
     <ListItem>
       <a href="#" onClick={() => router.push(link)}>
+        {children}
         <span className="nav-text">{content}</span>
       </a>
       <CategoryCrossLine />
@@ -92,10 +99,18 @@ const SideBar = () => {
             <h3>카테고리</h3>
           </MenuWrapper>
           <ListWrapper>
-            <CategoryItem content="자유게시판" link="/board" />
-            <CategoryItem content="질문게시판" link="/board" />
-            <CategoryItem content="정보게시판" link="/board" />
-            <CategoryItem content="TodoList" link="/todolist" />
+            <CategoryItem content="자유게시판" link="/board">
+              <FreeBoardIcon />
+            </CategoryItem>
+            <CategoryItem content="질문게시판" link="/board">
+              <QuestionBoardIcon />
+            </CategoryItem>
+            <CategoryItem content="정보게시판" link="/board">
+              <InfoBoardIcon />
+            </CategoryItem>
+            <CategoryItem content="TodoList" link="/todolist">
+              <TodoIcon />
+            </CategoryItem>
           </ListWrapper>
         </Section>
 

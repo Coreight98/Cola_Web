@@ -32,6 +32,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 const MenuWrapper = styled.div`
@@ -56,6 +57,7 @@ const ListWrapper = styled.ul`
   align-items: center;
   text-align: center;
   gap: 1rem;
+  width: 100%;
 `;
 const ListItem = styled.li`
   list-style: none;
@@ -74,7 +76,7 @@ const ListItem = styled.li`
     width: 250px;
     height: 1px;
     background: ${(props) => props.theme.colors.primaryLightColor};
-
+    left: 0;
     .circle-wrapper {
       background-color: ${(props) => props.theme.colors.primaryColor};
       width: 22px;
@@ -94,12 +96,16 @@ const ListItem = styled.li`
   }
 
   a {
-    position: relative;
     z-index: 1001;
+    position: relative;
     background-color: ${(props) => props.theme.colors.primaryColor};
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+    width: 164px;
     span {
-      vertical-align: middle;
-      padding: 0 10px;
       color: ${(props) => props.theme.colors.White};
       letter-spacing: 0px;
       font-size: 20px;
