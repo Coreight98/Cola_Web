@@ -68,8 +68,8 @@ const Header = () => {
 
   return (
     <Container>
+      <SideBar />
       <TitleWrapper>
-        <SideBar />
         <Title onClick={() => router.push('/')}>
           <Logo />
         </Title>

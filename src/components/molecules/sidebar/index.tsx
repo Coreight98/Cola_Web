@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { Container, ListWrapper, ListItem } from './styles';
+import { Container, Section, ListWrapper, ListItem, MenuWrapper } from './styles';
 
 import HashtagChip from '@components/atoms/hashtagChip';
 
@@ -45,54 +45,68 @@ const hashtags = [
   },
 ];
 
+interface ICategoryItem {
+  content: string;
+  link: string;
+}
+
 const SideBar = () => {
   const router = useRouter();
 
+  const CategoryCrossLine = () => (
+    <div className="cross-line">
+      <div className="circle-wrapper">
+        <div className="half-circle"></div>
+      </div>
+    </div>
+  );
+  const CategoryItem = ({ content, link }: ICategoryItem) => (
+    <ListItem>
+      <a href="#" onClick={() => router.push(link)}>
+        <span className="nav-text">{content}</span>
+      </a>
+      <CategoryCrossLine />
+    </ListItem>
+  );
   return (
     <>
       <Container>
-        <ListWrapper>
-          <ListItem>
-            <a href="#" onClick={() => router.push('/board')}>
-              <i className="fa fa-book fa-2x"></i>
-              <span className="nav-text">자유게시판</span>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="#" onClick={() => router.push('/board')}>
-              <i className="fa fa-question fa-2x"></i>
-              <span>질문게시판</span>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="#" onClick={() => router.push('/board')}>
-              <i className="fa fa-file-invoice fa-2x"></i>
-              <span>정보게시판</span>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="#" onClick={() => router.push('/todolist')}>
-              <i className="fa fa-calendar-check fa-2x"></i>
-              <span>TodoList</span>
-            </a>
-          </ListItem>
-        </ListWrapper>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem' }}>
+          <span>Home</span>
+          <span>뒤로가기</span>
+        </div>
+        <Section>
+          <MenuWrapper>
+            <h3>카테고리</h3>
+          </MenuWrapper>
+          <ListWrapper>
+            <CategoryItem content="자유게시판" link="/board" />
+            <CategoryItem content="질문게시판" link="/board" />
+            <CategoryItem content="정보게시판" link="/board" />
+            <CategoryItem content="TodoList" link="/todolist" />
+          </ListWrapper>
+        </Section>
 
-        <ListWrapper className="logout">
-          {hashtags.map((hashtag) => (
-            <HashtagChip
-              key={hashtag.id}
-              title={hashtag.title}
-              onClick={() => {
-                console.log('onClick Category chip');
-              }}
-              onRemoveChip={() => {
-                console.log('onRemove Chip');
-              }}
-              size={'small'}
-            />
-          ))}
-        </ListWrapper>
+        <Section>
+          <MenuWrapper>
+            <h3>관심목록</h3>
+          </MenuWrapper>
+          <ListWrapper className="logout">
+            {hashtags.map((hashtag) => (
+              <HashtagChip
+                key={hashtag.id}
+                title={hashtag.title}
+                onClick={() => {
+                  console.log('onClick Category chip');
+                }}
+                onRemoveChip={() => {
+                  console.log('onRemove Chip');
+                }}
+                size={'small'}
+              />
+            ))}
+          </ListWrapper>
+        </Section>
       </Container>
       <style jsx>
         {`

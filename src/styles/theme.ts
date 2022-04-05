@@ -1,5 +1,4 @@
 import { Theme } from '@emotion/react';
-import { string } from 'yup';
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
@@ -9,6 +8,8 @@ declare module '@emotion/react' {
       VeryLightBlue: string;
       JordyBlue: string;
       backgroundColor: string;
+      primaryColor: string;
+      secondaryColor: string;
     };
   }
 }
@@ -20,5 +21,7 @@ export const theme: Theme = {
     VeryLightBlue: '#6C7BFA',
     JordyBlue: '#90A8F0',
     backgroundColor: '#FAFBFD',
+    primaryColor: '#6C7BFA',
+    secondaryColor: '#90A8F0',
   },
 };
