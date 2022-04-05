@@ -3,13 +3,12 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   width: 100vw;
   height: 5rem;
-  padding: 0 1rem;
+  padding: 50px 20px 50px 53px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #151d3b;
-  color: whitesmoke;
+  background: ${(props) => props.theme.colors.backgroundColor};
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -49,13 +48,17 @@ export interface IDropdownMenu {
   isOpen: boolean;
 }
 const DropDownWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   position: relative;
 `;
 const DropDownContent = styled.div<IDropdownMenu>`
   cursor: pointer;
   z-index: 100;
   position: absolute;
-  right: 0.5rem;
+  top: 4.5rem;
+  right: 1rem;
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
@@ -72,7 +75,7 @@ const DropDownItem = styled.span`
   padding: 0.5rem 0;
   text-align: center;
   border-bottom: 1px solid #929292;
-  &:nth-last-child(1) {
+  &:nth-last-of-type(1) {
     border-bottom: 0px;
   }
   &:hover {

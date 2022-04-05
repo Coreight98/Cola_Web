@@ -8,6 +8,7 @@ declare module '@emotion/react' {
       Emerald: string;
       VeryLightBlue: string;
       JordyBlue: string;
+      backgroundColor: string;
     };
   }
 }
@@ -18,5 +19,6 @@ export const theme: Theme = {
     Emerald: '#5ED68E',
     VeryLightBlue: '#6C7BFA',
     JordyBlue: '#90A8F0',
+    backgroundColor: '#FAFBFD',
   },
 };

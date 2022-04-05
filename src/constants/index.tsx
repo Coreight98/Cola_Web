@@ -50,3 +50,36 @@ export const MAJOR_TYPE = {
   nursing: '간호학과',
   pharm: '약학대학',
 };
+
+interface INavMenu {
+  id: string;
+  content: string;
+  division: 'NOT_AUTH' | 'AUTH';
+  link: string;
+}
+export const NAV_MENU: INavMenu[] = [
+  {
+    id: 'signIn',
+    content: '로그인',
+    division: 'NOT_AUTH',
+    link: '/signIn',
+  },
+  {
+    id: 'signUp',
+    content: '회원가입',
+    division: 'NOT_AUTH',
+    link: '/signUp',
+  },
+  {
+    id: 'logout',
+    content: '로그아웃',
+    division: 'AUTH',
+    link: 'logout',
+  },
+  {
+    id: 'myPage',
+    content: '마이페이지',
+    division: 'AUTH',
+    link: '/mypage',
+  },
+];

@@ -9,5 +9,9 @@ const InputStyle = styled.input<Props>`
   border: none;
   min-width: ${({ width }) => width};
   min-height: ${({ height }) => height};
+  &:focus {
+    outline-color: ${(props) => props.theme.colors.VeryLightBlue};
+    outline-width: 1px;
+  }
 `;
 export { InputStyle };

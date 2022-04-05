@@ -2,6 +2,7 @@ import { DetailedHTMLProps, InputHTMLAttributes, useEffect, useRef, useState } f
 
 import { Container, HeaderBtn, InputModal, HashtagWrapper } from './styles';
 
+import SearchIcon from '@assets/icon/search.svg';
 import HashtagChip from '@components/atoms/hashtagChip';
 import Input from '@components/atoms/input';
 
@@ -35,8 +36,19 @@ const SearchBar = () => {
 
   return (
     <Container>
-      <div ref={(el) => (divRef.current = el as HTMLInputElement)} onFocus={(e) => setFocus(true)}>
-        <Input type="medium" ref={(el) => (inputRef.current = el as HTMLInputElement)} onKeyUp={addChipList} />
+      <div
+        style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '28px' }}
+        ref={(el) => (divRef.current = el as HTMLInputElement)}
+        onFocus={(e) => setFocus(true)}
+      >
+        <Input
+          type="medium"
+          width="calc(100% - 54px)"
+          height="100%"
+          style={{ borderRadius: '28px', boxShadow: 'none', paddingLeft: '1rem' }}
+          ref={(el) => (inputRef.current = el as HTMLInputElement)}
+          onKeyUp={addChipList}
+        />
         {focus && (
           <InputModal>
             <HashtagWrapper>
@@ -46,10 +58,10 @@ const SearchBar = () => {
             </HashtagWrapper>
           </InputModal>
         )}
+        <HeaderBtn type="button" onClick={handleSubmit}>
+          <SearchIcon />
+        </HeaderBtn>
       </div>
-      <HeaderBtn type="button" style={{ border: 'none' }} onClick={handleSubmit}>
-        검색
-      </HeaderBtn>
     </Container>
   );
 };
