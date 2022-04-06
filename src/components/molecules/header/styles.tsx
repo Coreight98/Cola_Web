@@ -14,6 +14,7 @@ const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 1rem;
   gap: 2rem;
 `;
 const MenuWrapper = styled.div`

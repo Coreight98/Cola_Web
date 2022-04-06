@@ -6,7 +6,7 @@ import { Container, EditorWrapper, Wrapper } from './styles';
 import Button from '@components/atoms/button';
 import HashtagChip from '@components/atoms/hashtagChip';
 import Input from '@components/atoms/input';
-import MarkdownEditor from '@components/organisms/markdownEditor';
+import MarkdownEditor from '@components/organisms/markdowneditor';
 import { MODE, WRITE_REF } from '@constants/index';
 
 const WriteTemp = () => {
