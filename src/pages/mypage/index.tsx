@@ -7,7 +7,7 @@ import {
   ProfileDetail,
   MypageSection,
   ContentWrapper,
-} from './styles';
+} from '../../styles/mypage/styles';
 
 const Mypage = () => {
   return (
