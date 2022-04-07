@@ -1,6 +1,17 @@
 import { useRouter } from 'next/router';
 
-import { Container, TextWrapper, Title, BodyText, DescriptionWrapper, LeftContent } from './styles';
+import {
+  BoardImage,
+  Container,
+  TextWrapper,
+  Title,
+  BodyText,
+  SubInfo,
+  DescriptionWrapper,
+  UserInfo,
+  Separator,
+  Likes,
+} from './styles';
 
 import { IBoardItem } from '@components/templates/board/index.type';
 
@@ -9,23 +20,35 @@ const BoardCard = ({ id }: IBoardItem) => {
 
   return (
     <Container onClick={() => router.push(`/board/${id}`)}>
-      <div style={{ borderRadius: '1rem', height: '60%', background: '#5f5f5f' }}></div>
+      <a href="#" style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}>
+        <BoardImage>{/* <img /> */}</BoardImage>
+      </a>
       <TextWrapper>
-        <Title>글 제목</Title>
-        <BodyText>본문 내용 일부</BodyText>
+        <a href="#">
+          <Title>글 제목</Title>
+          <div>
+            <BodyText>본문 내용 일부</BodyText>
+          </div>
+        </a>
+        <SubInfo>
+          <span>2022년 3월 13일</span>
+          <Separator>•</Separator>
+          <span>9개의 댓글</span>
+        </SubInfo>
       </TextWrapper>
       <DescriptionWrapper>
-        <LeftContent>
-          <div>
-            <span>프로필</span>
-            <span>닉네임</span>
-          </div>
-          <span>2022.03.13</span>
-        </LeftContent>
-        <div>
-          <span>댓글</span>
-          <span>좋아요</span>
-        </div>
+        <UserInfo>
+          <img></img>
+          <span>
+            by <b>username</b>
+          </span>
+        </UserInfo>
+        <Likes>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"></path>
+          </svg>
+          <span>13</span>
+        </Likes>
       </DescriptionWrapper>
     </Container>
   );
