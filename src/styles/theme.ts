@@ -12,6 +12,14 @@ declare module '@emotion/react' {
       primaryLightColor: string;
       secondaryColor: string;
     };
+    text: {
+      colors: {
+        black: string;
+        darkGray: string;
+        gray: string;
+        lightGray: string;
+      };
+    };
   }
 }
 export const theme: Theme = {
@@ -25,5 +33,13 @@ export const theme: Theme = {
     primaryColor: '#6C7BFA',
     primaryLightColor: '#8693FF',
     secondaryColor: '#90A8F0',
+  },
+  text: {
+    colors: {
+      black: '#212529',
+      darkGray: '#495057',
+      gray: '#868E96',
+      lightGray: '#CED4DA',
+    },
   },
 };
