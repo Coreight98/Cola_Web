@@ -1,55 +1,72 @@
 import { useRouter } from 'next/router';
 
 import {
-  BoardImage,
   Container,
+  BoardImage,
+  BoardContent,
   TextWrapper,
   Title,
   BodyText,
   SubInfo,
   DescriptionWrapper,
   UserInfo,
-  Separator,
   Likes,
+  Comments,
+  Views,
+  Divider,
 } from './styles';
 
+import CommentIcon from '@assets/icon/comment_small.svg';
+import HeartIcon from '@assets/icon/heart_small.svg';
+import ViewIcon from '@assets/icon/view_small.svg';
 import { IBoardItem } from '@components/templates/board/index.type';
 
 const BoardCard = ({ id }: IBoardItem) => {
   const router = useRouter();
 
   return (
-    <Container onClick={() => router.push(`/board/${id}`)}>
-      <a href="#" style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}>
-        <BoardImage>{/* <img /> */}</BoardImage>
-      </a>
-      <TextWrapper>
-        <a href="#">
-          <Title>글 제목</Title>
-          <div>
-            <BodyText>본문 내용 일부</BodyText>
-          </div>
+    <Container>
+      <BoardContent onClick={() => router.push(`/board/${id}`)}>
+        <a href="#" style={{ height: '60%', display: 'block', color: 'inherit', textDecoration: 'none' }}>
+          <BoardImage>{/* <img /> */}</BoardImage>
         </a>
-        <SubInfo>
-          <span>2022년 3월 13일</span>
-          <Separator>•</Separator>
-          <span>9개의 댓글</span>
-        </SubInfo>
-      </TextWrapper>
-      <DescriptionWrapper>
+        <div style={{ padding: '5px 0', display: 'flex', justifyContent: 'center' }}>
+          <Divider />
+        </div>
+        <TextWrapper>
+          <a href="#">
+            <Title>글 제목</Title>
+            <BodyText>본문 내용 일부</BodyText>
+          </a>
+          <SubInfo>
+            <span>2022년 3월 13일</span>
+          </SubInfo>
+        </TextWrapper>
+      </BoardContent>
+      <div style={{ display: 'flex', height: '3rem', alignItems: 'center', justifyContent: 'space-between' }}>
         <UserInfo>
           <img></img>
-          <span>
-            by <b>username</b>
-          </span>
         </UserInfo>
-        <Likes>
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"></path>
-          </svg>
-          <span>13</span>
-        </Likes>
-      </DescriptionWrapper>
+        <DescriptionWrapper>
+          <p style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <b>username</b>
+          </p>
+          <div style={{ display: 'flex', gap: '5px' }}>
+            <Likes>
+              <HeartIcon />
+              <span>13</span>
+            </Likes>
+            <Comments>
+              <CommentIcon />
+              <span>25</span>
+            </Comments>
+            <Views>
+              <ViewIcon />
+              <span>18</span>
+            </Views>
+          </div>
+        </DescriptionWrapper>
+      </div>
     </Container>
   );
 };
