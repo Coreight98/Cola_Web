@@ -15,11 +15,11 @@ const Preview = ({ markdownContent, title, chipList }: Props) => {
   return (
     <Container>
       <p>{title}</p>
-      <Wrapper>
+      {/* <Wrapper>
         {chipList.map((text) => (
           <HashtagChip key={text} title={text} size="small" />
         ))}
-      </Wrapper>
+      </Wrapper> */}
       <ViewArea dangerouslySetInnerHTML={{ __html: marked(markdownContent) }} />
     </Container>
   );

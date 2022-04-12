@@ -10,8 +10,8 @@ interface Props {
 const HashtagChip = ({ title, onClick, onRemoveChip, size }: Props) => {
   return (
     <Container onClick={onClick} size={size}>
-      <p style={{ textOverflow: 'ellipsis' }}>
-        <span style={{ marginRight: '0.3rem' }}>#</span>
+      <p>
+        <span>#</span>
         {title}
       </p>
       {onRemoveChip !== undefined && (
@@ -22,7 +22,7 @@ const HashtagChip = ({ title, onClick, onRemoveChip, size }: Props) => {
             onRemoveChip();
           }}
         >
-          x
+          x Delete
         </RemoveBtn>
       )}
     </Container>

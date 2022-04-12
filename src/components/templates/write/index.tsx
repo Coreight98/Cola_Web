@@ -1,13 +1,21 @@
 import { DetailedHTMLProps, InputHTMLAttributes, useRef, useState } from 'react';
 
 import { InputProps } from './index,type';
-import { Container, EditorWrapper, Wrapper } from './styles';
+import { Container, HashtagBar, Wrapper, TitleInput } from './styles';
+
+import All from 'public/all.svg';
+import All_Check from 'public/all_check.svg';
+import Edit from 'public/edit.svg';
+import Edit_Check from 'public/edit_check.svg';
+import Preview from 'public/preview.svg';
+import Preview_Check from 'public/preview_check.svg';
 
 import Button from '@components/atoms/button';
 import HashtagChip from '@components/atoms/hashtagChip';
-import Input from '@components/atoms/input';
-import MarkdownEditor from '@components/organisms/markdowneditor';
+import MarkdownEditor from '@components/organisms/markdownEditor';
 import { MODE, WRITE_REF } from '@constants/index';
+import SubmitBtn from '@components/atoms/button/submit';
+import { FlexWrapper } from '@styles/global';
 
 const WriteTemp = () => {
   const [editMode, setEditMode] = useState<typeof MODE[number]>('all');
@@ -28,24 +36,23 @@ const WriteTemp = () => {
 
   return (
     <Container>
-      <h2>글쓰기</h2>
-      <Wrapper>
-        <Input {...InputProps.title} ref={(el) => selectRef(el)(WRITE_REF.title)} autoFocus />
-        <Wrapper>
-          {MODE.map((mode: string) => (
-            <Button key={mode} onClick={() => handleChangeMode(mode)}>
-              {mode}
-            </Button>
-          ))}
-        </Wrapper>
+      {/* <h2>글쓰기</h2> */}
+      <TitleInput {...InputProps.title} ref={(el) => selectRef(el)(WRITE_REF.title)} autoFocus />
+      <Wrapper style={{ gridArea: 'mode' }}>
+        <div onClick={() => handleChangeMode('edit')}>{editMode === 'edit' ? <Edit_Check /> : <Edit />}</div>
+        <div onClick={() => handleChangeMode('all')}>{editMode === 'all' ? <All_Check /> : <All />}</div>
+        <div onClick={() => handleChangeMode('view')}>{editMode === 'view' ? <Preview_Check /> : <Preview />}</div>
       </Wrapper>
       <MarkdownEditor {...{ editMode, title: inputRef.current[WRITE_REF.title]?.value, chipList }} />
-      <EditorWrapper>
+      <HashtagBar>
         {chipList.map((chip, i) => (
           <HashtagChip key={chip} title={chip} onRemoveChip={() => deleteChip(i)} size="small" />
         ))}
-        <Input {...InputProps.hashtag} ref={(el) => selectRef(el)(WRITE_REF.hashtag)} onKeyPress={addChipList} />
-      </EditorWrapper>
+        <input {...InputProps.hashtag} ref={(el) => selectRef(el)(WRITE_REF.hashtag)} onKeyPress={addChipList} />
+      </HashtagBar>
+      <FlexWrapper style={{ gridArea: 'btn', justifyContent: 'flex-end' }}>
+        <SubmitBtn size="small">완료</SubmitBtn>
+      </FlexWrapper>
     </Container>
   );
 };

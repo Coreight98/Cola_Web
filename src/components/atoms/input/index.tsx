@@ -8,8 +8,8 @@ interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<H
   type?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ type = 'small', ...props }, ref) => {
-  return <InputStyle {...INPUT_TYPE.small} ref={ref} {...props} />;
+const Input = forwardRef<HTMLInputElement, InputProps>(({ type = 'small', ...rest }, ref) => {
+  return <InputStyle {...INPUT_TYPE[type as keyof typeof INPUT_TYPE]} ref={ref} {...rest} />;
 });
 
 Input.displayName = 'Input';
