@@ -27,7 +27,7 @@ const BoardCard = ({ id }: IBoardItem) => {
   return (
     <Container>
       <BoardContent onClick={() => router.push(`/board/${id}`)}>
-        <a href="#" style={{ height: '60%', display: 'block', color: 'inherit', textDecoration: 'none' }}>
+        <a href="#" style={{ height: '70%', display: 'block', color: 'inherit', textDecoration: 'none' }}>
           <BoardImage>{/* <img /> */}</BoardImage>
         </a>
         <div style={{ padding: '5px 0', display: 'flex', justifyContent: 'center' }}>
@@ -42,31 +42,40 @@ const BoardCard = ({ id }: IBoardItem) => {
             <span>2022년 3월 13일</span>
           </SubInfo>
         </TextWrapper>
+        <div
+          style={{
+            display: 'flex',
+            height: '3rem',
+            alignItems: 'center',
+            borderRadius: 22,
+            justifyContent: 'space-between',
+            backgroundColor: '#DDE1FC',
+          }}
+        >
+          <UserInfo>
+            <img></img>
+          </UserInfo>
+          <DescriptionWrapper>
+            <p style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <b>username</b>
+            </p>
+            <div style={{ display: 'flex', gap: '5px' }}>
+              <Likes>
+                <HeartIcon />
+                <span>13</span>
+              </Likes>
+              <Comments>
+                <CommentIcon />
+                <span>25</span>
+              </Comments>
+              <Views>
+                <ViewIcon />
+                <span>18</span>
+              </Views>
+            </div>
+          </DescriptionWrapper>
+        </div>
       </BoardContent>
-      <div style={{ display: 'flex', height: '3rem', alignItems: 'center', justifyContent: 'space-between' }}>
-        <UserInfo>
-          <img></img>
-        </UserInfo>
-        <DescriptionWrapper>
-          <p style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            <b>username</b>
-          </p>
-          <div style={{ display: 'flex', gap: '5px' }}>
-            <Likes>
-              <HeartIcon />
-              <span>13</span>
-            </Likes>
-            <Comments>
-              <CommentIcon />
-              <span>25</span>
-            </Comments>
-            <Views>
-              <ViewIcon />
-              <span>18</span>
-            </Views>
-          </div>
-        </DescriptionWrapper>
-      </div>
     </Container>
   );
 };

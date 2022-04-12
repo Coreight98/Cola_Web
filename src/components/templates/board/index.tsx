@@ -7,9 +7,9 @@ import { BoardLayout, boardTypeState } from '../../../store/board';
 
 import { Container, BoardList } from './styles';
 
-import BoardCard from '@molecules/boardCard';
-import BoardPreviewItem from '@molecules/boardPreviewItem';
-import BoardSimpleItem from '@molecules/boardSimpleItem';
+import BoardCard from '@molecules/boardType/boardCard';
+import BoardPreviewItem from '@molecules/boardType/boardPreviewItem';
+import BoardSimpleItem from '@molecules/boardType/boardSimpleItem';
 
 const Board = () => {
   const router = useRouter();

@@ -6,7 +6,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  /* gap: 10px; */
+  border-radius: 22px 22px 0px 0px;
   margin-bottom: 1.8rem;
   @media screen and(max-width:1025px) {
     width: 22rem;
@@ -25,7 +26,7 @@ const BoardContent = styled.div`
   flex: 1;
   width: 100%;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 22px;
   box-shadow: 3px 3px 6px 2px rgb(215 214 214 / 45%);
   transform: translateY(0) translateX(0);
   /* transition: all 200ms ease-in-out; */
@@ -42,8 +43,7 @@ const BoardContent = styled.div`
 `;
 
 const BoardImage = styled.div`
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 22px;
   background: ${({ theme: { colors } }) => colors.primaryLightColor};
   width: 100%;
   height: 100%;
@@ -147,7 +147,7 @@ const UserInfo = styled.div`
     height: 38px;
     box-shadow: 0px 0px 6px #00000029;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 100%;
     display: block;
     background: ${({ theme: { colors } }) => colors.primaryColor};
   }
