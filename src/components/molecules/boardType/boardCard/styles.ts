@@ -27,10 +27,10 @@ const BoardContent = styled.div`
   width: 100%;
   background-color: white;
   border-radius: 22px;
-  box-shadow: 3px 3px 6px 2px rgb(215 214 214 / 45%);
+  box-shadow: 0px 0px 6px #00000029;
   transform: translateY(0) translateX(0);
   /* transition: all 200ms ease-in-out; */
-  box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
+
   transition: box-shadow 0.2s ease-in 0s, transform 0.2s ease-in 0s;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ const BoardContent = styled.div`
   position: relative;
   &:hover {
     transform: translateY(-8px) translateX(2px);
-    box-shadow: rgb(0 0 0 / 8%) 0px 12px 20px 0px;
+    box-shadow: 1px 6px 10px #00000036;
   }
 `;
 
