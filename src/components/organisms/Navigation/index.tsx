@@ -7,7 +7,7 @@ const Container = styled.div`
   position: fixed;
   width: 100vw;
   height: 5rem;
-  background: salmon;
+  /* background: salmon; */
 `;
 
 const Navigation = () => {
