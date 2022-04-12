@@ -1,4 +1,9 @@
+import { useState } from 'react';
+
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+
+import { BoardLayout, boardTypeState } from '../../../store/board';
 
 import { Container, BoardList } from './styles';
 
@@ -6,17 +11,9 @@ import BoardCard from '@molecules/boardCard';
 import BoardPreviewItem from '@molecules/boardPreviewItem';
 import BoardSimpleItem from '@molecules/boardSimpleItem';
 
-import { useState } from 'react';
-
-enum BoardLayout {
-  'TILE',
-  'SIMPLE_LIST',
-  'PREVIEW_LIST',
-}
 const Board = () => {
   const router = useRouter();
-
-  const [currentLayout, setCurrentLayout] = useState<BoardLayout>(BoardLayout.TILE);
+  const [boardType, setBoardType] = useRecoilState(boardTypeState);
 
   return (
     <Container>
@@ -25,20 +22,20 @@ const Board = () => {
         <div style={{ display: 'flex', gap: '4rem', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '1rem' }}>
             <span
-              style={{ cursor: 'pointer', color: currentLayout === BoardLayout.TILE ? 'blue' : '#222' }}
-              onClick={() => setCurrentLayout(BoardLayout.TILE)}
+              style={{ cursor: 'pointer', color: boardType === BoardLayout.TILE ? 'blue' : '#222' }}
+              onClick={() => setBoardType(BoardLayout.TILE)}
             >
               타일
             </span>
             <span
-              style={{ cursor: 'pointer', color: currentLayout === BoardLayout.SIMPLE_LIST ? 'blue' : '#222' }}
-              onClick={() => setCurrentLayout(BoardLayout.SIMPLE_LIST)}
+              style={{ cursor: 'pointer', color: boardType === BoardLayout.SIMPLE_LIST ? 'blue' : '#222' }}
+              onClick={() => setBoardType(BoardLayout.SIMPLE_LIST)}
             >
               간단리스트
             </span>
             <span
-              style={{ cursor: 'pointer', color: currentLayout === BoardLayout.PREVIEW_LIST ? 'blue' : '#222' }}
-              onClick={() => setCurrentLayout(BoardLayout.PREVIEW_LIST)}
+              style={{ cursor: 'pointer', color: boardType === BoardLayout.PREVIEW_LIST ? 'blue' : '#222' }}
+              onClick={() => setBoardType(BoardLayout.PREVIEW_LIST)}
             >
               상세리스트
             </span>
@@ -50,9 +47,9 @@ const Board = () => {
         <button onClick={() => router.push('/write')}>게시글 작성</button>
         <BoardList>
           {[...new Array(20)].map((_, i) => {
-            if (currentLayout === BoardLayout.TILE) return <BoardCard key={i} id={i} />;
-            else if (currentLayout === BoardLayout.PREVIEW_LIST) return <BoardPreviewItem key={i} id={i} />;
-            else if (currentLayout === BoardLayout.SIMPLE_LIST) return <BoardSimpleItem key={i} id={i} />;
+            if (boardType === BoardLayout.TILE) return <BoardCard key={i} id={i} />;
+            else if (boardType === BoardLayout.PREVIEW_LIST) return <BoardPreviewItem key={i} id={i} />;
+            else return <BoardSimpleItem key={i} id={i} />;
           })}
         </BoardList>
       </section>
