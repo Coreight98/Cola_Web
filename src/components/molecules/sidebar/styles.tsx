@@ -26,6 +26,9 @@ const Container = styled.nav`
     width: 250px;
     height: calc(100vh - 3rem);
   }
+  @media screen and (max-width: 426px) {
+    gap: 1.5rem;
+  }
 `;
 
 const Section = styled.section`
@@ -33,6 +36,9 @@ const Section = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  @media screen and (max-width: 426px) {
+    overflow-y: scroll;
+  }
 `;
 
 const MenuWrapper = styled.div`
@@ -58,6 +64,10 @@ const ListWrapper = styled.ul`
   text-align: center;
   gap: 1rem;
   width: 100%;
+  overflow-y: scroll;
+  @media screen and (max-width: 426px) {
+    gap: 0.5rem;
+  }
 `;
 const ListItem = styled.li`
   list-style: none;
@@ -73,7 +83,7 @@ const ListItem = styled.li`
 
   &:hover > .cross-line {
     position: absolute;
-    width: 250px;
+    width: 100%;
     height: 1px;
     background: ${(props) => props.theme.colors.primaryLightColor};
     left: 0;

@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
             display: flex;
             justify-content: center;
             padding-top: 5rem;
-            padding-left: 4rem;
+            padding-left: 1rem;
             transition: 0.2s ease-in-out;
             height: 100vh;
           }

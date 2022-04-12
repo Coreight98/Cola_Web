@@ -16,6 +16,15 @@ declare module '@emotion/react' {
       md: string;
       sm: string;
     };
+    text: {
+      colors: {
+        black: string;
+        darkGray: string;
+        gray: string;
+        lightGray: string;
+        basic: string;
+      };
+    };
   }
 }
 
@@ -34,5 +43,14 @@ export const theme: Theme = {
     lg: '1200px',
     md: '768px',
     sm: '480px',
+  },
+  text: {
+    colors: {
+      black: '#212529',
+      darkGray: '#495057',
+      gray: '#868E96',
+      lightGray: '#CED4DA',
+      basic: '#4f4f53',
+    },
   },
 };
