@@ -28,7 +28,7 @@ const BoardCard = ({ id }: IBoardItem) => {
     <Container>
       <BoardContent onClick={() => router.push(`/board/${id}`)}>
         <a href="#" style={{ height: '70%', display: 'block', color: 'inherit', textDecoration: 'none' }}>
-          <BoardImage>{/* <img /> */}</BoardImage>
+          <BoardImage>{/* <img src={} alt="" /> */}</BoardImage>
         </a>
         <div style={{ padding: '5px 0', display: 'flex', justifyContent: 'center' }}>
           <Divider />

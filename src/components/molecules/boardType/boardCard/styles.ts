@@ -44,7 +44,7 @@ const BoardContent = styled.div`
 
 const BoardImage = styled.div`
   border-radius: 22px;
-  background: ${({ theme: { colors } }) => colors.primaryLightColor};
+  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.primaryLightColor}, 60%, white)`};
   width: 100%;
   height: 100%;
   position: relative;

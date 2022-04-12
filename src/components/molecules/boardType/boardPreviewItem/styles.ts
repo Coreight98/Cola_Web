@@ -24,7 +24,7 @@ const TextWrapper = styled.div`
 const Thumbnail = styled.div`
   height: 100%;
   width: 320px;
-  background: ${({ theme }) => theme.colors.primaryColor};
+  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.primaryLightColor}, 60%, white)`};
   border-radius: 10px;
 `;
 const TopContent = styled.div`
