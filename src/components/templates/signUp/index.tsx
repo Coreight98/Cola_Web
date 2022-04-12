@@ -99,7 +99,7 @@ const SignUpTemp = () => {
             </div>
           </FlexWrapper>
           <Input {...SignUpProps('gitEmailId')} />
-          <SubmitBtn>SAVE</SubmitBtn>
+          <SubmitBtn size="medium">SAVE</SubmitBtn>
         </FormWrapper>
       </Container>
       {modalOnOff && (
