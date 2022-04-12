@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const BoardList = styled.div`
   flex: 1;
-  padding: 1rem;
+  padding: 1rem 0;
   width: 100%;
   display: flex;
   justify-content: center;

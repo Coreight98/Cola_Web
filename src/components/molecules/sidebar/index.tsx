@@ -3,14 +3,13 @@ import { ReactElement } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import FreeBoardIcon from '../../../assets/icon/free_board.svg';
-import HomeIcon from '../../../assets/icon/home.svg';
-import InfoBoardIcon from '../../../assets/icon/info.svg';
-import QuestionBoardIcon from '../../../assets/icon/question.svg';
-import TodoIcon from '../../../assets/icon/todo.svg';
-
 import { Container, Section, ListWrapper, ListItem, MenuWrapper } from './styles';
 
+import FreeBoardIcon from '@assets/icon/free_board.svg';
+import HomeIcon from '@assets/icon/home.svg';
+import InfoBoardIcon from '@assets/icon/info.svg';
+import QuestionBoardIcon from '@assets/icon/question.svg';
+import TodoIcon from '@assets/icon/todo.svg';
 import HashtagChip from '@components/atoms/hashtagChip';
 
 const categories = [
@@ -18,23 +17,28 @@ const categories = [
     id: 1,
     title: '자유게시판',
     link: '/board',
+    icon: <FreeBoardIcon />,
   },
   {
     id: 2,
     title: '질문게시판',
     link: '/board',
+    icon: <QuestionBoardIcon />,
   },
   {
     id: 3,
     title: '정보게시판',
     link: '/board',
+    icon: <InfoBoardIcon />,
   },
   {
     id: 4,
-    title: 'Todo Mate',
+    title: 'TodoList',
     link: '/todolist',
+    icon: <TodoIcon />,
   },
 ];
+
 const hashtags = [
   {
     id: 11,
@@ -83,64 +87,50 @@ const SideBar = () => {
   );
 
   return (
-    <>
-      <Container>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '0 55px' }}>
-          <Link href="/">
-            <a style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
-              <HomeIcon />
-              <span style={{ color: 'white', fontSize: '1.6rem' }}>HOME</span>
-            </a>
-          </Link>
-          {/* <CloseSidebar onClick={onClickClose} /> */}
-        </div>
-        <Section>
-          <MenuWrapper>
-            <h3>카테고리</h3>
-          </MenuWrapper>
-          <ListWrapper>
-            <CategoryItem content="자유게시판" link="/board">
-              <FreeBoardIcon />
+    <Container>
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '0 55px' }}>
+        <Link href="/">
+          <a style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+            <HomeIcon />
+            <span style={{ color: 'white', fontSize: '1.6rem' }}>HOME</span>
+          </a>
+        </Link>
+        {/* <CloseSidebar onClick={onClickClose} /> */}
+      </div>
+      <Section>
+        <MenuWrapper>
+          <h3>카테고리</h3>
+        </MenuWrapper>
+        <ListWrapper>
+          {categories.map((category) => (
+            <CategoryItem key={category.id} content={category.title} link={category.link}>
+              {category.icon}
             </CategoryItem>
-            <CategoryItem content="질문게시판" link="/board">
-              <QuestionBoardIcon />
-            </CategoryItem>
-            <CategoryItem content="정보게시판" link="/board">
-              <InfoBoardIcon />
-            </CategoryItem>
-            <CategoryItem content="TodoList" link="/todolist">
-              <TodoIcon />
-            </CategoryItem>
-          </ListWrapper>
-        </Section>
+          ))}
+        </ListWrapper>
+      </Section>
 
-        <Section>
-          <MenuWrapper>
-            <h3>관심목록</h3>
-          </MenuWrapper>
-          <ListWrapper className="logout">
-            {hashtags.map((hashtag) => (
-              <HashtagChip
-                key={hashtag.id}
-                title={hashtag.title}
-                onClick={() => {
-                  console.log('onClick Category chip');
-                }}
-                onRemoveChip={() => {
-                  console.log('onRemove Chip');
-                }}
-                size={'sidebar'}
-              />
-            ))}
-          </ListWrapper>
-        </Section>
-      </Container>
-      <style jsx>
-        {`
-          @import url(https://use.fontawesome.com/releases/v5.2.0/css/all.css);
-        `}
-      </style>
-    </>
+      <Section>
+        <MenuWrapper>
+          <h3>관심목록</h3>
+        </MenuWrapper>
+        <ListWrapper className="logout">
+          {hashtags.map((hashtag) => (
+            <HashtagChip
+              key={hashtag.id}
+              title={hashtag.title}
+              onClick={() => {
+                console.log('onClick Category chip');
+              }}
+              onRemoveChip={() => {
+                console.log('onRemove Chip');
+              }}
+              size={'sidebar'}
+            />
+          ))}
+        </ListWrapper>
+      </Section>
+    </Container>
   );
 };
 export default SideBar;

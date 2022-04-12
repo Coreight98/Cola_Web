@@ -1,0 +1,29 @@
+<svg id="그룹_24" data-name="그룹 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.903" height="29.278" viewBox="0 0 23.903 29.278">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_9" data-name="사각형 9" width="23.903" height="29.278" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="사각형_7" data-name="사각형 7" width="13.436" height="13.436" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="사각형_8" data-name="사각형 8" width="23.903" height="14.097" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_17" data-name="그룹 17" clip-path="url(#clip-path)">
+    <g id="그룹_13" data-name="그룹 13" transform="translate(5.233)" style="mix-blend-mode: normal;isolation: isolate">
+      <g id="그룹_12" data-name="그룹 12">
+        <g id="그룹_11" data-name="그룹 11" clip-path="url(#clip-path-2)">
+          <path id="패스_21" data-name="패스 21" d="M37.291,6.718A6.718,6.718,0,1,1,30.573,0a6.718,6.718,0,0,1,6.718,6.718" transform="translate(-23.855)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="그룹_16" data-name="그룹 16" transform="translate(0 15.18)" style="mix-blend-mode: normal;isolation: isolate">
+      <g id="그룹_15" data-name="그룹 15">
+        <g id="그룹_14" data-name="그룹 14" clip-path="url(#clip-path-3)">
+          <path id="패스_22" data-name="패스 22" d="M23.9,78.957v.1a18.974,18.974,0,0,1-23.9,0v-.1A9.76,9.76,0,0,1,9.758,69.2h4.385a9.76,9.76,0,0,1,9.76,9.76" transform="translate(0 -69.197)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

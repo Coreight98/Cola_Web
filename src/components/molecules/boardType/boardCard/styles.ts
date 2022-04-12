@@ -1,9 +1,29 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  cursor: pointer;
-  width: 20rem;
+  width: 18rem;
   height: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 1.8rem;
+  @media screen and(max-width:1025px) {
+    width: 22rem;
+    height: 28rem;
+  }
+  @media screen and (max-width: 769px) {
+    width: 40vw;
+  }
+  @media screen and (max-width: 500px) {
+    width: 90vw;
+    height: 30rem;
+  }
+`;
+const BoardContent = styled.div`
+  cursor: pointer;
+  flex: 1;
+  width: 100%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 3px 3px 6px 2px rgb(215 214 214 / 45%);
@@ -14,6 +34,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
+  position: relative;
   &:hover {
     transform: translateY(-8px) translateX(2px);
     box-shadow: rgb(0 0 0 / 8%) 0px 12px 20px 0px;
@@ -21,12 +42,13 @@ const Container = styled.div`
 `;
 
 const BoardImage = styled.div`
-  padding-top: 52.1921%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: #ddddfd;
+  background: ${({ theme: { colors } }) => colors.primaryLightColor};
   width: 100%;
+  height: 100%;
   position: relative;
+  display: flex;
   img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -40,17 +62,17 @@ const BoardImage = styled.div`
   }
 `;
 const TextWrapper = styled.div`
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
-  flex: 1 1 0%;
+  flex: 1 1 40%;
   flex-direction: column;
+  justify-content: space-between;
   a {
-    display: block;
+    flex: 1;
+    height: 100%;
     color: inherit;
     text-decoration: none;
-  }
-  div {
-    flex: 1 1 0%;
+    position: relative;
   }
 `;
 const Title = styled.h3`
@@ -64,57 +86,114 @@ const Title = styled.h3`
   color: ${({ theme: { text } }) => text.colors.black};
 `;
 const BodyText = styled.p`
-  margin: 0px 0px 1.5rem;
+  height: 80%;
+  margin: 0;
   word-break: break-word;
   overflow-wrap: break-word;
   font-size: 0.875rem;
   line-height: 1.5;
-  height: 3.9375rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${({ theme: { text } }) => text.colors.darkGray};
+
+  @media screen and (max-width: 769px) {
+    font-size: 0.75rem;
+  }
 `;
 const SubInfo = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   line-height: 1.5;
-  color: ${({ theme: { text } }) => text.colors.gray};
+  color: ${({ theme: { colors } }) => colors.primaryColor};
+  @media screen and (max-width: 769px) {
+    font-size: 0.75rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 0.85rem;
+  }
 `;
-const Separator = styled.span`
-  margin: 0 0.25rem;
-`;
+
 const DescriptionWrapper = styled.div`
-  padding: 0.625rem 1rem;
+  padding: 0 1rem;
+  height: 38px;
+  width: calc(100% - 50px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #f1f3f5; ;
+  border-top: 1px solid #f1f3f5;
+  border-radius: 22px;
+  color: #ffffff;
+  box-shadow: 0px 0px 6px #00000029;
+  font-size: 0.75rem;
+  background: ${({ theme: { colors } }) => colors.primaryColor};
+  @media screen and (max-width: 769px) {
+    font-size: 0.7rem;
+    padding: 0 0.8rem;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 0.8rem;
+  }
 `;
 const UserInfo = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+  flex: 1;
   img {
+    width: 38px;
+    height: 38px;
+    box-shadow: 0px 0px 6px #00000029;
     object-fit: cover;
     border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
     display: block;
-    margin-right: 0.5rem;
-    background: #bbb;
-  }
-  b {
-    color: ${({ theme: { text } }) => text.colors.black};
+    background: ${({ theme: { colors } }) => colors.primaryColor};
   }
 `;
-const Likes = styled.div`
+const DescriptionContent = styled.div`
   display: flex;
   -webkit-box-align: center;
   align-items: center;
+  margin-right: 0.2rem;
   svg {
-    width: 0.75rem;
-    height: 0.75rem;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
+  }
+  @media screen and (max-width: 769px) {
+    margin-right: 0.15rem;
+    svg {
+      margin-right: 0.15rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    margin-right: 0.2rem;
+    svg {
+      margin-right: 0.2rem;
+    }
   }
 `;
-export { Container, BoardImage, TextWrapper, Title, SubInfo, Separator, BodyText, DescriptionWrapper, UserInfo, Likes };
+const Likes = styled(DescriptionContent)``;
+const Comments = styled(DescriptionContent)``;
+const Views = styled(DescriptionContent)``;
+
+const Divider = styled.div`
+  height: 3px;
+  width: 26px;
+  background: ${({ theme: { colors } }) => colors.primaryColor};
+`;
+export {
+  Container,
+  BoardContent,
+  BoardImage,
+  TextWrapper,
+  Title,
+  SubInfo,
+  BodyText,
+  DescriptionWrapper,
+  UserInfo,
+  Likes,
+  Comments,
+  Views,
+  Divider,
+};

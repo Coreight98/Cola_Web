@@ -17,7 +17,7 @@ const Board = () => {
 
   return (
     <Container>
-      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h2 style={{ display: 'inline-block' }}>게시판</h2>
         <div style={{ display: 'flex', gap: '4rem', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: '1rem' }}>
