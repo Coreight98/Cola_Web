@@ -28,16 +28,16 @@ const Board = () => {
               타일
             </span>
             <span
-              style={{ cursor: 'pointer', color: boardType === BoardLayout.SIMPLE_LIST ? 'blue' : '#222' }}
-              onClick={() => setBoardType(BoardLayout.SIMPLE_LIST)}
-            >
-              간단리스트
-            </span>
-            <span
               style={{ cursor: 'pointer', color: boardType === BoardLayout.PREVIEW_LIST ? 'blue' : '#222' }}
               onClick={() => setBoardType(BoardLayout.PREVIEW_LIST)}
             >
               상세리스트
+            </span>
+            <span
+              style={{ cursor: 'pointer', color: boardType === BoardLayout.SIMPLE_LIST ? 'blue' : '#222' }}
+              onClick={() => setBoardType(BoardLayout.SIMPLE_LIST)}
+            >
+              간단리스트
             </span>
           </div>
           <p>정렬</p>
