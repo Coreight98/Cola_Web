@@ -7,13 +7,18 @@ declare module '@emotion/react' {
       Emerald: string;
       VeryLightBlue: string;
       JordyBlue: string;
-      backgroundColor: string;
-      primaryColor: string;
-      primaryLightColor: string;
-      secondaryColor: string;
+      Vodka: string;
+      GhostWhite: string;
+      Grey: string;
+    };
+    breakpoints: {
+      lg: string;
+      md: string;
+      sm: string;
     };
   }
 }
+
 export const theme: Theme = {
   colors: {
     White: '#FFFFFF',
@@ -21,9 +26,13 @@ export const theme: Theme = {
     Emerald: '#5ED68E',
     VeryLightBlue: '#6C7BFA',
     JordyBlue: '#90A8F0',
-    backgroundColor: '#FAFBFD',
-    primaryColor: '#6C7BFA',
-    primaryLightColor: '#8693FF',
-    secondaryColor: '#90A8F0',
+    Vodka: '#B4BCFC',
+    GhostWhite: '#FAFBFD',
+    Grey: '#00000029',
+  },
+  breakpoints: {
+    lg: '1200px',
+    md: '768px',
+    sm: '480px',
   },
 };
