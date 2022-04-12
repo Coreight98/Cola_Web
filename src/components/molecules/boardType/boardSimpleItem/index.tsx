@@ -1,7 +1,13 @@
 import { useRouter } from 'next/router';
 
+import { Likes, Views, Comments } from '../boardCard/styles';
+import { ProfileThumb } from '../boardPreviewItem/styles';
+
 import { Container, Title, DescriptionWrapper, SubDescription } from './styles';
 
+import CommentIcon from '@assets/icon/comment_small.svg';
+import HeartIcon from '@assets/icon/heart_small.svg';
+import ViewIcon from '@assets/icon/view_small.svg';
 import { IBoardItem } from '@components/templates/board/index.type';
 
 const BoardSimpleItem = ({ id }: IBoardItem) => {
@@ -11,13 +17,37 @@ const BoardSimpleItem = ({ id }: IBoardItem) => {
     <Container onClick={() => router.push(`/board/${id}`)}>
       <Title>글 제목</Title>
       <DescriptionWrapper>
-        <span>작성자 콜라</span>
-        <span>2022-03-12</span>
+        <a>
+          <ProfileThumb>
+            <img src="" alt="" />
+          </ProfileThumb>
+        </a>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
+            whiteSpace: 'nowrap',
+            gap: 10,
+          }}
+        >
+          <span>username</span>
+          <span>2022년 03월 12일</span>
+        </div>
 
         <SubDescription>
-          <span>조회수 123</span>
-          <span>좋아요 10</span>
-          <span>댓글 12</span>
+          <Likes style={{ gap: 5, fontSize: 15 }}>
+            <HeartIcon />
+            <span>13</span>
+          </Likes>
+          <Comments style={{ gap: 5, fontSize: 15 }}>
+            <CommentIcon />
+            <span>25</span>
+          </Comments>
+          <Views style={{ gap: 5, fontSize: 15 }}>
+            <ViewIcon />
+            <span>18</span>
+          </Views>
         </SubDescription>
       </DescriptionWrapper>
     </Container>

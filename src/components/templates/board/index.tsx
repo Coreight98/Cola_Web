@@ -45,7 +45,7 @@ const Board = () => {
       </div>
       <section>
         <button onClick={() => router.push('/write')}>게시글 작성</button>
-        <BoardList>
+        <BoardList type={boardType}>
           {[...new Array(20)].map((_, i) => {
             if (boardType === BoardLayout.TILE) return <BoardCard key={i} id={i} />;
             else if (boardType === BoardLayout.PREVIEW_LIST) return <BoardPreviewItem key={i} id={i} />;
