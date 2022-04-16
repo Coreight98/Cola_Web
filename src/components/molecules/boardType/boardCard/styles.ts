@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
   width: 18rem;
@@ -83,7 +84,7 @@ const Title = styled.h3`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: ${({ theme }) => theme.colors.gray[900]};
+  color: ${theme.colors.gray[900]};
 `;
 const BodyText = styled.p`
   height: 80%;
@@ -97,7 +98,7 @@ const BodyText = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${({ theme: { text } }) => text.colors.darkGray};
+  color: ${theme.colors.gray[900]};
 
   @media screen and (max-width: 769px) {
     font-size: 0.75rem;
