@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd';
 import { useRecoilState } from 'recoil';
 
-import { Container, CalendarContainer } from '../../styles/todolist/styles';
+import { Container, CalendarContainer } from '@styles/todolist';
 
 import Calender from '@molecules/calender';
 import TodoArea from '@molecules/todoArea';

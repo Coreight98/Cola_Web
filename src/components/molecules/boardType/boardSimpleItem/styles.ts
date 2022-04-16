@@ -24,7 +24,7 @@ const DescriptionWrapper = styled.div`
   align-items: center;
   flex: 1;
   height: 47px;
-  background: ${({ theme }) => theme.colors.blue[500]};
+  background: ${({ theme }) => theme.colors.blue[100]};
   box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   border-radius: 25px;
   color: ${theme.colors.gray[900]};
@@ -34,7 +34,7 @@ const DescriptionWrapper = styled.div`
 const SubDescription = styled.div`
   display: flex;
   padding: 0 20px;
-  background: ${({ theme }) => theme.colors.blue['500']};
+  background: ${({ theme }) => theme.colors.blue[500]};
   height: 47px;
   border-radius: 25px;
   align-items: center;

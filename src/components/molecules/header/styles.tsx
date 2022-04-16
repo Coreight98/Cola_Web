@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: ${theme.colors.gray[100]};
+  background: ${({ theme }) => theme.colors.background['100']};
 `;
 const TitleWrapper = styled.div`
   display: flex;

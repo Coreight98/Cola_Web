@@ -8,7 +8,7 @@ import { Container, Title, DescriptionWrapper, SubDescription } from './styles';
 import CommentIcon from '@assets/icon/comment_small.svg';
 import HeartIcon from '@assets/icon/heart_small.svg';
 import ViewIcon from '@assets/icon/view_small.svg';
-import { IBoardItem } from '@components/templates/board/index.type';
+import { IBoardItem } from '@pages/board/index.type';
 
 const BoardSimpleItem = ({ id }: IBoardItem) => {
   const router = useRouter();

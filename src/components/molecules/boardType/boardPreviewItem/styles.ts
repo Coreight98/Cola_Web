@@ -56,7 +56,7 @@ const BottomContent = styled.div`
   display: flex;
   align-items: center;
   height: 47px;
-  background: ${({ theme }) => theme.colors.blue[500]};
+  background: ${({ theme }) => theme.colors.blue[100]};
   border-radius: 25px;
 `;
 const ProfileThumb = styled.div`
