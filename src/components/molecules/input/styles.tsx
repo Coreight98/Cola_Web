@@ -3,7 +3,7 @@ import { theme } from '@styles/theme';
 
 const Title = styled.h3`
   margin-top: 1vh;
-  color: ${theme.colors.JordyBlue};
+  color: ${theme.colors.blue['400']};
   width: 8vw;
 `;
 
@@ -18,8 +18,9 @@ interface Props {
   height: string | number;
 }
 const InputStyle = styled.input<Props>`
-  box-shadow: 0px 0px 5px #00000029;
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.shadow};
   border: none;
+  padding-left: 1rem;
   min-width: ${({ width }) => width};
   min-height: ${({ height }) => height};
 `;

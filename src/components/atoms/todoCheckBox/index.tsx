@@ -17,9 +17,9 @@ export interface Props {
 }
 
 export const Type = {
-  todo: theme.colors.White,
-  inProgress: theme.colors.Emerald,
-  done: theme.colors.Begonia,
+  todo: theme.colors.white,
+  inProgress: theme.colors.green[600],
+  done: theme.colors.red[600],
 };
 
 const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {

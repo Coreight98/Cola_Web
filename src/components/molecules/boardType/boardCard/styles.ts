@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
   width: 18rem;
@@ -27,7 +28,7 @@ const BoardContent = styled.div`
   width: 100%;
   background-color: white;
   border-radius: 22px;
-  box-shadow: 0px 0px 6px #00000029;
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   transform: translateY(0) translateX(0);
   /* transition: all 200ms ease-in-out; */
 
@@ -44,7 +45,7 @@ const BoardContent = styled.div`
 
 const BoardImage = styled.div`
   border-radius: 22px;
-  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.primaryLightColor}, 60%, white)`};
+  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.blue[500]}, 60%, white)`};
   width: 100%;
   height: 100%;
   position: relative;
@@ -83,7 +84,7 @@ const Title = styled.h3`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: ${({ theme: { text } }) => text.colors.black};
+  color: ${theme.colors.gray[900]};
 `;
 const BodyText = styled.p`
   height: 80%;
@@ -97,7 +98,7 @@ const BodyText = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${({ theme: { text } }) => text.colors.darkGray};
+  color: ${theme.colors.gray[900]};
 
   @media screen and (max-width: 769px) {
     font-size: 0.75rem;
@@ -106,7 +107,7 @@ const BodyText = styled.p`
 const SubInfo = styled.div`
   font-size: 0.9rem;
   line-height: 1.5;
-  color: ${({ theme: { colors } }) => colors.primaryColor};
+  color: ${({ theme: { colors } }) => colors.blue[500]};
   @media screen and (max-width: 769px) {
     font-size: 0.75rem;
   }
@@ -125,9 +126,9 @@ const DescriptionWrapper = styled.div`
   border-top: 1px solid #f1f3f5;
   border-radius: 22px;
   color: #ffffff;
-  box-shadow: 0px 0px 6px #00000029;
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   font-size: 0.75rem;
-  background: ${({ theme: { colors } }) => colors.primaryColor};
+  background: ${({ theme: { colors } }) => colors.blue[500]};
   @media screen and (max-width: 769px) {
     font-size: 0.7rem;
     padding: 0 0.8rem;
@@ -145,11 +146,11 @@ const UserInfo = styled.div`
   img {
     width: 38px;
     height: 38px;
-    box-shadow: 0px 0px 6px #00000029;
+    box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
     object-fit: cover;
     border-radius: 100%;
     display: block;
-    background: ${({ theme: { colors } }) => colors.primaryColor};
+    background: ${({ theme: { colors } }) => colors.blue[500]};
   }
 `;
 const DescriptionContent = styled.div`
@@ -180,7 +181,7 @@ const Views = styled(DescriptionContent)``;
 const Divider = styled.div`
   height: 3px;
   width: 26px;
-  background: ${({ theme: { colors } }) => colors.primaryColor};
+  background: ${({ theme: { colors } }) => colors.blue[500]};
 `;
 export {
   Container,

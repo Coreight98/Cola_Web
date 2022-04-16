@@ -27,7 +27,7 @@ const NextBtn = styled.button`
   height: 54px;
   /* UI Properties */
   background: #6c7bfa;
-  box-shadow: 0px 0px 10px #00000029;
+  box-shadow: 0px 0px 10px ${({ theme }) => theme.colors.shadow};
   border-radius: 43px;
   border: none;
   opacity: 1;

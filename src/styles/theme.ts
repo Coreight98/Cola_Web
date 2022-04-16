@@ -2,55 +2,65 @@ import { Theme } from '@emotion/react';
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
-      White: string;
-      Begonia: string;
-      Emerald: string;
-      VeryLightBlue: string;
-      JordyBlue: string;
-      Vodka: string;
-      GhostWhite: string;
-      Grey: string;
+      blue: {
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+      };
+      gray: {
+        100: string;
+        900: string;
+      };
+      green: {
+        600: string;
+      };
+      red: {
+        600: string;
+      };
+      white: string;
+      shadow: string;
+      background: {
+        100: string;
+      };
     };
     breakpoints: {
       lg: string;
       md: string;
       sm: string;
     };
-    text: {
-      colors: {
-        black: string;
-        darkGray: string;
-        gray: string;
-        lightGray: string;
-        basic: string;
-      };
-    };
   }
 }
 
 export const theme: Theme = {
   colors: {
-    White: '#FFFFFF',
-    Begonia: '#FF7373',
-    Emerald: '#5ED68E',
-    VeryLightBlue: '#6C7BFA',
-    JordyBlue: '#90A8F0',
-    Vodka: '#B4BCFC',
-    GhostWhite: '#FAFBFD',
-    Grey: '#00000029',
+    blue: {
+      '100': '#DDE1FC',
+      '200': '#90A8F0',
+      '300': '#B4BCFC',
+      '400': '#8693FF',
+      '500': '#6C7BFA',
+    },
+    gray: {
+      '900': '#4F4F53',
+      '100': '#AAAAAA',
+    },
+    background: {
+      '100': '#FAFBFD',
+    },
+    green: {
+      '600': '#5ED68E',
+    },
+    red: {
+      '600': '#FF7373',
+    },
+    white: '#FFFFFF',
+    shadow: '${({theme})=>theme.colors.shadow}',
   },
   breakpoints: {
     lg: '1200px',
     md: '768px',
     sm: '480px',
-  },
-  text: {
-    colors: {
-      black: '#212529',
-      darkGray: '#495057',
-      gray: '#868E96',
-      lightGray: '#CED4DA',
-      basic: '#4f4f53',
-    },
   },
 };

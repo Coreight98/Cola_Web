@@ -32,13 +32,13 @@ const HashtagBar = styled.div`
   border-radius: 30px;
   padding: 2rem;
   max-width: 10vw;
-  background: ${theme.colors.Vodka};
+  background: ${theme.colors.blue[300]};
   display: flex;
   overflow: auto;
   overflow-x: hidden;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: inset 0px 0px 6px #00000029;
+  box-shadow: inset 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   @media (max-width: ${theme.breakpoints.md}) {
     flex-direction: row;
     overflow-x: auto;
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0px 0px 6px #00000029;
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   border-radius: 15px;
 `;
 
@@ -63,7 +63,7 @@ const TitleInput = styled.input`
   border: none;
   background: none;
   ::placeholder {
-    color: ${theme.colors.VeryLightBlue};
+    color: ${theme.colors.blue[500]};
   }
 `;
 

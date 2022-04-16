@@ -27,7 +27,7 @@ const MajorModal = ({ major, setMajor, setModalOnOff }: Props) => {
       <FooterWrapper>
         <p onClick={() => setModalOnOff(false)}>취소</p>
         <p
-          style={{ color: theme.colors.VeryLightBlue }}
+          style={{ color: theme.colors.blue[500] }}
           onClick={() => {
             setMajor(tempMajor);
             setModalOnOff(false);

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
   cursor: pointer;
@@ -7,7 +8,7 @@ const Container = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 0px 6px #00000029;
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   transform: translateY(0) translateX(0);
   transition: all 200ms ease-in-out;
   &:hover {
@@ -24,7 +25,7 @@ const TextWrapper = styled.div`
 const Thumbnail = styled.div`
   height: 100%;
   width: 320px;
-  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.primaryLightColor}, 60%, white)`};
+  background: ${({ theme: { colors } }) => `linear-gradient(to top,${colors.blue[500]}, 60%, white)`};
   border-radius: 10px;
 `;
 const TopContent = styled.div`
@@ -42,7 +43,7 @@ const Title = styled.div`
 const Divider = styled.div`
   width: 85px;
 
-  border-bottom: 2px solid ${({ theme }) => theme.colors.primaryColor};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.blue[500]};
 `;
 const BodyText = styled.p`
   flex: 1;
@@ -55,21 +56,21 @@ const BottomContent = styled.div`
   display: flex;
   align-items: center;
   height: 47px;
-  background: #dde1fc;
+  background: ${({ theme }) => theme.colors.blue[500]};
   border-radius: 25px;
 `;
 const ProfileThumb = styled.div`
   width: 47px;
   height: 47px;
   border-radius: 100%;
-  background: ${({ theme }) => theme.colors.primaryColor};
+  background: ${({ theme }) => theme.colors.blue[500]};
 `;
 const WriterDescription = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
   flex: 1;
-  color: ${({ theme }) => theme.text.colors.basic};
+  color: ${theme.colors.gray[900]};
   font-size: 17px;
   font-weight: 500;
 `;
@@ -81,7 +82,7 @@ const BoardDescription = styled.div`
   align-items: center;
   justify-content: space-evenly;
   color: white;
-  background: ${({ theme }) => theme.colors.primaryColor};
+  background: ${({ theme }) => theme.colors.blue[500]};
   font-weight: 500;
 `;
 export {

@@ -7,8 +7,8 @@ const Container = styled.div`
   width: 527px;
   height: 53px;
   border-radius: 28px;
-  box-shadow: 0px 0px 6px #00000029;
-  background: ${(props) => props.theme.colors.White};
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
+  background: ${(props) => props.theme.colors.white};
 `;
 
 const HeaderBtn = styled.button`
@@ -25,7 +25,7 @@ const HeaderBtn = styled.button`
 const InputModal = styled.div`
   position: absolute;
   border: none;
-  box-shadow: 1px 4px 4px 0px #00000029;
+  box-shadow: 1px 4px 4px 0px ${({ theme }) => theme.colors.shadow};
   width: calc(100% - 94px);
   left: 20px;
   min-height: 20vh;

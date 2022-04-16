@@ -15,7 +15,7 @@ const Checkbox = styled.input`
   -o-appearance: none;
   outline: none;
   &:checked + label {
-    background: #90a8f0;
+    background: ${({ theme }) => theme.colors.blue['200']};
   }
 `;
 
@@ -25,7 +25,7 @@ const CustomCheckbox = styled.label`
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #90a8f0;
+  border: 2px solid ${({ theme }) => theme.colors.blue['200']};
   border-radius: 5px;
   margin-top: 1px;
   cursor: pointer;
