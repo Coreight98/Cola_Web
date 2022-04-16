@@ -11,12 +11,6 @@ const SignUpPolicy = () => {
   const [policy1, setPolicy1] = useState(false);
   const [policy2, setPolicy2] = useState(false);
 
-  useEffect(() => {
-    console.log('change policy1', policy1);
-  }, [policy1]);
-  useEffect(() => {
-    console.log('change policy2', policy2);
-  }, [policy2]);
   return (
     <Container>
       <Title>SIGN UP</Title>

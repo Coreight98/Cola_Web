@@ -1,40 +1,33 @@
-import { useRouter } from 'next/router';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { Container, Header, AuthContentWrapper, SocialLogin } from '@styles/signIn';
 
-import { SignInFormInterface, SignInData, SignInType } from './index.type';
-import { Container, Header, FormWrapper, AuthContentWrapper, SocialLogin, RouterText } from '@styles/signIn';
-
-import Input from '@molecules/input';
 import Seo from '@components/Seo';
 import LoginBtn from '@components/atoms/button/login';
+import Link from 'next/link';
 // import Auth from '@utils/api/main';
 
 const SignIn = () => {
-  const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignInFormInterface>({});
-
   // const onSubmit: SubmitHandler<SignInFormInterface> = ({ email, password }: SignInFormInterface) => {
   //   const res = Auth.singIn({ email, password });
   //   console.log(res.message);
   // };
-  const SignUpProps = (value: keyof typeof SignInData) => {
-    return { ...SignInType[value], ...register(value, SignInData[value]) };
+  const onClickGithub = () => {
+    alert('singIn github');
   };
-  const ErrorMessage = (value: keyof typeof errors) => errors[value]?.message;
+  const onClickGoogle = () => {
+    alert('singIn google');
+  };
 
   return (
     <Container>
       <Seo title="SignIn" />
       <Header>로그인</Header>
       <AuthContentWrapper>
-        <SocialLogin>
-          <LoginBtn type="google" />
-          <LoginBtn type="github" />
-        </SocialLogin>
+        <Link href="">
+          <LoginBtn type="google" onClick={onClickGoogle} />
+        </Link>
+        <Link href="http://ec2-3-39-4-189.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/github">
+          <LoginBtn type="github" onClick={onClickGithub} />
+        </Link>
       </AuthContentWrapper>
     </Container>
   );

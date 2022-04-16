@@ -41,6 +41,8 @@ const HeaderBtn = styled.button`
   background: none;
   border: none;
   padding: 5px 10px;
+  height: 53px;
+  width: 53px;
   font-size: 14px;
   color: whitesmoke;
   cursor: pointer;
