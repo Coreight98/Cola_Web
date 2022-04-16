@@ -24,15 +24,15 @@ const Content = styled.div`
   min-height: 50vh;
   opacity: 1;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #00000029;
+  box-shadow: 0px 0px 10px ${({ theme }) => theme.colors.shadow};
 `;
 
 const Title = styled.h2`
   font-size: 3rem;
   font-weight: 500;
   max-width: 5vw;
-  color: ${theme.colors.VeryLightBlue};
-  border-bottom: 0.3rem solid ${theme.colors.VeryLightBlue};
+  color: ${theme.colors.blue[500]};
+  border-bottom: 0.3rem solid ${theme.colors.blue[500]};
 `;
 
 const MajorWrapper = styled.div`
@@ -54,7 +54,7 @@ const MajorWrapper = styled.div`
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: ${theme.colors.VeryLightBlue};
+    background: ${theme.colors.blue[500]};
   }
 `;
 
@@ -64,19 +64,20 @@ const FooterWrapper = styled.div`
   justify-content: space-between;
   p {
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.gray[100]};
   }
 `;
 const CheckBox = styled.div<{ selected: boolean }>`
   border-radius: 100px;
-  border: 1px solid #00000029;
+  border: 1px solid ${({ theme }) => theme.colors.shadow};
   height: 1rem;
   width: 1rem;
-  background: ${({ selected }) => (selected ? theme.colors.VeryLightBlue : 'none')};
+  background: ${({ theme, selected }) => (selected ? theme.colors.blue[500] : 'none')};
 `;
 
 const Span = styled.span<{ selected: boolean }>`
   font-size: 1.2rem;
-  color: ${({ selected }) => (selected ? theme.colors.VeryLightBlue : '#00000029')};
+  color: ${({ selected, theme }) => (selected ? theme.colors.blue[500] : theme.colors.gray[100])};
 `;
 
 export { Background, Content, Title, MajorWrapper, FooterWrapper, CheckBox, Span };

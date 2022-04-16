@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
   cursor: pointer;
@@ -9,11 +10,11 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 6px #00000029;
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
 `;
 const Title = styled.h3`
   padding: 0 40px;
-  color: ${({ theme }) => theme.text.colors.basic};
+  color: ${theme.colors.gray[900]};
   font-size: 22px;
   flex: 1;
 `;
@@ -23,17 +24,17 @@ const DescriptionWrapper = styled.div`
   align-items: center;
   flex: 1;
   height: 47px;
-  background: #dde1fc;
-  box-shadow: 0px 0px 6px #00000029;
+  background: ${({ theme }) => theme.colors.blue[500]};
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
   border-radius: 25px;
-  color: ${({ theme }) => theme.text.colors.basic};
+  color: ${theme.colors.gray[900]};
   font-size: 17px;
   font-weight: 500;
 `;
 const SubDescription = styled.div`
   display: flex;
   padding: 0 20px;
-  background: ${({ theme }) => theme.colors.primaryColor};
+  background: ${({ theme }) => theme.colors.blue['500']};
   height: 47px;
   border-radius: 25px;
   align-items: center;

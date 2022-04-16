@@ -10,7 +10,7 @@ import { theme } from '@styles/theme';
 const LoginBtnStyle = styled(Button)`
   display: flex;
   border-radius: 43px;
-  box-shadow: 0px 0px 5px #00000029;
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.shadow};
   min-width: 16vw;
   max-height: 6vh;
   justify-content: center;
@@ -18,7 +18,7 @@ const LoginBtnStyle = styled(Button)`
   align-items: center;
   background-color: white;
   p {
-    color: ${theme.colors.VeryLightBlue};
+    color: ${theme.colors.blue[500]};
     font-size: 2rem;
     font-weight: 600;
   }

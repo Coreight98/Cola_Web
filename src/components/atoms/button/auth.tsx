@@ -5,7 +5,7 @@ import { theme } from '@styles/theme';
 
 const AuthBtn = styled(Button)`
   border-radius: 5px;
-  box-shadow: 0px 0px 5px #00000029;
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.shadow};
   min-width: 4vw;
   height: 4vh;
   margin: 0.2vmin;
@@ -13,7 +13,7 @@ const AuthBtn = styled(Button)`
   font-size: 1.2rem;
   font-weight: 600;
   color: white;
-  background-color: ${theme.colors.VeryLightBlue};
+  background-color: ${theme.colors.blue[500]};
 `;
 
 export default AuthBtn;

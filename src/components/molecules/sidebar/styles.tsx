@@ -11,7 +11,7 @@ const Container = styled.nav`
   /* width: 250px;
   height: calc(100vh - 3rem); */
   border-radius: 0px 30px 30px 0px;
-  background-color: ${(props) => props.theme.colors.VeryLightBlue};
+  background-color: ${(props) => props.theme.colors.blue[500]};
   overflow: hidden;
   z-index: 1000;
   color: #222;
@@ -48,9 +48,9 @@ const MenuWrapper = styled.div`
   width: 141px;
   height: 38px;
   border-radius: 19px;
-  background-color: ${(props) => props.theme.colors.White};
+  background-color: ${(props) => props.theme.colors.white};
   h3 {
-    color: ${(props) => props.theme.colors.primaryColor};
+    color: ${(props) => props.theme.colors.blue['500']};
   }
 `;
 const ListWrapper = styled.ul`
@@ -85,10 +85,10 @@ const ListItem = styled.li`
     position: absolute;
     width: 100%;
     height: 1px;
-    background: ${(props) => props.theme.colors.primaryLightColor};
+    background: ${(props) => props.theme.colors.blue['400']};
     left: 0;
     .circle-wrapper {
-      background-color: ${(props) => props.theme.colors.primaryColor};
+      background-color: ${(props) => props.theme.colors.blue['500']};
       width: 22px;
       height: 22px;
       z-index: 1001;
@@ -101,14 +101,14 @@ const ListItem = styled.li`
       height: 22px;
       padding: 0 10px;
       border-radius: 100%;
-      background: ${(props) => props.theme.colors.primaryLightColor};
+      background: ${(props) => props.theme.colors.blue['400']};
     }
   }
 
   a {
     z-index: 1001;
     position: relative;
-    background-color: ${(props) => props.theme.colors.primaryColor};
+    background-color: ${(props) => props.theme.colors.blue['500']};
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -116,7 +116,7 @@ const ListItem = styled.li`
     padding: 0 10px;
     width: 164px;
     span {
-      color: ${(props) => props.theme.colors.White};
+      color: ${(props) => props.theme.colors.white};
       letter-spacing: 0px;
       font-size: 20px;
       font-weight: 500;

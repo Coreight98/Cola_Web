@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
   width: 100vw;
@@ -8,7 +9,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: ${(props) => props.theme.colors.backgroundColor};
+  background: ${theme.colors.gray[100]};
 `;
 const TitleWrapper = styled.div`
   display: flex;

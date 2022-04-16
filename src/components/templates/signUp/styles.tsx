@@ -15,12 +15,12 @@ const Wrapper = styled.div`
 `;
 const Title = styled.h1`
   font-size: 5rem;
-  color: ${theme.colors.VeryLightBlue};
+  color: ${theme.colors.blue[500]};
 `;
 
 const SubTitle = styled.h3`
   margin-top: 1vh;
-  color: ${theme.colors.JordyBlue};
+  color: ${theme.colors.blue['400']};
   width: 8vw;
 `;
 
@@ -79,9 +79,10 @@ const Select = styled.select`
   appearance: none;
   min-width: 350px;
   min-height: 60px;
+  padding-left: 1rem;
   border: none;
   background: white;
-  box-shadow: 0px 0px 5px #00000029;
+  box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.shadow};
 `;
 
 const Triangle = styled.div`
@@ -92,7 +93,7 @@ const Triangle = styled.div`
   height: 0;
   border-style: solid;
   border-width: 12px 7px 0 7px;
-  border-color: #90a8f0 transparent transparent transparent;
+  border-color: ${({ theme }) => theme.colors.blue['200']} transparent transparent transparent;
   opacity: 1;
 `;
 

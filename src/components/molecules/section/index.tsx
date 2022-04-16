@@ -6,7 +6,7 @@ const SectionTitle = styled.h3`
   font: normal normal medium 24px/29px;
   font-family: 'GmarketSans';
   letter-spacing: 0px;
-  color: #90a8f0;
+  color: ${({ theme }) => theme.colors.blue['200']};
   height: 24px;
 `;
 
@@ -24,4 +24,3 @@ const CommonSection = ({ title, children }: ISectionProps) => {
   );
 };
 export default CommonSection;
-

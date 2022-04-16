@@ -49,7 +49,7 @@ const BoardCard = ({ id }: IBoardItem) => {
             alignItems: 'center',
             borderRadius: 22,
             justifyContent: 'space-between',
-            backgroundColor: '#DDE1FC',
+            backgroundColor: '${({theme})=>theme.colors.blue[500]}',
           }}
         >
           <UserInfo>
