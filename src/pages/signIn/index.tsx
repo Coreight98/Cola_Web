@@ -1,6 +1,8 @@
+import type { NextPage } from 'next';
+
 import SignInTemp from '@components/templates/signIn';
 
-const SignIn = () => {
+const SignIn: NextPage = () => {
   return <SignInTemp />;
 };
 
