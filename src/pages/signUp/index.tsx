@@ -1,9 +1,31 @@
-import type { NextPage } from 'next';
-import SignUpTemp from '@components/templates/signUp/index';
-import SignUpPolicy from '@components/templates/signUp/policy';
+import { useState } from 'react';
 
-const SignUp: NextPage = () => {
-  return <SignUpTemp />;
+import { MAJOR_TYPE } from '@constants/index';
+
+import { Container, Title } from '@styles/signUp';
+
+import Modal from '@components/molecules/modal';
+import MajorModal from '@components/molecules/modal/majorModal';
+import SignUpForm from '@components/organisms/signUpForm';
+
+const SignUp = () => {
+  const [major, setMajor] = useState<keyof typeof MAJOR_TYPE>('sw');
+  const [modalOnOff, setModalOnOff] = useState(false);
+
+  const handleModalOnOff = () => setModalOnOff(!modalOnOff);
+
+  return (
+    <>
+      <Container>
+        <Title>SIGN UP</Title>
+        <SignUpForm handleModalOnOff={handleModalOnOff} major={major} />
+      </Container>
+      {modalOnOff && (
+        <Modal>
+          <MajorModal major={major} setMajor={setMajor} setModalOnOff={setModalOnOff} />
+        </Modal>
+      )}
+    </>
+  );
 };
-
 export default SignUp;

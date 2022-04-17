@@ -19,7 +19,8 @@ import {
 import CommentIcon from '@assets/icon/comment_small.svg';
 import HeartIcon from '@assets/icon/heart_small.svg';
 import ViewIcon from '@assets/icon/view_small.svg';
-import { IBoardItem } from '@components/templates/board/index.type';
+import UserDefault from '@components/atoms/icon/userDefault';
+import { IBoardItem } from '@pages/board/index.type';
 import { theme } from '@styles/theme';
 
 const BoardCard = ({ id }: IBoardItem) => {
@@ -50,11 +51,12 @@ const BoardCard = ({ id }: IBoardItem) => {
             alignItems: 'center',
             borderRadius: 22,
             justifyContent: 'space-between',
-            backgroundColor: `${theme.colors.blue[500]}`,
+            backgroundColor: `${theme.colors.blue[100]}`,
           }}
         >
           <UserInfo>
-            <img></img>
+            {/* <img></img> */}
+            <UserDefault width={'38px'} height={'38px'} />
           </UserInfo>
           <DescriptionWrapper>
             <p style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>

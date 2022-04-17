@@ -65,6 +65,19 @@ const ListWrapper = styled.ul`
   gap: 1rem;
   width: 100%;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 7px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.blue['200']};
+    height: 24px;
+    width: 6px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    padding: 1px 0;
+  }
   @media screen and (max-width: 426px) {
     gap: 0.5rem;
   }

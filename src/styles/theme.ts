@@ -56,7 +56,7 @@ export const theme: Theme = {
       '600': '#FF7373',
     },
     white: '#FFFFFF',
-    shadow: '${({theme})=>theme.colors.shadow}',
+    shadow: '#00000029',
   },
   breakpoints: {
     lg: '1200px',

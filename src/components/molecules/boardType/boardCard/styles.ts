@@ -143,15 +143,15 @@ const UserInfo = styled.div`
   justify-content: center;
   padding-right: 10px;
   flex: 1;
-  img {
-    width: 38px;
-    height: 38px;
-    box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
-    object-fit: cover;
-    border-radius: 100%;
-    display: block;
-    background: ${({ theme: { colors } }) => colors.blue[500]};
-  }
+  // img {
+  //   width: 38px;
+  //   height: 38px;
+  //   box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
+  //   object-fit: cover;
+  //   border-radius: 100%;
+  //   display: block;
+  //   background: ${({ theme: { colors } }) => colors.blue[500]};
+  // }
 `;
 const DescriptionContent = styled.div`
   display: flex;

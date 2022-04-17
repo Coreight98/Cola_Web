@@ -29,9 +29,12 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
             padding-top: 5rem;
             padding-left: 1rem;
             transition: 0.2s ease-in-out;
-            height: 100vh;
+            width: calc(100vw - 5rem);
+            height: calc(100vh - 1rem);
           }
           .not {
+            width: 100vw;
+            height: calc(100vh - 8rem);
             display: flex;
             justify-content: center;
             transition: 0.2s ease-in-out;

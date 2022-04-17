@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: ${theme.colors.gray[100]};
+  background: ${({ theme }) => theme.colors.background['100']};
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -41,6 +41,8 @@ const HeaderBtn = styled.button`
   background: none;
   border: none;
   padding: 5px 10px;
+  height: 53px;
+  width: 53px;
   font-size: 14px;
   color: whitesmoke;
   cursor: pointer;

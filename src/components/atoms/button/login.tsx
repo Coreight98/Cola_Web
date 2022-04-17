@@ -9,12 +9,12 @@ import { theme } from '@styles/theme';
 
 const LoginBtnStyle = styled(Button)`
   display: flex;
-  border-radius: 43px;
+  border-radius: 4rem;
   box-shadow: 0px 0px 5px ${({ theme }) => theme.colors.shadow};
-  min-width: 16vw;
-  max-height: 6vh;
+  min-width: 14rem;
+  max-height: 3rem;
   justify-content: center;
-  column-gap: 2vmin;
+  column-gap: 1rem;
   align-items: center;
   background-color: white;
   p {
@@ -23,17 +23,17 @@ const LoginBtnStyle = styled(Button)`
     font-weight: 600;
   }
   svg {
-    width: 4vmin;
-    height: 4vmin;
+    width: 2rem;
+    height: 2rem;
   }
 `;
 
-const LoginBtn = ({ type }: { type: 'google' | 'github' }) => {
+const LoginBtn = ({ type, onClick }: { type: 'google' | 'github'; onClick: () => void }) => {
   return (
-    <LoginBtnStyle>
+    <LoginBtnStyle onClick={onClick}>
       {type === 'google' && <Google />}
       {type === 'github' && <Github />}
-      <p>LOGIN</p>
+      <p>{type === 'google' ? 'Google' : 'Github'}</p>
     </LoginBtnStyle>
   );
 };
