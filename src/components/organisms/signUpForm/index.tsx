@@ -6,7 +6,7 @@ import SignUpInput from '@components/organisms/signUpInput';
 import { FlexDiv } from '@styles/index';
 import { SignUpFormStyle, CheckIcon } from './styles';
 import { Select, Triangle, SubTitle } from '@styles/signUp';
-import { SignUpFormInterface, SignUpData, SignUpType } from './index.type';
+import { SignUpFormInterface, SignUpData } from './index.type';
 import { MAJOR_TYPE } from '@constants/index';
 
 interface Props {
@@ -70,10 +70,12 @@ const SignUpForm = ({ handleModalOnOff, major }: Props) => {
     if (!isEmailValid) return;
     console.log(dd);
   };
+
   const handleChange = () => {
     setIsEmailValid(false);
     setCheckEmail(false);
   };
+
   return (
     <SignUpFormStyle onSubmit={handleSubmit(onSubmit)}>
       <SignUpInput
