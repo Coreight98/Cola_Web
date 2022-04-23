@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
+import type { NextPage } from 'next';
 import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd';
 import { useRecoilState } from 'recoil';
 
@@ -10,7 +11,7 @@ import Calender from '@molecules/calender';
 import TodoArea from '@molecules/todoArea';
 import { todoState } from 'src/store';
 
-const Todolist = () => {
+const Todolist: NextPage = () => {
   const [isWindowReady, setWindowReady] = useState(false);
   useEffect(() => {
     setWindowReady(true);

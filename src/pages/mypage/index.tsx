@@ -1,3 +1,5 @@
+import type { NextPage } from 'next';
+
 import {
   Container,
   FlexRow,
@@ -9,7 +11,7 @@ import {
   ContentWrapper,
 } from '@styles/mypage';
 
-const Mypage = () => {
+const Mypage: NextPage = () => {
   return (
     <Container>
       <ProfileSection>
