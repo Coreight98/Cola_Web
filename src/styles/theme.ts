@@ -3,6 +3,7 @@ declare module '@emotion/react' {
   export interface Theme {
     colors: {
       blue: {
+        10: string;
         100: string;
         200: string;
         300: string;
@@ -36,6 +37,7 @@ declare module '@emotion/react' {
 export const theme: Theme = {
   colors: {
     blue: {
+      '10': '#F5F8FF',
       '100': '#DDE1FC',
       '200': '#90A8F0',
       '300': '#B4BCFC',
