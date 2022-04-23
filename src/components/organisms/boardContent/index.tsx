@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import {
   Container,
   Header,
@@ -8,6 +10,7 @@ import {
   Title,
   TextArea,
   HashTagBarStyle,
+  HashTagWrapper,
 } from './styles';
 
 import Logo from '@assets/icon/logo.svg';
@@ -26,16 +29,44 @@ interface Props {
 }
 
 const HashTagBar = ({ data }: { data: string[] }) => {
+  const PER_PAGE = 6;
+  const TOTAL_PAGE = Math.ceil(data.length / PER_PAGE);
+
+  const [page, setPage] = useState(1);
+  const [renderChip, setRenderChip] = useState<string[]>([]);
+
+  const onClickNextPage = () => {
+    if (page === TOTAL_PAGE) {
+      setPage(1);
+    } else {
+      setPage((prev) => prev + 1);
+    }
+  };
+  const onClickPrevPage = () => {
+    if (page === 1) {
+      setPage(TOTAL_PAGE);
+    } else {
+      setPage((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    setRenderChip(data.slice(PER_PAGE * (page - 1), PER_PAGE * page));
+  }, [page]);
+
   return (
-    <HashTagBarStyle>
-      <LeftArrow />
-      <div>
-        {data.map((tag, idx) => (
-          <HashtagChip key={idx} title={tag} size="small" />
-        ))}
-      </div>
-      <RightArrow />
-    </HashTagBarStyle>
+    <>
+      <HashTagBarStyle>
+        <LeftArrow onClick={onClickPrevPage} />
+        <HashTagWrapper>
+          {renderChip.map((tag, idx) => (
+            <HashtagChip key={idx} title={tag} size="small" />
+          ))}
+        </HashTagWrapper>
+        <RightArrow onClick={onClickNextPage} />
+      </HashTagBarStyle>
+      <p style={{ textAlign: 'center', width: '100%' }}> {page}</p>
+    </>
   );
 };
 

@@ -76,15 +76,32 @@ const HashTagBarStyle = styled.div`
   justify-content: space-between;
   width: 100%;
   overflow-x: scroll;
+
   div {
-    width: 80%;
+    width: 90%;
     column-gap: 2rem;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     overflow-y: hidden;
     display: flex;
   }
 `;
 
+const HashTagWrapper = styled.div`
+  display: flex;
+  transition: all 200ms ease-in-out;
+  /* 
+  &::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.blue['200']};
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    padding: 1px 0;
+  } */
+`;
 export {
   Container,
   Header,
@@ -95,4 +112,5 @@ export {
   Title,
   TextArea,
   HashTagBarStyle,
+  HashTagWrapper,
 };
