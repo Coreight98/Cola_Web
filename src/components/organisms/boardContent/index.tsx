@@ -1,17 +1,16 @@
 import styled from '@emotion/styled';
 
+import Logo from '@assets/icon/logo.svg';
 import HashtagChip from '@atoms/hashtagChip';
-
-import Heart from 'public/heart.svg';
-import HeartBig from 'public/heart_Big.svg';
-import Visit from 'public/visit.svg';
+import UserDefault from '@components/atoms/icon/userDefault';
+import { theme } from '@styles/theme';
 import Comment from 'public/comment.svg';
 import CommentBig from 'public/comment_Big.svg';
+import Heart from 'public/heart.svg';
+import HeartBig from 'public/heart_Big.svg';
 import LeftArrow from 'public/left_arrow.svg';
 import RightArrow from 'public/right_arrow.svg';
-
-import { theme } from '@styles/theme';
-import UserDefault from '@components/atoms/icon/userDefault';
+import Visit from 'public/visit.svg';
 
 const Container = styled.div`
   border-radius: 24px;
@@ -22,6 +21,7 @@ const Header = styled.h2`
   width: 1200px;
   height: 151px;
   padding: calc((151px - 3rem) / 2 - 0.5rem);
+  padding-bottom: 0;
   outline: none;
   align-items: center;
   font-size: 3rem;
@@ -33,13 +33,42 @@ const Header = styled.h2`
 `;
 
 const Content = styled.div`
-  padding: 2rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
 `;
 
-const Title = styled.h3``;
+const ContentDetail = styled.div`
+  color: ${({ theme }) => theme.colors.gray[900]};
+  font-size: 1.1rem;
+  gap: 1rem;
+`;
+const ContentDetailRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.blue[400]};
+  &:nth-last-of-type(1) {
+    border: none;
+  }
+`;
+const DetailInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: medium;
+`;
+const Title = styled.h3`
+  color: ${({ theme }) => theme.colors.blue[500]};
+  font-size: 43px;
+  letter-spacing: 0;
+  margin: 0;
+  font-weight: 500;
+`;
 
 const TextArea = styled.div`
   border: 10px;
@@ -56,6 +85,7 @@ const HashTagBarStyle = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  overflow-x: scroll;
   div {
     width: 80%;
     column-gap: 2rem;
@@ -74,8 +104,8 @@ const HashTagBar = ({ data }: { data: string[] }) => {
     <HashTagBarStyle>
       <LeftArrow />
       <div>
-        {data.map((tag) => (
-          <HashtagChip title={tag} size="small" />
+        {data.map((tag, idx) => (
+          <HashtagChip key={idx} title={tag} size="small" />
         ))}
       </div>
       <RightArrow />
@@ -86,41 +116,56 @@ const HashTagBar = ({ data }: { data: string[] }) => {
 const BoardContent = ({ content }: Props) => {
   return (
     <Container>
-      <Header>Cola</Header>
+      <Header>
+        <Logo />
+      </Header>
       <Content>
-        <div style={{ padding: '3rem' }}>
+        <div>
           <Title>{content}</Title>
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              borderBottom: '1px solid',
-              justifyContent: 'space-between',
-            }}
-          >
-            <p>2022월04월18일</p>
-            <div style={{ display: 'flex', alignItems: 'center', columnGap: '.5rem' }}>
-              <Heart />
-              <p>100</p>
-              <Comment />
-              <p>100</p>
-              <Visit />
-              <p>100</p>
-            </div>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ display: 'flex', columnGap: '1rem' }}>
-              <UserDefault />
-              <p>작성자 이름</p>
-            </div>
-            <div style={{ display: 'flex', columnGap: '1rem' }}>
-              <HeartBig />
-              <CommentBig />
-            </div>
-          </div>
+          <ContentDetail>
+            <ContentDetailRow>
+              <span>2022월04월18일</span>
+              <DetailInfoWrapper>
+                <Heart />
+                <span>100</span>
+                <Comment />
+                <span>100</span>
+                <Visit />
+                <span>100</span>
+              </DetailInfoWrapper>
+            </ContentDetailRow>
+            <ContentDetailRow>
+              <DetailInfoWrapper>
+                <UserDefault />
+                <span>작성자 이름</span>
+              </DetailInfoWrapper>
+              <DetailInfoWrapper>
+                <HeartBig />
+                <CommentBig />
+              </DetailInfoWrapper>
+            </ContentDetailRow>
+          </ContentDetail>
         </div>
         <TextArea></TextArea>
-        <HashTagBar data={['java', 'javascript', 'python', 'C', 'C#', 'C++', 'Go', 'ruby']} />
+        <HashTagBar
+          data={[
+            'java',
+            'javascript',
+            'python',
+            'C',
+            'C#',
+            'C++',
+            'Go',
+            'ruby',
+            'javascript',
+            'python',
+            'C',
+            'C#',
+            'C++',
+            'Go',
+            'ruby',
+          ]}
+        />
       </Content>
     </Container>
   );

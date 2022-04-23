@@ -1,6 +1,6 @@
-import UserDefault from '@atoms/icon/userDefault';
 import styled from '@emotion/styled';
 
+import UserDefault from '@atoms/icon/userDefault';
 import BoardContent from '@organisms/boardContent';
 import Comment from '@organisms/comment';
 import { theme } from '@styles/theme';
@@ -33,7 +33,7 @@ const CommentForm = () => {
 
 const BoardDetail = () => {
   return (
-    <div>
+    <div style={{ maxWidth: '1200px' }}>
       <BoardContent content="제목" />
       <CommentForm />
       {/* 추후 lazy loading 지원 예정  */}
@@ -43,8 +43,8 @@ const BoardDetail = () => {
           { name: 'guest', contents: 'wdwdwdwd' },
           { name: 'guest', contents: 'wdwdwdw' },
           { name: 'guest', contents: 'wdwdwdwd' },
-        ].map(({ name, contents }) => (
-          <Comment name={name} contents={contents} />
+        ].map(({ name, contents }, idx) => (
+          <Comment key={idx} name={name} contents={contents} />
         ))}
       </CommentWrapper>
     </div>
