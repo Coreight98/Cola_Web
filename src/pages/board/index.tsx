@@ -1,14 +1,12 @@
-import { useState } from 'react';
-
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 
-import { Container, BoardList } from '@styles/board';
+import { BoardLayout, boardTypeState } from '../../store/board';
 
 import BoardCard from '@molecules/boardType/boardCard';
 import BoardPreviewItem from '@molecules/boardType/boardPreviewItem';
 import BoardSimpleItem from '@molecules/boardType/boardSimpleItem';
-import { BoardLayout, boardTypeState } from '../../store/board';
+import { Container, BoardList } from '@styles/board';
 
 const Board = () => {
   const router = useRouter();

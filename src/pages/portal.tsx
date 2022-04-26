@@ -1,4 +1,5 @@
 import { ReactChildren, ReactChild } from 'react';
+
 import ReactDOM from 'react-dom';
 
 const Portal = ({ children }: { children: ReactChild | ReactChildren }) => {

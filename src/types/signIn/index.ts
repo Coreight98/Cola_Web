@@ -1,3 +1,4 @@
+/* eslint-disable */
 export interface SignInFormInterface {
   email: string;
   password: string;
@@ -26,3 +27,4 @@ export const SignInType = {
   email: { placeholder: '이메일', type: 'text' },
   password: { placeholder: '비밀번호', type: 'password' },
 };
+/* eslint-disable */

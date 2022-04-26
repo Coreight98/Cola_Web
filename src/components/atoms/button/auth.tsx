@@ -1,6 +1,7 @@
+import styled from '@emotion/styled';
+
 import Button from './index';
 
-import styled from '@emotion/styled';
 import { theme } from '@styles/theme';
 
 const AuthBtn = styled(Button)`

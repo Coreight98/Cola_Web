@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { BtnWrapper } from './styles';
+
 import Arrow from 'public/arrow.svg';
 import Logo from 'public/cola_logo.svg';
 

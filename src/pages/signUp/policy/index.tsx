@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import { Container, Title, PolicyWrapper, NextBtn } from '@styles/signUp/policy';
+import { useRouter } from 'next/router';
 
 import PolicySection from '@components/molecules/section/PolicySection';
 import { policyDummy1, policyDummy2 } from '@constants/singupPolicy';
-import { useRouter } from 'next/router';
+import { Container, Title, PolicyWrapper, NextBtn } from '@styles/signUp/policy';
 
 const SignUpPolicy = () => {
   const router = useRouter();

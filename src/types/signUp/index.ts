@@ -1,4 +1,4 @@
-import { string } from 'yup';
+/* eslint-disable */
 
 export interface SignUpFormInterface {
   password: string;
@@ -51,3 +51,4 @@ export const SignUpType = {
   department: { type: 'text', placeholder: '학과' },
   gitEmailId: { type: 'text', label: 'GIT 계정', placeholder: 'GIT 이메일' },
 };
+/* eslint-disable */

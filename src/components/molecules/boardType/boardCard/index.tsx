@@ -20,8 +20,8 @@ import CommentIcon from '@assets/icon/comment_small.svg';
 import HeartIcon from '@assets/icon/heart_small.svg';
 import ViewIcon from '@assets/icon/view_small.svg';
 import UserDefault from '@components/atoms/icon/userDefault';
-import { IBoardItem } from '@pages/board/index.type';
 import { theme } from '@styles/theme';
+import { IBoardItem } from '~/types/board';
 
 const BoardCard = ({ id }: IBoardItem) => {
   const router = useRouter();

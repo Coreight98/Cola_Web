@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import Check from 'public/check.svg';
 
 const SignUpFormStyle = styled.form`
