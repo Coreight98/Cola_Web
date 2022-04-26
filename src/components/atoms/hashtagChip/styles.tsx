@@ -11,7 +11,7 @@ const Container = styled.div<HashtagChipInterface>`
   height: 30px;
   max-width: 7vw;
   box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.shadow};
-  width: ${(props) => (props.size === 'sidebar' ? '140px;' : '')};
+  min-width: ${(props) => (props.size === 'sidebar' ? '140px;' : props.size === 'small' ? '100px' : '120px')};
   border-radius: 19px;
   color: ${(props) => props.theme.colors.blue[500]};
   opacity: 0.9;

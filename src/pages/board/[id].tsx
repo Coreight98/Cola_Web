@@ -33,7 +33,7 @@ const CommentForm = () => {
 
 const BoardDetail = () => {
   return (
-    <div>
+    <div style={{ maxWidth: '1200px' }}>
       <BoardContent content="제목" />
       <CommentForm />
       {/* 추후 lazy loading 지원 예정  */}
@@ -43,8 +43,8 @@ const BoardDetail = () => {
           { name: 'guest', contents: 'wdwdwdwd' },
           { name: 'guest', contents: 'wdwdwdw' },
           { name: 'guest', contents: 'wdwdwdwd' },
-        ].map(({ name, contents }, i) => (
-          <Comment key={contents + i} name={name} contents={contents} />
+        ].map(({ name, contents }, idx) => (
+          <Comment key={idx} name={name} contents={contents} />
         ))}
       </CommentWrapper>
     </div>
