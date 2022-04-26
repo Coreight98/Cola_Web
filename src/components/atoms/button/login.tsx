@@ -2,10 +2,9 @@ import styled from '@emotion/styled';
 
 import Button from './index';
 
-import Google from 'public/google_button.svg';
-import Github from 'public/github_button.svg';
-
 import { theme } from '@styles/theme';
+import Github from 'public/github_button.svg';
+import Google from 'public/google_button.svg';
 
 const LoginBtnStyle = styled(Button)`
   display: flex;

@@ -10,7 +10,10 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "standard", // 또는 airbnb
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:import/recommended"
   ],
   "settings": {
     "react": {

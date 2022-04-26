@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
-import { MAJOR_TYPE } from '@constants/index';
-
-import { Container, Title } from '@styles/signUp';
-
 import Modal from '@components/molecules/modal';
 import MajorModal from '@components/molecules/modal/majorModal';
 import SignUpForm from '@components/organisms/signUpForm';
+import { MAJOR_TYPE } from '@constants/index';
+import { Container, Title } from '@styles/signUp';
 
 const SignUp = () => {
   const [major, setMajor] = useState<keyof typeof MAJOR_TYPE>('sw');

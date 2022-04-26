@@ -1,8 +1,9 @@
+import Link from 'next/link';
+
+import LoginBtn from '@components/atoms/button/login';
+import Seo from '@components/Seo';
 import { Container, Header, AuthContentWrapper, SocialLogin } from '@styles/signIn';
 
-import Seo from '@components/Seo';
-import LoginBtn from '@components/atoms/button/login';
-import Link from 'next/link';
 // import Auth from '@utils/api/main';
 
 const SignIn = () => {

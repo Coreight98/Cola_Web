@@ -1,6 +1,4 @@
-import { theme } from '@styles/theme';
-
-export const InputProps = {
+const InputProps = {
   title: {
     style: { border: 'none', fontSize: '2rem' },
     placeholder: '제목',
@@ -10,3 +8,5 @@ export const InputProps = {
     placeholder: '태그를 입력하세요.',
   },
 };
+
+export { InputProps };

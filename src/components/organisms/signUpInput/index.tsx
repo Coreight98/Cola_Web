@@ -1,7 +1,9 @@
-import AuthBtn from '@components/atoms/button/auth';
 import { MouseEvent, forwardRef } from 'react';
-import { FlexDiv } from '@styles/index';
+
 import { Title, InputStyle, Wrapper, ErrorMessage } from './styles';
+
+import AuthBtn from '@components/atoms/button/auth';
+import { FlexDiv } from '@styles/index';
 
 interface InputProps {
   content?: string;
@@ -27,5 +29,7 @@ const SignUpInput = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
+SignUpInput.displayName = 'SignUpInput';
 
 export default SignUpInput;

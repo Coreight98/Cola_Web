@@ -1,13 +1,15 @@
 import { MouseEvent, useState } from 'react';
+
 import { useForm, UseFormRegister } from 'react-hook-form';
+
+import { SignUpFormInterface, SignUpData } from './index.type';
+import { SignUpFormStyle, CheckIcon } from './styles';
 
 import SubmitBtn from '@components/atoms/button/submit';
 import SignUpInput from '@components/organisms/signUpInput';
-import { FlexDiv } from '@styles/index';
-import { SignUpFormStyle, CheckIcon } from './styles';
-import { Select, Triangle, SubTitle } from '@styles/signUp';
-import { SignUpFormInterface, SignUpData } from './index.type';
 import { MAJOR_TYPE } from '@constants/index';
+import { FlexDiv } from '@styles/index';
+import { Select, Triangle, SubTitle } from '@styles/signUp';
 
 interface Props {
   handleModalOnOff: () => void;

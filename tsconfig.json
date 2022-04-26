@@ -20,12 +20,12 @@
       "@molecules/*": ["src/components/molecules/*"],
       "@organisms/*": ["src/components/organisms/*"],
       "@pages/*": ["src/pages/*"],
-      "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@constants/*": ["src/constants/*"],
       "@assets/*": ["src/assets/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "~/types/*": ["src/types/*"]
     },
     "incremental": true
   },

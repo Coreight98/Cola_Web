@@ -1,8 +1,8 @@
+import { Dispatch, SetStateAction, useState } from 'react';
+
 import { Title, MajorWrapper, FooterWrapper, CheckBox, Span } from './styles';
 
 import { MAJOR_TYPE } from '@constants/index';
-import { Dispatch, SetStateAction, useState } from 'react';
-import { TypeOf } from 'yup';
 import { theme } from '@styles/theme';
 
 interface Props {
