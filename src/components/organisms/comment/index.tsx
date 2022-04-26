@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import { theme } from '@styles/theme';
-import { FlexDiv } from '@styles/index';
+
 import UserDefault from '@components/atoms/icon/userDefault';
+import { FlexDiv } from '@styles/index';
+import { theme } from '@styles/theme';
 const Container = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,17 +1,17 @@
+import { useEffect, useRef } from 'react';
+
 import styled from '@emotion/styled';
 
 import HashtagChip from '@atoms/hashtagChip';
-
-import Heart from 'public/heart.svg';
-import HeartBig from 'public/heart_Big.svg';
-import Visit from 'public/visit.svg';
+import UserDefault from '@components/atoms/icon/userDefault';
+import { theme } from '@styles/theme';
 import Comment from 'public/comment.svg';
 import CommentBig from 'public/comment_Big.svg';
+import Heart from 'public/heart.svg';
+import HeartBig from 'public/heart_Big.svg';
 import LeftArrow from 'public/left_arrow.svg';
 import RightArrow from 'public/right_arrow.svg';
-
-import { theme } from '@styles/theme';
-import UserDefault from '@components/atoms/icon/userDefault';
+import Visit from 'public/visit.svg';
 
 const Container = styled.div`
   border-radius: 24px;
@@ -56,13 +56,14 @@ const HashTagBarStyle = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  div {
-    width: 80%;
-    column-gap: 2rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;
-  }
+`;
+const Wrapper = styled.div`
+  display: flex;
+  max-width: 70vw;
+  column-gap: 2rem;
+  overflow: auto;
+  overflow-y: hidden;
+  display: flex;
 `;
 
 interface Props {
@@ -70,14 +71,18 @@ interface Props {
 }
 
 const HashTagBar = ({ data }: { data: string[] }) => {
+  const divRef = useRef<any>(null);
+
+  useEffect(() => console.log(divRef), [divRef]);
+
   return (
     <HashTagBarStyle>
       <LeftArrow />
-      <div>
+      <Wrapper ref={divRef}>
         {data.map((tag) => (
-          <HashtagChip title={tag} size="small" />
+          <HashtagChip key={tag} title={tag} size="small" />
         ))}
-      </div>
+      </Wrapper>
       <RightArrow />
     </HashTagBarStyle>
   );
@@ -120,7 +125,26 @@ const BoardContent = ({ content }: Props) => {
           </div>
         </div>
         <TextArea></TextArea>
-        <HashTagBar data={['java', 'javascript', 'python', 'C', 'C#', 'C++', 'Go', 'ruby']} />
+        <HashTagBar
+          data={[
+            'java',
+            'javascript',
+            'python',
+            'C',
+            'C#',
+            'C++',
+            'Go',
+            'ruby',
+            'java',
+            'javascript',
+            'python',
+            'C',
+            'C#',
+            'C++',
+            'Go',
+            'ruby',
+          ]}
+        />
       </Content>
     </Container>
   );

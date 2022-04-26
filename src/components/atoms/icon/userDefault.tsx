@@ -8,8 +8,8 @@ interface IIconWrapperProps {
 }
 const IconWrapper = styled.div<IIconWrapperProps>`
   background-color: ${(props) => props.theme.colors.blue[500]};
-  width: ${({ width }) => (width ? width : '53px')};
-  height: ${({ height }) => (height ? height : '53px')};
+  width: ${({ width }) => width || '53px'};
+  height: ${({ height }) => height || '53px'};
   border-radius: 100%;
   display: flex;
   align-items: flex-end;
