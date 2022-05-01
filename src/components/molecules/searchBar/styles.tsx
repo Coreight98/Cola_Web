@@ -123,6 +123,9 @@ const HistoryControlWrapper = styled.div`
     display: flex;
     gap: 1rem;
   }
+  span {
+    cursor: pointer;
+  }
 `;
 
 const Divider = styled.div`
