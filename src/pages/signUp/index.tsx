@@ -19,7 +19,7 @@ const SignUp = () => {
         <SignUpForm handleModalOnOff={handleModalOnOff} major={major} />
       </Container>
       {modalOnOff && (
-        <Modal>
+        <Modal onClick={handleModalOnOff}>
           <MajorModal major={major} setMajor={setMajor} setModalOnOff={setModalOnOff} />
         </Modal>
       )}
