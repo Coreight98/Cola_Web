@@ -1,4 +1,5 @@
 import { ReactChild, ReactChildren, isValidElement } from 'react';
+import TopButton from './atoms/topbutton';
 
 import Navigation from './organisms/Navigation';
 import AuthNavigation from './organisms/Navigation/AuthNavigation';
@@ -7,6 +8,7 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
   const NOT_NAVIGATION_LIST = ['SignUp', 'SignIn', 'SignUpPolicy'];
   return (
     <>
+
       {isValidElement(children) &&
       typeof children.type !== 'string' &&
       !NOT_NAVIGATION_LIST.includes(children.type.name) ? (
@@ -20,7 +22,7 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
           <div className="not">{children}</div>
         </>
       )}
-
+    <TopButton/>
       <style jsx>
         {`
           .children {
