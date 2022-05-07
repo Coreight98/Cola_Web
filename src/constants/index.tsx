@@ -11,6 +11,16 @@ export const INPUT_TYPE = {
   medium: { width: '300px', height: '40px' },
 };
 
+export const GITHUB_OAUTH_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL +
+  '/oauth2/authorization/github?redirect_uri=' +
+  process.env.NEXT_PUBLIC_NEXTAUTH_URL;
+
+export const GOOGLE_OAUTH_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL +
+  '/oauth2/authorization/google?redirect_uri=' +
+  process.env.NEXT_PUBLIC_NEXTAUTH_URL;
+
 export const MAJOR_TYPE = {
   me: '기계공학과',
   env: '환경안전공학과',
