@@ -27,7 +27,7 @@ const LoginBtnStyle = styled(Button)`
   }
 `;
 
-const LoginBtn = ({ type, onClick }: { type: 'google' | 'github'; onClick: () => void }) => {
+const LoginBtn = ({ type, onClick }: { type: 'google' | 'github'; onClick?: () => void }) => {
   return (
     <LoginBtnStyle onClick={onClick}>
       {type === 'google' && <Google />}
