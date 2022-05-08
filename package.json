@@ -21,6 +21,7 @@
         "react-hook-form": "^7.27.1",
         "react-query": "^3.34.16",
         "recoil": "^0.6.1",
+        "socket.io-client": "^4.5.0",
         "yup": "^0.32.11"
     },
     "devDependencies": {
