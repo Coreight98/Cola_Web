@@ -2,32 +2,20 @@ import Link from 'next/link';
 
 import LoginBtn from '@components/atoms/button/login';
 import Seo from '@components/Seo';
-import { Container, Header, AuthContentWrapper, SocialLogin } from '@styles/signIn';
-
-// import Auth from '@utils/api/main';
+import { GOOGLE_OAUTH_URL, GITHUB_OAUTH_URL } from '@constants/index';
+import { Container, Header, AuthContentWrapper } from '@styles/signIn';
 
 const SignIn = () => {
-  // const onSubmit: SubmitHandler<SignInFormInterface> = ({ email, password }: SignInFormInterface) => {
-  //   const res = Auth.singIn({ email, password });
-  //   console.log(res.message);
-  // };
-  const onClickGithub = () => {
-    alert('singIn github');
-  };
-  const onClickGoogle = () => {
-    alert('singIn google');
-  };
-
   return (
     <Container>
       <Seo title="SignIn" />
       <Header>로그인</Header>
       <AuthContentWrapper>
-        <Link href="">
-          <LoginBtn type="google" onClick={onClickGoogle} />
+        <Link href={GOOGLE_OAUTH_URL}>
+          <LoginBtn type="google" />
         </Link>
-        <Link href="http://ec2-3-39-4-189.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/github">
-          <LoginBtn type="github" onClick={onClickGithub} />
+        <Link href={GITHUB_OAUTH_URL}>
+          <LoginBtn type="github" />
         </Link>
       </AuthContentWrapper>
     </Container>
