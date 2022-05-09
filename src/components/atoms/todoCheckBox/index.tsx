@@ -38,6 +38,7 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
         </CheckBoxWrapper>
       ) : (
         <input
+          style={{ width: '100%', padding: '0.5rem' }}
           ref={inputRef}
           onBlur={() => handleFocus(target)}
           onKeyPress={(e) => {

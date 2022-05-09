@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 
 import Calender from '@molecules/calender';
 import TodoArea from '@molecules/todoArea';
-import { Container, CalendarContainer } from '@styles/todolist';
+import { Container, CalendarContainer, TodoContainer, TodoInfoWrapper, TodoDate, TodoUtils } from '@styles/todolist';
 import { todoState } from 'src/store';
 
 const Todolist: NextPage = () => {
@@ -58,19 +58,31 @@ const Todolist: NextPage = () => {
         <Calender {...{ date, handleChangeMonth }} />
       </CalendarContainer>
       {isWindowReady && (
-        <DragDropContext onDragEnd={onDragEnd}>
-          {Object.keys(toDos).map((board: string, idx) => (
-            <Droppable key={board + (idx + '')} droppableId={board}>
-              {(provided, snapshot) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <TodoArea area={board} idx={idx} dragMode={true}>
-                    {provided.placeholder}
-                  </TodoArea>
-                </div>
-              )}
-            </Droppable>
-          ))}
-        </DragDropContext>
+        <TodoContainer>
+          <TodoInfoWrapper>
+            <TodoDate>
+              <span>{date.getDate() + 1}</span>
+              <span>{date.toDateString().split(' ')[0].toUpperCase()}</span>
+            </TodoDate>
+            <TodoUtils>
+              <button>Menu</button>
+              <button>Delete</button>
+            </TodoUtils>
+          </TodoInfoWrapper>
+          <DragDropContext onDragEnd={onDragEnd}>
+            {Object.keys(toDos).map((board: string, idx) => (
+              <Droppable key={board + (idx + '')} droppableId={board}>
+                {(provided, snapshot) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <TodoArea area={board} idx={idx} dragMode={true}>
+                      {provided.placeholder}
+                    </TodoArea>
+                  </div>
+                )}
+              </Droppable>
+            ))}
+          </DragDropContext>
+        </TodoContainer>
       )}
     </Container>
   );

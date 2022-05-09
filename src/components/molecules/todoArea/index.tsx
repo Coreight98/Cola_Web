@@ -53,7 +53,7 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
   return (
     <Container>
       <FolderTitleWrapper>
-        <h3>{area}</h3>
+        <span>{area}</span>
         <BtnAddTodo onClick={() => !focus && handleClick(area)}>+</BtnAddTodo>
       </FolderTitleWrapper>
       <Wrapper>
