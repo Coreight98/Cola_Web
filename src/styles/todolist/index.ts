@@ -4,14 +4,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px;
-  width: calc(100vw - 90px);
+  width: 100%;
+  max-width: 1440px;
+  padding: 1rem 2rem;
   height: 100%;
-  gap: 3rem;
 `;
 const CalendarContainer = styled.div`
-  width: 50%;
-  height: 50%;
+  width: 700px;
+  height: 700px;
+  padding: 5rem;
 `;
-
+const TodoContainer = styled.div``;
 export { Container, CalendarContainer };
