@@ -7,7 +7,16 @@ import { useRecoilState } from 'recoil';
 
 import Calender from '@molecules/calender';
 import TodoArea from '@molecules/todoArea';
-import { Container, CalendarContainer, TodoContainer, TodoInfoWrapper, TodoDate, TodoUtils } from '@styles/todolist';
+import {
+  BackgroundView,
+  BackgroundSecondView,
+  Container,
+  CalendarContainer,
+  TodoContainer,
+  TodoInfoWrapper,
+  TodoDate,
+  TodoUtils,
+} from '@styles/todolist';
 import { todoState } from 'src/store';
 
 const Todolist: NextPage = () => {
@@ -55,6 +64,8 @@ const Todolist: NextPage = () => {
   };
   return (
     <Container>
+      <BackgroundView />
+      <BackgroundSecondView />
       <CalendarContainer>
         <Calender {...{ date, handleChangeMonth }} />
       </CalendarContainer>
