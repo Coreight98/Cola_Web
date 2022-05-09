@@ -4,7 +4,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   max-width: 1440px;
   max-height: 786px;
   height: 100%;
