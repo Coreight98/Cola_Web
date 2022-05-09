@@ -6,8 +6,10 @@ const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 1440px;
+  max-height: 786px;
   padding: 1rem 0;
   height: 100%;
+  margin: auto 0;
 `;
 const CalendarContainer = styled.div`
   width: 700px;

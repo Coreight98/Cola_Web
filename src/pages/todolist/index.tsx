@@ -17,6 +17,7 @@ const Todolist: NextPage = () => {
   }, []);
   const [date, setDate] = useState(new Date());
 
+  const today = new Date();
   const handleChangeMonth = (condition: number) => setDate(new Date(date.getFullYear(), date.getMonth() + condition));
 
   const [toDos, setToDos] = useRecoilState(todoState);
@@ -61,8 +62,8 @@ const Todolist: NextPage = () => {
         <TodoContainer>
           <TodoInfoWrapper>
             <TodoDate>
-              <span>{date.getDate() + 1}</span>
-              <span>{date.toDateString().split(' ')[0].toUpperCase()}</span>
+              <span>{today.getDate()}</span>
+              <span>{today.toDateString().split(' ')[0].toUpperCase()}</span>
             </TodoDate>
             <TodoUtils>
               <button>Menu</button>
