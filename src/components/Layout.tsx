@@ -7,18 +7,20 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
   const NOT_NAVIGATION_LIST = ['SignUp', 'SignIn', 'SignUpPolicy'];
   return (
     <>
-      {isValidElement(children) &&
-      typeof children.type !== 'string' &&
-      !NOT_NAVIGATION_LIST.includes(children.type.name) ? (
-        <>
-          <Navigation />
-          <div className="children">{children}</div>
-        </>
+      {isValidElement(children) && typeof children.type !== 'string' && children.type.name !== 'GatherMap' ? (
+        !NOT_NAVIGATION_LIST.includes(children.type.name) ? (
+          <>
+            <Navigation />
+            <div className="children">{children}</div>
+          </>
+        ) : (
+          <>
+            <AuthNavigation />
+            <div className="not">{children}</div>
+          </>
+        )
       ) : (
-        <>
-          <AuthNavigation />
-          <div className="not">{children}</div>
-        </>
+        <div>{children}</div>
       )}
 
       <style jsx>
