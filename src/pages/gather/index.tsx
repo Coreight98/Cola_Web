@@ -1,46 +1,25 @@
-import { useState, useEffect, useRef } from 'react';
-
+import { useEffect, useRef } from 'react';
 import type { NextPage } from 'next';
 
 import Button from '@components/atoms/button/submit';
 import Input from '@components/atoms/input';
 import socket from '@store/gatherSocket';
 import { FlexColumn, Container } from '@styles/gather';
-import useChat from '@utils/libs/useChat';
-import useInput from '@utils/libs/useInput';
-import { IUser, IChat, IUsers } from '~/types/gather';
+import { useRouter } from 'next/router';
 
 const Gather: NextPage = () => {
   const usernameRef = useRef('');
-  const [user, setUser] = useState<IUser>();
-  const [users, setUsers] = useState<IUsers>([]);
-  const [chatInput, setChatInput, onChangeChatInput, onKeyPressEnter, chatList, setChatList] = useChat(
-    socket,
-    user as IUser,
-  );
+  const router = useRouter();
 
-  useEffect(() => {
-    socket.on('connect', () => {
+  const handleSubmitName = async () => {
+    socket.once('connect', () => {
       console.log('소켓 연결됨', socket.id);
     });
-
-    socket.on('set-user', (user: IUser) => {
-      console.log('유저 생성 됨', user);
-      setUser(user);
+    await socket.emit('CREATE_ROOM', ({ status, message, code }: { status: string; message: string; code: string }) => {
+      console.log(message);
+      router.push('/gather/map' + '/' + code + '?name=' + usernameRef.current);
     });
-    socket.on('users-changed', (users: IUsers) => {
-      setUsers(users);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
-  const handleSubmitName = () => {
-    socket.emit('join-room', usernameRef.current);
   };
-
   return (
     <Container>
       <h2>Ajou Mogakco에 오신 것을 환영합니다</h2>
@@ -53,7 +32,6 @@ const Gather: NextPage = () => {
           onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === 'Enter') {
               e.preventDefault();
-              handleSubmitName();
             }
           }}
         />
@@ -61,34 +39,7 @@ const Gather: NextPage = () => {
           확인
         </Button>
       </FlexColumn>
-
-      {users && user?.cId && (
-        <FlexColumn>
-          <h3>유저 목록</h3>
-          <div>
-            {Object.values(users).map((roomUser: IUser) => (
-              <span
-                style={{ padding: '1rem', color: user.cId === roomUser.cId ? 'green' : 'black' }}
-                key={roomUser.cId}
-              >
-                {roomUser.name}
-              </span>
-            ))}
-          </div>
-          <div>
-            <h3>채팅</h3>
-            <Input type="text" value={chatInput} onKeyPress={onKeyPressEnter} onChange={onChangeChatInput} />
-            <div>
-              {chatList.map((chat) => (
-                <p key={chat.id}>
-                  {chat.text} - by {chat.name}
-                </p>
-              ))}
-            </div>
-          </div>
-        </FlexColumn>
-      )}
-      {!user?.cId && <FlexColumn>입장해주세요</FlexColumn>}
+      <FlexColumn>입장해주세요</FlexColumn>
     </Container>
   );
 };

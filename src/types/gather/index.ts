@@ -1,19 +1,24 @@
 export interface IUser {
   name: string;
-  enrollmentDate: number;
   x: number;
   y: number;
-  direction: string;
-  state?: string;
-  cId: string;
+  direction: 'up' | 'down' | 'left' | 'right';
+  state: 'left' | 'right' | 'mid';
+  cId: number;
 }
 export interface IChat {
+  status: string;
   text: string;
   name: string;
-  cId: string;
+  cId: number;
   date: number;
   id: string;
 }
 export interface IUsers {
-  [key: number]: IUser;
+  [key: string]: IUser;
+}
+
+export interface IMargin {
+  top: number;
+  left: number;
 }
