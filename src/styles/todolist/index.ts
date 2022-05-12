@@ -41,6 +41,7 @@ const CalendarContainer = styled.div`
   border-radius: 5px 0px 0px 5px;
 `;
 const TodoContainer = styled.div`
+  position: relative;
   border-radius: 0px 5px 5px 0px;
   z-index: 10;
   width: 600px;

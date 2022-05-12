@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
 import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd'; // eslint-disable-line
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
+import TodoMenuModal from '@components/molecules/todoMenuModal';
 import Calender from '@molecules/calender';
 import TodoArea from '@molecules/todoArea';
+import { todoModal } from '@store/todo';
 import {
   BackgroundView,
   BackgroundSecondView,
@@ -21,6 +23,8 @@ import {
 import { todoState } from 'src/store';
 
 const Todolist: NextPage = () => {
+  const todoMenuModal = useRecoilValue(todoModal);
+
   const [isWindowReady, setWindowReady] = useState(false);
   useEffect(() => {
     setWindowReady(true);
@@ -97,6 +101,8 @@ const Todolist: NextPage = () => {
               ))}
             </DragDropContext>
           </TodoWrapper>
+
+          {todoMenuModal && <TodoMenuModal></TodoMenuModal>}
         </TodoContainer>
       )}
     </Container>
