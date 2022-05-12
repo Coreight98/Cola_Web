@@ -46,7 +46,7 @@ const TodoContainer = styled.div`
   width: 600px;
   height: 100%;
   padding: 2rem 4rem;
-  overflow-y: scroll;
+  overflow: hidden;
   background-color: ${({ theme: { colors } }) => colors.blue[500]};
   &::-webkit-scrollbar {
     width: 6px;
@@ -91,6 +91,19 @@ const TodoUtils = styled(TodoInfo)`
     cursor: pointer;
   }
 `;
+const TodoWrapper = styled.div`
+  overflow-y: scroll;
+  height: 35em;
+  padding: 0.4rem;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    background: #eee;
+    border-radius: 4px;
+  }
+`;
 export {
   Container,
   BackgroundView,
@@ -100,4 +113,5 @@ export {
   TodoInfoWrapper,
   TodoDate,
   TodoUtils,
+  TodoWrapper,
 };

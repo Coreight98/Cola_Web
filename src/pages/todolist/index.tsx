@@ -16,6 +16,7 @@ import {
   TodoInfoWrapper,
   TodoDate,
   TodoUtils,
+  TodoWrapper,
 } from '@styles/todolist';
 import { todoState } from 'src/store';
 
@@ -81,19 +82,21 @@ const Todolist: NextPage = () => {
               <button>Delete</button>
             </TodoUtils>
           </TodoInfoWrapper>
-          <DragDropContext onDragEnd={onDragEnd}>
-            {Object.keys(toDos).map((board: string, idx) => (
-              <Droppable key={board + (idx + '')} droppableId={board}>
-                {(provided, snapshot) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    <TodoArea area={board} idx={idx} dragMode={true}>
-                      {provided.placeholder}
-                    </TodoArea>
-                  </div>
-                )}
-              </Droppable>
-            ))}
-          </DragDropContext>
+          <TodoWrapper>
+            <DragDropContext onDragEnd={onDragEnd}>
+              {Object.keys(toDos).map((board: string, idx) => (
+                <Droppable key={board + (idx + '')} droppableId={board}>
+                  {(provided, snapshot) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <TodoArea area={board} idx={idx} dragMode={true}>
+                        {provided.placeholder}
+                      </TodoArea>
+                    </div>
+                  )}
+                </Droppable>
+              ))}
+            </DragDropContext>
+          </TodoWrapper>
         </TodoContainer>
       )}
     </Container>
