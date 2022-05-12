@@ -1,12 +1,12 @@
-import { RefObject, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 import { resetServerContext } from 'react-beautiful-dnd';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { FlexRow, CheckBoxWrapper, CheckBox, MenuWrapper } from './styles';
 
-import { todoModal, todoModalContent } from '@store/todo';
+import { todoEditMode, todoModal, todoModalContent } from '@store/todo';
 import { theme } from '@styles/theme';
 
 export interface Props {
@@ -14,7 +14,7 @@ export interface Props {
   toDoContent: string;
   target: string;
   inputRef: RefObject<HTMLInputElement>;
-  handleFocus: (key: string) => void;
+  handleFocus: (key: string, value: string, toDoId?: number) => void;
   index: number;
 }
 
@@ -25,9 +25,20 @@ export const Type = {
 };
 
 const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {
+  const [inputValue, setInputValue] = useState('');
   const [typeStatus, setTypeStatus] = useState<keyof typeof Type>('todo');
+
+  // const [editMode, setEditMode] = useState(false);
+  const editMode = useRecoilValue(todoEditMode);
+
   const setTodoMenuModal = useSetRecoilState(todoModal);
-  const setTodoModalContent = useSetRecoilState(todoModalContent);
+  const [modalContent, setTodoModalContent] = useRecoilState(todoModalContent);
+
+  useEffect(() => {
+    if (editMode === toDoId) {
+      setInputValue(modalContent.content);
+    }
+  }, [editMode]);
 
   const handleChangeType = () =>
     setTypeStatus(typeStatus === 'todo' ? 'inProgress' : typeStatus === 'inProgress' ? 'done' : 'todo');
@@ -38,7 +49,7 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
   };
   return (
     <>
-      {toDoContent && toDoId ? (
+      {toDoContent && toDoId && editMode !== toDoId ? (
         <CheckBoxWrapper>
           {/* <input type="checkbox" /> */}
           <FlexRow>
@@ -52,11 +63,17 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
       ) : (
         <input
           style={{ width: '100%', padding: '0.5rem' }}
-          ref={inputRef}
-          onBlur={() => handleFocus(target)}
+          // ref={inputRef}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.currentTarget.value)}
+          onBlur={() => {
+            handleFocus(target, inputValue, toDoId);
+            setInputValue('');
+          }}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
-              handleFocus(target);
+              handleFocus(target, inputValue, toDoId);
+              setInputValue('');
             }
           }}
           autoFocus

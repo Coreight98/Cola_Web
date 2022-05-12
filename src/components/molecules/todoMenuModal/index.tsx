@@ -2,11 +2,22 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import { ModalBg, ModalContent, MenuItem, TodoTitle } from './styles';
 
-import { todoModal, todoModalContent } from '@store/todo';
+import { todoEditMode, todoModal, todoModalContent } from '@store/todo';
 
 const TodoMenuModal = () => {
   const setTodoMenuModal = useSetRecoilState(todoModal);
-  const [todo, setTodo] = useRecoilState(todoModalContent);
+  const [todo, setTodoModalContent] = useRecoilState(todoModalContent);
+  const setTodoEditMode = useSetRecoilState(todoEditMode);
+
+  const onClickEditTodo = () => {
+    setTodoMenuModal(false);
+    setTodoEditMode(todo.id);
+  };
+  const onClickClose = () => {
+    setTodoMenuModal(false);
+    setTodoEditMode(null);
+  };
+
   return (
     <ModalBg>
       <ModalContent>
@@ -14,10 +25,10 @@ const TodoMenuModal = () => {
           <span>{todo.content}</span>
         </TodoTitle>
         <MenuItem>
-          <span>수정</span>
+          <span onClick={onClickEditTodo}>수정</span>
         </MenuItem>
         <MenuItem>
-          <span onClick={() => setTodoMenuModal(false)}>닫기</span>
+          <span onClick={onClickClose}>닫기</span>
         </MenuItem>
       </ModalContent>
     </ModalBg>

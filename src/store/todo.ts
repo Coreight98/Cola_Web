@@ -16,3 +16,8 @@ export const todoModalContent = atom<IContent>({
     content: null,
   },
 });
+
+export const todoEditMode = atom({
+  key: 'todoEditModeState',
+  default: null,
+});
