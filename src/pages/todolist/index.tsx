@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SetStateAction, Dispatch } from 'react';
 
 import { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
@@ -22,21 +22,18 @@ import {
   DeleteBlock,
   TodoWrapper,
 } from '@styles/todolist';
-import { todoState, IToDo } from 'src/store';
+import { todoState, IToDo, ITodoState } from 'src/store';
 
-const Todolist: NextPage = () => {
-  const todoMenuModal = useRecoilValue(todoModal);
-
-  const [isWindowReady, setWindowReady] = useState(false);
-
-  useEffect(() => {
-    setWindowReady(true);
-  }, []);
+const useCalendar = (): [Date, Date, (condition: number) => void] => {
   const [date, setDate] = useState(new Date());
 
   const today = new Date();
   const handleChangeMonth = (condition: number) => setDate(new Date(date.getFullYear(), date.getMonth() + condition));
 
+  return [today, date, handleChangeMonth];
+};
+
+const useDragableTodo = () => {
   const [toDos, setToDos] = useRecoilState(todoState);
 
   const onDragEnd = (info: DropResult) => {
@@ -71,10 +68,16 @@ const Todolist: NextPage = () => {
     }
   };
 
+  return onDragEnd;
+};
+const useDeleteTodo = (): [boolean, () => void, (todoArea: string, todoId: number) => void] => {
+  const [toDos, setToDos] = useRecoilState(todoState);
+
   const [deleteMode, setDeleteMode] = useState(false);
   const [toDeleteItems, setToDeleteItems] = useState<{
     [key: string]: number[];
   }>({});
+
   useEffect(() => {
     setToDeleteItems({});
   }, [deleteMode]);
@@ -109,6 +112,24 @@ const Todolist: NextPage = () => {
       });
     }
   };
+
+  return [deleteMode, onClickDelete, onCheckDeleteItem];
+};
+
+const Todolist: NextPage = () => {
+  const [today, date, handleChangeMonth] = useCalendar();
+
+  const toDos = useRecoilValue(todoState);
+  const onDragEnd = useDragableTodo();
+  const [deleteMode, onClickDelete, onCheckDeleteItem] = useDeleteTodo();
+
+  const todoMenuModal = useRecoilValue(todoModal);
+
+  const [isWindowReady, setWindowReady] = useState(false);
+
+  useEffect(() => {
+    setWindowReady(true);
+  }, []);
 
   return (
     <Container>
