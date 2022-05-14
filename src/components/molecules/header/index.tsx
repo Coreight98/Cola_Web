@@ -20,7 +20,7 @@ import Logo from '@assets/icon/logo.svg';
 import UserDefault from '@components/atoms/icon/userDefault';
 import { NAV_MENU } from '@constants/index';
 import SideBar from '@molecules/sidebar';
-import { setCookies, getCookies } from '@utils/api/cookie';
+import { setCookies, getCookies } from '@utils/cookie';
 
 const Header = () => {
   const router = useRouter();
