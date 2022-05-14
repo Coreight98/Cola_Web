@@ -6,23 +6,26 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { Container, Wrapper, FolderTitleWrapper, BtnAddTodo } from './styles';
 
+import FolderIcon from '@assets/icon/folder_primary.svg';
 import DraggableTodo from '@components/atoms/todoCheckBox/draggable';
 import TodoCheckBox from '@components/atoms/todoCheckBox/index';
 import { todoEditMode, todoModalContent } from '@store/todo';
-import { todoState } from 'src/store';
+import { todoState, IToDo } from 'src/store';
 
 export interface ITodoAreaProps {
   area: string;
   idx: number;
   // toDos: string[];
   dragMode?: boolean;
+  deleteMode: boolean;
+  checkDelete: (todoAre: string, todoId: number) => void;
   children: any;
 }
 interface Props {
   [key: string]: string[];
 }
 
-const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => {
+const TodoArea = ({ area, idx, dragMode = false, deleteMode, checkDelete, children }: ITodoAreaProps) => {
   const [todo, setTodoList] = useRecoilState(todoState);
 
   const [focus, setFocus] = useState(false);
@@ -88,7 +91,12 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
   return (
     <Container>
       <FolderTitleWrapper>
-        <span>{area}</span>
+        <div>
+          <span>
+            <FolderIcon />
+          </span>
+          <span>{area}</span>
+        </div>
         <BtnAddTodo onClick={() => !focus && handleClick(area)}>+</BtnAddTodo>
       </FolderTitleWrapper>
       <Wrapper>
@@ -104,6 +112,8 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
                 handleFocus={handleFocus}
                 inputRef={inputRef}
                 index={index}
+                deleteMode={deleteMode}
+                checkDelete={checkDelete}
               />
             ) : (
               <TodoCheckBox
@@ -114,6 +124,8 @@ const TodoArea = ({ area, idx, dragMode = false, children }: ITodoAreaProps) => 
                 handleFocus={handleFocus}
                 inputRef={inputRef}
                 index={index}
+                deleteMode={deleteMode}
+                checkDelete={checkDelete}
               />
             ),
           )

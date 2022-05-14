@@ -4,8 +4,9 @@ import { GetServerSideProps } from 'next';
 import { resetServerContext } from 'react-beautiful-dnd';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { FlexRow, CheckBoxWrapper, CheckBox, MenuWrapper } from './styles';
+import { FlexRow, CheckBoxWrapper, CheckBox, MenuWrapper, DeleteCheckBox } from './styles';
 
+import { IToDo } from '@store/index';
 import { todoEditMode, todoModal, todoModalContent } from '@store/todo';
 import { theme } from '@styles/theme';
 
@@ -16,6 +17,8 @@ export interface Props {
   inputRef: RefObject<HTMLInputElement>;
   handleFocus: (key: string, value: string, toDoId?: number) => void;
   index: number;
+  deleteMode: boolean;
+  checkDelete: (todoArea: string, todoId: number) => void;
 }
 
 export const Type = {
@@ -24,11 +27,21 @@ export const Type = {
   done: theme.colors.red[600],
 };
 
-const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, index }: Props) => {
+const TodoCheckBox = ({
+  toDoId,
+  toDoContent,
+  target,
+  handleFocus,
+  inputRef,
+  index,
+  deleteMode,
+  checkDelete,
+}: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [typeStatus, setTypeStatus] = useState<keyof typeof Type>('todo');
 
-  // const [editMode, setEditMode] = useState(false);
+  const [deleteChecked, setDeleteCheck] = useState(false);
+
   const editMode = useRecoilValue(todoEditMode);
 
   const setTodoMenuModal = useSetRecoilState(todoModal);
@@ -39,7 +52,9 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
       setInputValue(modalContent.content);
     }
   }, [editMode]);
-
+  useEffect(() => {
+    setDeleteCheck(false);
+  }, [deleteMode]);
   const handleChangeType = () =>
     setTypeStatus(typeStatus === 'todo' ? 'inProgress' : typeStatus === 'inProgress' ? 'done' : 'todo');
 
@@ -47,6 +62,7 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
     setTodoMenuModal(true);
     setTodoModalContent({ id: toDoId, content: toDoContent });
   };
+
   return (
     <>
       {toDoContent && toDoId && editMode !== toDoId ? (
@@ -56,8 +72,17 @@ const TodoCheckBox = ({ toDoId, toDoContent, target, handleFocus, inputRef, inde
             <CheckBox onClick={handleChangeType} typeColor={Type[typeStatus]}></CheckBox>
             <div key={toDoId}>{toDoContent}</div>
           </FlexRow>
-          <MenuWrapper onClick={onClickMenu}>
-            <span>...</span>
+          <MenuWrapper>
+            {!deleteMode && <span onClick={onClickMenu}>...</span>}
+            {deleteMode && (
+              <DeleteCheckBox
+                checked={deleteChecked}
+                onClick={() => {
+                  setDeleteCheck((prev) => !prev);
+                  checkDelete(target, toDoId);
+                }}
+              />
+            )}
           </MenuWrapper>
         </CheckBoxWrapper>
       ) : (

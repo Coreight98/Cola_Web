@@ -35,13 +35,25 @@ const MenuWrapper = styled(FlexRow)`
   width: 1.5rem;
   border-radius: 100%;
   transition: all 200ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   span {
     position: absolute;
     top: -0.3rem;
     left: 0.3rem;
+    line-height: 1.5rem;
   }
   &:hover {
     background: ${({ theme: { colors } }) => colors.blue[400]};
   }
 `;
-export { FlexRow, CheckBoxWrapper, CheckBox, MenuWrapper };
+
+const DeleteCheckBox = styled.div<{ checked: boolean }>`
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid white;
+  border-radius: 100%;
+  background: ${({ checked, theme: { colors } }) => (checked ? colors.blue[500] : 'white')};
+`;
+export { FlexRow, CheckBoxWrapper, CheckBox, MenuWrapper, DeleteCheckBox };

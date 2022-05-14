@@ -31,6 +31,9 @@ const FolderTitleWrapper = styled.div`
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   font-weight: 600;
+  span {
+    padding: 0 0.3rem;
+  }
 `;
 const BtnAddTodo = styled.button`
   cursor: pointer;

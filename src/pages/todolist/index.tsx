@@ -18,14 +18,17 @@ import {
   TodoInfoWrapper,
   TodoDate,
   TodoUtils,
+  DeleteBtn,
+  DeleteBlock,
   TodoWrapper,
 } from '@styles/todolist';
-import { todoState } from 'src/store';
+import { todoState, IToDo } from 'src/store';
 
 const Todolist: NextPage = () => {
   const todoMenuModal = useRecoilValue(todoModal);
 
   const [isWindowReady, setWindowReady] = useState(false);
+
   useEffect(() => {
     setWindowReady(true);
   }, []);
@@ -67,6 +70,46 @@ const Todolist: NextPage = () => {
       });
     }
   };
+
+  const [deleteMode, setDeleteMode] = useState(false);
+  const [toDeleteItems, setToDeleteItems] = useState<{
+    [key: string]: number[];
+  }>({});
+  useEffect(() => {
+    setToDeleteItems({});
+  }, [deleteMode]);
+
+  const onClickDelete = () => {
+    deleteTodo();
+    setDeleteMode((value) => !value);
+  };
+  const onCheckDeleteItem = (todoArea: string, todoId: number) => {
+    const currentBoard = toDeleteItems[todoArea] ? [...toDeleteItems[todoArea]] : [];
+
+    if (!currentBoard.find((v) => v === todoId)) {
+      currentBoard.push(todoId);
+    }
+    setToDeleteItems((current) => {
+      return {
+        ...current,
+        [todoArea]: currentBoard,
+      };
+    });
+  };
+
+  const deleteTodo = () => {
+    for (const folder in toDeleteItems) {
+      setToDos((allFolder) => {
+        const items = [...allFolder[folder]];
+        for (const item of toDeleteItems[folder]) {
+          const itemIdx = items.findIndex((v) => v.id === item);
+          items.splice(itemIdx, 1);
+        }
+        return { ...allFolder, [folder]: items };
+      });
+    }
+  };
+
   return (
     <Container>
       <BackgroundView />
@@ -83,7 +126,10 @@ const Todolist: NextPage = () => {
             </TodoDate>
             <TodoUtils>
               <button>Menu</button>
-              <button>Delete</button>
+              <DeleteBtn deleteMode={deleteMode} onClick={onClickDelete}>
+                <DeleteBlock deleteMode={deleteMode}></DeleteBlock>
+                삭제
+              </DeleteBtn>
             </TodoUtils>
           </TodoInfoWrapper>
           <TodoWrapper>
@@ -92,7 +138,13 @@ const Todolist: NextPage = () => {
                 <Droppable key={board + (idx + '')} droppableId={board}>
                   {(provided, snapshot) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                      <TodoArea area={board} idx={idx} dragMode={true}>
+                      <TodoArea
+                        area={board}
+                        idx={idx}
+                        dragMode={true}
+                        deleteMode={deleteMode}
+                        checkDelete={onCheckDeleteItem}
+                      >
                         {provided.placeholder}
                       </TodoArea>
                     </div>

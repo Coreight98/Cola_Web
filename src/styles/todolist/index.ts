@@ -84,13 +84,36 @@ const TodoDate = styled(TodoInfo)`
   }
 `;
 const TodoUtils = styled(TodoInfo)`
-  button {
+  /* button {
     height: 2rem;
-    color: white;
-    background: none;
+    width: 3rem;
+    background: white;
     border: none;
     cursor: pointer;
-  }
+  } */
+`;
+const DeleteBtn = styled.div<{ deleteMode: boolean }>`
+  cursor: pointer;
+  position: relative;
+  width: 3rem;
+  height: 2rem;
+  box-shadow: inset 0px 0px 6px #00000029;
+  border-radius: 3px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 2rem;
+  transition: all 200ms linear;
+`;
+const DeleteBlock = styled.span<{ deleteMode: boolean }>`
+  position: absolute;
+  display: block;
+  top: 0;
+  left: ${({ deleteMode }) => (deleteMode ? '-3rem' : '0')};
+  width: 3rem;
+  height: 2rem;
+  border-radius: 3px;
+  background: white;
+  transition: all 200ms linear;
 `;
 const TodoWrapper = styled.div`
   overflow-y: scroll;
@@ -114,5 +137,7 @@ export {
   TodoInfoWrapper,
   TodoDate,
   TodoUtils,
+  DeleteBtn,
+  DeleteBlock,
   TodoWrapper,
 };
