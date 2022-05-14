@@ -1,5 +1,6 @@
 import { ReactChild, ReactChildren, isValidElement } from 'react';
 
+import TopButton from './atoms/topbutton';
 import Navigation from './organisms/Navigation';
 import AuthNavigation from './organisms/Navigation/AuthNavigation';
 
@@ -22,17 +23,18 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
       ) : (
         <div>{children}</div>
       )}
-
+      <TopButton />
       <style jsx>
         {`
           .children {
             display: flex;
             justify-content: center;
             padding-top: 5rem;
-            padding-left: 1rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
             transition: 0.2s ease-in-out;
-            width: calc(100vw - 5rem);
-            height: calc(100vh - 1rem);
+            width: 100%;
+            height: calc(100vh);
           }
           .not {
             width: 100vw;
