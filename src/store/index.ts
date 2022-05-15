@@ -1,4 +1,4 @@
-import { atom, selector, useRecoilState } from 'recoil';
+import { atom, selector } from 'recoil';
 
 import { toDos as dummyToDos, doings as dummyDoings, dones as dummyDones } from '@constants/todoDummy';
 
