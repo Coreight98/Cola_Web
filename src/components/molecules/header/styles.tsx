@@ -38,6 +38,13 @@ const SubTitle = styled.span`
   font-size: 14px;
   padding: 0px 10px;
 `;
+
+const HeaderSection = styled.div`
+  display: flex;
+  margin: 0 2rem;
+  justify-content: space-around;
+  align-items: center;
+`;
 const HeaderBtn = styled.button`
   background: none;
   border: none;
@@ -93,6 +100,7 @@ export {
   MenuWrapper,
   Title,
   SubTitle,
+  HeaderSection,
   HeaderBtn,
   DropDownWrapper,
   DropDownContent,
