@@ -13,8 +13,7 @@ import Character from '@components/organisms/character';
 import ChattingBar from '@components/organisms/chattingBar';
 
 const GatherMap = () => {
-  const router = useRouter();
-  const { id: code, name } = router.query;
+  const { id: code, name } = useRouter().query;
   const [user, setUser] = useState<IUser>(defaultUserSetting as IUser);
   const [users, setUsers] = useState<IUsers>({});
 
@@ -51,12 +50,10 @@ const GatherMap = () => {
 
     socket.on('changeMove', (list, temp) => {
       setUsers(list);
-      if (temp !== null)
-        (function () {
-          setBackground((v) => temp ?? v);
-          setMove(false);
-        })();
-      else setMove(true);
+      if (temp !== null) {
+        setBackground((v) => temp ?? v);
+        setMove(false);
+      } else setMove(true);
     });
 
     return () => {
