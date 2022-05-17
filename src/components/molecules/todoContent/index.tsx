@@ -104,7 +104,9 @@ const TodoContent = ({ today }: { today: Date }) => {
         <TodoUtils>
           <span>{today.toDateString().split(' ')[0].toUpperCase()}</span>
           <DeleteBtn deleteMode={deleteMode} onClick={onClickDelete}>
-            <DeleteBlock deleteMode={deleteMode}></DeleteBlock>
+            <DeleteBlock deleteMode={deleteMode}>
+              <img src="/trash.svg" />
+            </DeleteBlock>
             삭제
           </DeleteBtn>
         </TodoUtils>

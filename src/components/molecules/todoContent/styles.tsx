@@ -57,7 +57,7 @@ const DeleteBtn = styled.div<{ deleteMode: boolean }>`
   line-height: 2rem;
   transition: all 200ms linear;
 `;
-const DeleteBlock = styled.span<{ deleteMode: boolean }>`
+const DeleteBlock = styled.div<{ deleteMode: boolean }>`
   position: absolute;
   display: block;
   top: 0;
