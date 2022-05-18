@@ -1,4 +1,4 @@
-import { useEffect, useState, SetStateAction, Dispatch } from 'react';
+import { useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
@@ -22,7 +22,7 @@ import {
   DeleteBlock,
   TodoWrapper,
 } from '@styles/todolist';
-import { todoState, IToDo, ITodoState } from 'src/store';
+import { todoState } from 'src/store';
 
 const useCalendar = (): [Date, Date, (condition: number) => void] => {
   const [date, setDate] = useState(new Date());
