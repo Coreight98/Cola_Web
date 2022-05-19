@@ -68,9 +68,9 @@ const SignUpForm = ({ handleModalOnOff, major }: Props) => {
     }
   };
 
-  const onSubmit = (dd: any) => {
+  const onSubmit = (data: SignUpFormInterface) => {
     if (!isEmailValid) return;
-    console.log(dd);
+    console.log(data);
   };
 
   const handleChange = () => {
