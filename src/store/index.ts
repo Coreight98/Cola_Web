@@ -1,7 +1,5 @@
 import { atom, selector } from 'recoil';
 
-import { toDos as dummyToDos, doings as dummyDoings, dones as dummyDones } from '@constants/todoDummy';
-
 export interface IToDo {
   id: number;
   content: string;
@@ -11,11 +9,7 @@ export interface ITodoState {
 }
 export const todoState = atom<ITodoState>({
   key: 'todoState',
-  default: {
-    ToDo: [...dummyToDos],
-    Doing: [...dummyDoings],
-    Done: [...dummyDones],
-  },
+  default: {} as ITodoState,
 });
 
 export const accessTokenState = atom<string>({
