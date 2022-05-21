@@ -28,11 +28,12 @@ export default function Layout({ children }: { children: ReactChild | ReactChild
             display: flex;
             justify-content: center;
             padding-top: 5rem;
-            padding-left: 3rem;
-            padding-right: 3rem;
+             {
+              /* padding-left: 3rem;
+            padding-right: 3rem; */
+            }
             transition: 0.2s ease-in-out;
             width: 100%;
-            height: calc(100vh);
           }
           .not {
             width: 100vw;
