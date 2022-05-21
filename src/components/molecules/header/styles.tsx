@@ -65,21 +65,15 @@ const DropDownWrapper = styled.div`
   position: relative;
 `;
 const DropDownContent = styled.div<IDropdownMenu>`
-  cursor: pointer;
   z-index: 100;
   position: absolute;
   top: 4.5rem;
-  right: 1rem;
+  right: 0rem;
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   height: fit-content;
-  width: 10rem;
-  border-radius: 0.5rem;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: #f3f5f7;
-  color: #242424;
-  /* transition: all 300ms linear; */
+  transition: all 300ms linear;
 `;
 const DropDownItem = styled.span`
   width: 100%;

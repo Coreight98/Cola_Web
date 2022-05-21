@@ -9,6 +9,10 @@ const Container = styled.div`
 `;
 
 const Navigation = () => {
-  return <Container>{/* <Header /> */}</Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
 export default Navigation;

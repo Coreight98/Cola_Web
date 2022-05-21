@@ -18,6 +18,7 @@ import {
 import Heart from '@assets/icon/heart.svg';
 import Logo from '@assets/icon/logo.svg';
 import UserDefault from '@components/atoms/icon/userDefault';
+import ProfileDropdown from '@components/organisms/profileDropdown';
 import { NAV_MENU } from '@constants/index';
 import SideBar from '@molecules/sidebar';
 import { setCookies, getCookies } from '@utils/cookie';
@@ -76,8 +77,6 @@ const Header = () => {
       </DropDownItem>
     ));
 
-  const dropDownMenu = () => (loginState ? authMenu() : notAuthMenu());
-
   return (
     <Container>
       <SideBar />
@@ -95,7 +94,7 @@ const Header = () => {
             <UserDefault />
           </HeaderBtn>
           <DropDownContent isOpen={profileMenu} ref={dropdownRef}>
-            {dropDownMenu()}
+            <ProfileDropdown />
           </DropDownContent>
         </DropDownWrapper>
       </HeaderSection>
