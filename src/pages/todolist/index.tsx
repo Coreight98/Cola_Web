@@ -25,7 +25,7 @@ import {
 import { getTodoList, saveTodoList } from '@utils/api/Todo';
 import { ITodoState, todoState } from 'src/store';
 
-const useCalendar = (): [Date, Date, (condition: number) => void] => {
+export const useCalendar = (): [Date, Date, (condition: number) => void] => {
   const [date, setDate] = useState(new Date());
 
   const today = new Date();
@@ -151,8 +151,8 @@ const Todolist: NextPage = () => {
 
   return (
     <Container>
-      <BackgroundView />
-      <BackgroundSecondView />
+      {/* <BackgroundView />
+      <BackgroundSecondView /> */}
       <CalendarContainer>
         <Calender {...{ date, handleChangeMonth }} />
       </CalendarContainer>

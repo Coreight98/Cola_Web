@@ -20,15 +20,17 @@ const CalenderNav = styled.div`
 const DateWrapper = styled(FlexColumn)`
   text-align: center;
 `;
-const MonthText = styled.span`
+const MonthText = styled.h2`
   font-size: 2.4rem;
   font-weight: 600;
   color: ${({ theme: { colors } }) => colors.blue[500]};
+  margin: 0;
 `;
-const YearText = styled.span`
+const YearText = styled.h3`
   font-size: 1.6rem;
   font-weight: 600;
   color: ${({ theme: { colors } }) => colors.blue[100]};
+  margin: 0;
 `;
 
 const DayWrapper = styled.div`
