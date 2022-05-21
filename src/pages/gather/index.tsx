@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
+
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import Button from '@components/atoms/button/submit';
 import Input from '@components/atoms/input';
 import socket from '@store/gatherSocket';
 import { FlexColumn, Container } from '@styles/gather';
-import { useRouter } from 'next/router';
 
 const Gather: NextPage = () => {
   const usernameRef = useRef('');

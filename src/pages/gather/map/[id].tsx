@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
+
 import { useRouter } from 'next/router';
 
-import socket from '@store/gatherSocket';
-
-import { IUser, IUsers } from '~/types/gather';
-import defaultUserSetting from '@utils/libs/defaultUserSetting';
-import defaultMapSetting from '@utils/libs/defaultMapSetting';
-import keyboardEvent from '@utils/libs/keyboardEvent';
-import { Container, LeftbarContainer } from '@styles/gather/map';
 import Background from '@components/organisms/background';
 import Character from '@components/organisms/character';
 import ChattingBar from '@components/organisms/chattingBar';
+import socket from '@store/gatherSocket';
+import { Container, LeftbarContainer } from '@styles/gather/map';
+import defaultMapSetting from '@utils/libs/defaultMapSetting';
+import defaultUserSetting from '@utils/libs/defaultUserSetting';
+import keyboardEvent from '@utils/libs/keyboardEvent';
+import { IUser, IUsers } from '~/types/gather';
 
 const GatherMap = () => {
   const { id: code, name } = useRouter().query;
@@ -48,7 +48,7 @@ const GatherMap = () => {
 
     handleMove.addEventListener('keyup', () => setUser((v) => ({ ...v, state: 'mid' })));
 
-    socket.on('changeMove', (list, temp) => {
+    socket.on('changeMove', (list: typeof users, temp: typeof background) => {
       setUsers(list);
       if (temp !== null) {
         setBackground((v) => temp ?? v);

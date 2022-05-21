@@ -19,7 +19,7 @@ const FolderIcon = ({ color = theme.colors.blue[500] }: Props) => {
           <rect id="사각형_29" data-name="사각형 29" width="15.667" height="12.275" fill="#6c7bfa" />
         </clipPath>
       </defs>
-      <g id="그룹_25" data-name="그룹 25" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <g id="그룹_25" data-name="그룹 25" transform="translate(0 0)" clipPath="url(#clip-path)">
         <path
           id="패스_35"
           data-name="패스 35"

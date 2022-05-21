@@ -1,11 +1,23 @@
-import { TodoContainer, TodoInfoWrapper, Title, TodoUtils, DeleteBtn, DeleteBlock, TodoWrapper } from './styles';
-import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd'; // eslint-disable-line
+import { useEffect, useState } from 'react';
+
 import { useRecoilValue, useRecoilState } from 'recoil';
+
+import {
+  TodoContainer,
+  TodoInfoWrapper,
+  Title,
+  TodoUtils,
+  DeleteBtn,
+  DeleteBlock,
+  TodoWrapper,
+  TodoDate,
+} from './styles';
+
+import { DragDropContext, DropResult, Droppable, resetServerContext } from 'react-beautiful-dnd'; // eslint-disable-line
+import TodoMenuModal from '@components/molecules/todoMenuModal';
 import TodoArea from '@molecules/todoArea';
 import { todoModal } from '@store/todo';
-import TodoMenuModal from '@components/molecules/todoMenuModal';
 import { todoState, IToDo, ITodoState } from 'src/store';
-import { useEffect, useState } from 'react';
 
 const useDragableTodo = () => {
   const [toDos, setToDos] = useRecoilState(todoState);
@@ -111,28 +123,30 @@ const TodoContent = ({ today }: { today: Date }) => {
           </DeleteBtn>
         </TodoUtils>
       </TodoInfoWrapper>
-      <TodoWrapper>
-        <DragDropContext onDragEnd={onDragEnd}>
-          {Object.keys(toDos).map((board: string, idx) => (
-            <Droppable key={board + (idx + '')} droppableId={board}>
-              {(provided, snapshot) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <TodoArea
-                    area={board}
-                    idx={idx}
-                    dragMode={true}
-                    deleteMode={deleteMode}
-                    checkDelete={onCheckDeleteItem}
-                  >
-                    {provided.placeholder}
-                  </TodoArea>
-                </div>
-              )}
-            </Droppable>
-          ))}
-        </DragDropContext>
-      </TodoWrapper>
-
+      {Object.keys(toDos).length === 0 && 'Loading...'}
+      {Object.keys(toDos).length !== 0 && (
+        <TodoWrapper>
+          <DragDropContext onDragEnd={onDragEnd}>
+            {Object.keys(toDos).map((board: string, idx) => (
+              <Droppable key={board + (idx + '')} droppableId={board}>
+                {(provided, snapshot) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <TodoArea
+                      area={board}
+                      idx={idx}
+                      dragMode={true}
+                      deleteMode={deleteMode}
+                      checkDelete={onCheckDeleteItem}
+                    >
+                      {provided.placeholder}
+                    </TodoArea>
+                  </div>
+                )}
+              </Droppable>
+            ))}
+          </DragDropContext>
+        </TodoWrapper>
+      )}
       {todoMenuModal && <TodoMenuModal></TodoMenuModal>}
     </TodoContainer>
   );

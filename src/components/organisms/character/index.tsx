@@ -1,7 +1,8 @@
-import { IUser, IMargin } from '~/types/gather';
 import { Container, CharacterImage, CharacterDiv } from './styles';
-import motion from '@utils/libs/characterMotion';
+
 import characterList from '@utils/libs/characterList';
+import motion from '@utils/libs/characterMotion';
+import { IUser, IMargin } from '~/types/gather';
 
 interface Props {
   user: IUser;

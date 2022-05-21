@@ -1,6 +1,7 @@
-import FolderItem from '@atoms/folderItem';
 import { Dispatch, SetStateAction, useState } from 'react';
+
 import FolderProperty from '../folderProperty';
+
 import {
   TodoContainer,
   TodoInfoWrapper,
@@ -10,6 +11,8 @@ import {
   ButtonWrapper,
   Line,
 } from './styles';
+
+import FolderItem from '@atoms/folderItem';
 
 const FolderContent = ({ setIsEdit }: { setIsEdit: Dispatch<SetStateAction<any>> }) => {
   return (

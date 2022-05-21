@@ -1,6 +1,8 @@
-import FolderItem from '@atoms/folderItem';
 import { useState } from 'react';
+
 import { FolderPropertyContainer, ColorContainer, ColorBtn, Line, Wrapper } from './styles';
+
+import FolderItem from '@atoms/folderItem';
 
 const ColorList = [
   '#EF7373',
@@ -40,7 +42,7 @@ const FolderProperty = ({ data: { id, color } }: { data: any }) => {
       <p>폴더 색상</p>
       <ColorContainer>
         {ColorList.map((c) => (
-          <ColorBtn color={c} status={defaultColor === c} onClick={() => setDefaultColor(c)} />
+          <ColorBtn key={c} color={c} status={defaultColor === c} onClick={() => setDefaultColor(c)} />
         ))}
       </ColorContainer>
       <Line />

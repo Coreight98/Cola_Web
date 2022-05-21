@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import FolderIcon from '@atoms/FolderIcon';
+
 import { FolderTitleWrapper, BtnAddTodo } from './styles';
+
+import FolderIcon from '@atoms/FolderIcon';
 const FolderItem = ({
   id,
   color,
@@ -26,7 +28,7 @@ const FolderItem = ({
         </span>
         <span>{'폴더명'}</span>
       </div>
-      <BtnAddTodo onClick={() => {}}>{'>'}</BtnAddTodo>
+      <BtnAddTodo>{'>'}</BtnAddTodo>
     </FolderTitleWrapper>
   );
 };

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { theme } from '@styles/theme';
 
 const TodoContainer = styled.div`
@@ -131,6 +132,21 @@ const ButtonWrapper = styled.div`
     color: ${theme.colors.blue[500]};
   }
 `;
+const TodoInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+const TodoDate = styled(TodoInfo)`
+  & span:nth-of-type(1) {
+    font-size: 4rem;
+    font-weight: 600;
+  }
+  & span:nth-of-type(2) {
+    font-size: 1.5rem;
+  }
+`;
 
 export {
   TodoContainer,
@@ -144,5 +160,6 @@ export {
   FolderItemContainer,
   ButtonWrapper,
   FolderConrtainer,
+  TodoDate,
   Line,
 };

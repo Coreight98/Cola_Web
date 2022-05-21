@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
-import { IMargin } from '~/types/gather';
+
 import { BackgroundDiv, BackgroundImg } from './styles';
+
+import { IMargin } from '~/types/gather';
 
 interface Props {
   marginBackground: IMargin;

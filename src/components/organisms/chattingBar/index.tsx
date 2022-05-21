@@ -1,8 +1,9 @@
-import { IUser, IUsers } from '~/types/gather';
+import { UserContainer, ChatContainer, Footer, OpponentChat, SelfChat } from './styles';
+
+import Input from '@components/atoms/input';
 import socket from '@store/gatherSocket';
 import useChat from '@utils/libs/useChat';
-import Input from '@components/atoms/input';
-import { UserContainer, ChatContainer, Footer, OpponentChat, SelfChat } from './styles';
+import { IUser, IUsers } from '~/types/gather';
 
 interface Props {
   user: IUser;
