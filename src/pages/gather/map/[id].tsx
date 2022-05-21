@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import Background from '@components/organisms/background';
 import Character from '@components/organisms/character';
 import ChattingBar from '@components/organisms/chattingBar';
 import socket from '@store/gatherSocket';
@@ -11,6 +11,7 @@ import defaultMapSetting from '@utils/libs/defaultMapSetting';
 import defaultUserSetting from '@utils/libs/defaultUserSetting';
 import keyboardEvent from '@utils/libs/keyboardEvent';
 import { IUser, IUsers } from '~/types/gather';
+const Background = dynamic(() => import('@components/organisms/background'), { ssr: false });
 
 const GatherMap = () => {
   const { id: code, name } = useRouter().query;

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import { BackgroundDiv, BackgroundImg } from './styles';
 
@@ -10,7 +10,11 @@ interface Props {
 
 const Background = ({ marginBackground }: Props) => {
   const canvasBackgroundRef = useRef<HTMLCanvasElement>(null);
-  const background = new Image();
+  const [background, setBackground] = useState<any>();
+
+  useEffect(() => {
+    setBackground(new Image());
+  }, []);
 
   useEffect(() => {
     if (typeof window === undefined) return;

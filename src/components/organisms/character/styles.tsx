@@ -11,9 +11,9 @@ const CharacterImage = styled.img`
   max-width: initial;
   max-height: initial;
 `;
-const CharacterDiv = styled.div`
-  top: ${window.screen.height / 2}px;
-  left: ${window.screen.width / 2 - 72}px;
+const CharacterDiv = styled.div<{ top: number; left: number }>`
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
   position: absolute;
   max-width: 32px;
   max-height: 32px;

@@ -15,12 +15,7 @@ const Character = ({ user, margin = { top: 0, left: 0 } }: Props) => {
 
   return (
     <Container>
-      <CharacterDiv
-        style={{
-          top: user.y + margin?.top,
-          left: user.x + margin?.left,
-        }}
-      >
+      <CharacterDiv top={user.y + margin?.top} left={user.x + margin?.left}>
         <CharacterImage
           src={characterList[user.cId]}
           style={{
