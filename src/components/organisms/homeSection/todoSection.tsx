@@ -9,9 +9,9 @@ const CalendarWrapper = styled.div`
   box-shadow: 0px 0px 6px #00000029;
   border-radius: 5px;
   padding: 2rem;
+  width: 100%;
   gap: 1rem;
   height: 100%;
-  overflow: hidden;
 
   h2 {
     font-size: 1.6rem;
@@ -70,7 +70,6 @@ const ProgressItemWrapper = styled.div`
   border-radius: 5px;
 `;
 const TodoWrapper = styled.div`
-  height: 100%;
   flex: 1;
   box-shadow: 0px 0px 6px #00000029;
   background: ${({ theme: { colors } }) => colors.blue[500]};
@@ -103,9 +102,9 @@ const TodoSection = () => {
 
   return (
     <>
-      <CalendarWrapper>
+      {/* <CalendarWrapper>
         <Calender date={date} handleChangeMonth={handleChangeMonth} />
-      </CalendarWrapper>
+      </CalendarWrapper> */}
       <TodoWrapper>
         <LeftSection>
           <div>

@@ -3,36 +3,46 @@ import type { NextPage } from 'next';
 
 import TodoSection from '@components/organisms/homeSection/todoSection';
 import BoardSection from '@organisms/homeSection/boardSection';
+import { theme } from '@styles/theme';
 
 const SectionWrapper = styled.div`
-  display: flex;
   width: 100%;
-  max-width: 1440px;
-  margin: 2rem auto;
   gap: 2rem;
   padding: 2rem 1rem;
-  height: 35rem;
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
-const BoardSectionWrapper = styled(SectionWrapper)`
-  @media (max-width: 1024px) {
-    flex-direction: column;
+const BoardSectionWrapper = styled.div`
+  width: 100%;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
 const Container = styled.div`
-  padding: 1rem 0;
-  width: 100%;
   height: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
+  width: 100%;
 `;
 
 const Banner = styled.div`
-  max-width: 1920px;
-  width: 100%;
-
-  background: url(src/assets/images/home_banner.svg);
-  margin: 0 auto;
+  min-height: 40vh;
+  background: url('/home_banner.svg');
+  background-position: center;
+  background-size: cover;
 `;
 
 const Home: NextPage = () => {

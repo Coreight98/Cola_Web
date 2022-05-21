@@ -3,45 +3,45 @@ import { useState } from 'react';
 import styled from '@emotion/styled';
 
 import BoardItem from '@components/molecules/homeBoardItem';
+import { theme } from '@styles/theme';
 
 const Container = styled.div`
-  width: 50%;
+  width: 100%;
   height: 100%;
   background: ${({ theme: { colors } }) => colors.blue[500]};
   box-shadow: 0px 0px 6px #00000029;
   border-radius: 5px;
-  display: flex;
+  display: grid;
+  grid-template:
+    'title content' 1fr
+    '. content' 4fr
+    'btn content' 1fr
+    /1fr 8fr;
   padding: 1rem;
   gap: 1rem;
-  @media (max-width: 1024px) {
-    width: 100%;
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template:
+      'title  . btn' 1fr
+      'content content content' 5fr
+      /1fr 4fr 1fr;
+  }
+  @media (max-width: ${theme.breakpoints.md}) {
+    grid-template:
+      'title . btn' 1fr
+      'content content content' 5fr
+      /1fr 4fr 1fr;
   }
 `;
-const BoardLeftWrapper = styled.div`
-  padding: 0.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 20%;
-  div {
-    display: flex;
-    gap: 1rem;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    align-items: center;
-    justify-content: center;
-  }
-`;
+
 const BoardTitle = styled.h3`
+  grid-area: title;
   font-size: 25px;
   color: white;
   position: relative;
-
+  white-space: nowrap;
   &::after {
     position: absolute;
-    bottom: -10px;
+    top: 3rem;
     left: 1.6rem;
     content: '';
     width: 40%;
@@ -50,6 +50,7 @@ const BoardTitle = styled.h3`
   }
 `;
 const BoardItemSection = styled.div`
+  grid-area: content;
   flex: 1;
   background: white;
   border-radius: 5px;
@@ -65,6 +66,16 @@ const BoardItemSection = styled.div`
     width: 7px;
     background: ${({ theme: { colors } }) => colors.blue[300]};
     border-radius: 8px;
+  }
+`;
+
+const InterestBtnWrapper = styled.div`
+  grid-area: btn;
+  display: flex;
+  column-gap: 1rem;
+  color: white;
+  span {
+    white-space: nowrap;
   }
 `;
 
@@ -101,15 +112,15 @@ const BoardSection = () => {
 
   return (
     <Container>
-      <BoardLeftWrapper>
-        <BoardTitle>인기글</BoardTitle>
-        <div>
-          <span>관심</span>
-          <InterestBtn on={on} onClick={onClickInterest}>
-            <span></span>
-          </InterestBtn>
-        </div>
-      </BoardLeftWrapper>
+      {/* <BoardLeftWrapper> */}
+      <BoardTitle>인기글</BoardTitle>
+      <InterestBtnWrapper>
+        <span>관심</span>
+        <InterestBtn on={on} onClick={onClickInterest}>
+          <span />
+        </InterestBtn>
+      </InterestBtnWrapper>
+      {/* </BoardLeftWrapper> */}
       <BoardItemSection>
         {boardItems.map((_, idx) => (
           <BoardItem key={idx} />

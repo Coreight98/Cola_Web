@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@styles/theme';
 
 export const Container = styled.div`
   display: flex;
@@ -8,12 +9,6 @@ export const Container = styled.div`
   padding: 0;
   border-radius: 25px;
   min-height: 30px;
-
-  div {
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-  }
 
   @media (max-width: 1280px) {
     flex-direction: column;
@@ -43,14 +38,27 @@ export const Title = styled.span`
   }
 `;
 export const InfoWrapper = styled.div`
+  align-items: center;
   width: 40%;
+  border-radius: 10px;
   min-width: 12rem;
   background: #6c7bfa20;
   border-radius: 12px;
   color: black;
   display: flex;
   justify-content: space-between;
+  div {
+    align-items: center;
+    border-radius: 12px;
+    display: flex;
+  }
   flex-wrap: wrap;
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
+  }
 `;
 export const ProfileWrapper = styled.div`
   flex: 1;

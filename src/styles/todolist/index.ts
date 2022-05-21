@@ -42,14 +42,15 @@ const CalendarContainer = styled.div`
   background: white;
   border-radius: 5px 0px 0px 5px;
 `;
+
 const TodoContainer = styled.div`
   position: relative;
+
   border-radius: 0px 5px 5px 0px;
   z-index: 10;
   max-width: 600px;
-  width: 600px;
   height: 100%;
-  padding: 2rem 4rem;
+  min-height: 786px;
   overflow: hidden;
   background-color: ${({ theme: { colors } }) => colors.blue[500]};
   &::-webkit-scrollbar {
@@ -107,40 +108,23 @@ const DeleteBtn = styled.div<{ deleteMode: boolean }>`
   line-height: 2rem;
   transition: all 200ms linear;
 `;
-const DeleteBlock = styled.span<{ deleteMode: boolean }>`
+
+const MenuBtn = styled.button`
   position: absolute;
-  display: block;
-  top: 0;
-  left: ${({ deleteMode }) => (deleteMode ? '-3rem' : '0')};
-  width: 3rem;
-  height: 2rem;
-  border-radius: 3px;
-  background: white;
-  transition: all 200ms linear;
+  z-index: 999;
+  top: 4rem;
+  right: 4rem;
 `;
-const TodoWrapper = styled.div`
-  overflow-y: scroll;
-  height: 35em;
-  padding: 0.4rem;
-  &::-webkit-scrollbar {
-    width: 7px;
-  }
-  &::-webkit-scrollbar-thumb {
-    width: 6px;
-    background: #eee;
-    border-radius: 4px;
-  }
-`;
+
 export {
   Container,
   BackgroundView,
   BackgroundSecondView,
   CalendarContainer,
   TodoContainer,
+  MenuBtn,
   TodoInfoWrapper,
   TodoDate,
   TodoUtils,
   DeleteBtn,
-  DeleteBlock,
-  TodoWrapper,
 };
