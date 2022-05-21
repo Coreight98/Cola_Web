@@ -34,6 +34,7 @@ const Button = styled.button`
 `;
 
 const handleScroll = () => {
+  if (typeof window === undefined) return;
   if (window.scrollY < 100) return;
   window.scrollTo({
     top: 0,

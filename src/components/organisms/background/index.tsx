@@ -8,11 +8,14 @@ interface Props {
   marginBackground: IMargin;
 }
 
+declare type Window = {};
+
 const Background = ({ marginBackground }: Props) => {
   const canvasBackgroundRef = useRef<HTMLCanvasElement>(null);
   const background = new Image();
 
   useEffect(() => {
+    if (typeof window === undefined) return;
     const context = (canvasBackgroundRef.current as HTMLCanvasElement)?.getContext('2d');
     background.src = '/testMap.png';
     background.onload = () => {
@@ -31,6 +34,7 @@ const Background = ({ marginBackground }: Props) => {
   });
 
   useEffect(() => {
+    if (typeof window === undefined) return;
     const context = (canvasBackgroundRef.current as HTMLCanvasElement)?.getContext('2d');
     context !== null && context.clearRect(0, 0, window.screen.width, window.screen.height);
     context?.drawImage(
