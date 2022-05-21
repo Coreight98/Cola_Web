@@ -8,8 +8,6 @@ interface Props {
   marginBackground: IMargin;
 }
 
-declare type Window = {};
-
 const Background = ({ marginBackground }: Props) => {
   const canvasBackgroundRef = useRef<HTMLCanvasElement>(null);
   const background = new Image();
