@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import TodoSection from '@components/organisms/homeSection/todoSection';
 import BoardSection from '@organisms/homeSection/boardSection';
 
-const BoardSectionWrapper = styled.div`
+const SectionWrapper = styled.div`
   display: flex;
   width: 100%;
   max-width: 1440px;
@@ -13,6 +13,12 @@ const BoardSectionWrapper = styled.div`
   padding: 2rem 1rem;
   height: 35rem;
 `;
+const BoardSectionWrapper = styled(SectionWrapper)`
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+
 const Container = styled.div`
   padding: 1rem 0;
   width: 100%;
@@ -33,9 +39,9 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Banner></Banner>
-      <BoardSectionWrapper>
+      <SectionWrapper>
         <TodoSection />
-      </BoardSectionWrapper>
+      </SectionWrapper>
       <BoardSectionWrapper>
         <BoardSection />
         <BoardSection />

@@ -4,14 +4,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   max-width: 1440px;
   height: 100%;
   margin: auto 0;
   box-shadow: 0px 0px 6px ${({ theme: { colors } }) => colors.shadow};
   position: relative;
   border-radius: 5px;
-  border: 1px solid red;
   background: white;
   z-index: 3;
 `;
@@ -38,17 +37,17 @@ const BackgroundSecondView = styled(BackgroundView)`
 const CalendarContainer = styled.div`
   width: 700px;
   height: 100%;
-  padding: 2rem 1rem;
+  padding: 5rem 1rem;
   z-index: 3;
   background: white;
   border-radius: 5px 0px 0px 5px;
-  border: 1px solid;
 `;
 const TodoContainer = styled.div`
   position: relative;
   border-radius: 0px 5px 5px 0px;
   z-index: 10;
   max-width: 600px;
+  width: 600px;
   height: 100%;
   padding: 2rem 4rem;
   overflow: hidden;

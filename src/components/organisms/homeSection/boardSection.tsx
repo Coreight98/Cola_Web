@@ -13,6 +13,9 @@ const Container = styled.div`
   display: flex;
   padding: 1rem;
   gap: 1rem;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 const BoardLeftWrapper = styled.div`
   padding: 0.5rem;

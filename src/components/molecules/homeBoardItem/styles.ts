@@ -14,6 +14,17 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    align-items: flex-end;
+    min-height: fit-content;
+  }
+  @media (max-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+    min-height: 30px;
+  }
 `;
 export const Title = styled.span`
   flex: 1;
@@ -26,9 +37,14 @@ export const Title = styled.span`
   line-height: 100%;
   display: flex;
   align-items: center;
+  @media (max-width: 1280px) {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
 `;
 export const InfoWrapper = styled.div`
   width: 40%;
+  min-width: 12rem;
   background: #6c7bfa20;
   border-radius: 12px;
   color: black;
@@ -37,7 +53,6 @@ export const InfoWrapper = styled.div`
   flex-wrap: wrap;
 `;
 export const ProfileWrapper = styled.div`
-  // overflow-x: hidden;
   flex: 1;
   p {
     width: 100%;
