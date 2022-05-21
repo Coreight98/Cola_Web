@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { GetServerSideProps } from 'next';
 import type { NextPage } from 'next';
@@ -22,7 +22,8 @@ import {
   DeleteBlock,
   TodoWrapper,
 } from '@styles/todolist';
-import { todoState } from 'src/store';
+import { getTodoList, saveTodoList } from '@utils/api/Todo';
+import { ITodoState, todoState } from 'src/store';
 
 export const useCalendar = (): [Date, Date, (condition: number) => void] => {
   const [date, setDate] = useState(new Date());
@@ -33,8 +34,22 @@ export const useCalendar = (): [Date, Date, (condition: number) => void] => {
   return [today, date, handleChangeMonth];
 };
 
+const useTodoList = (date: string | Date): [ITodoState, Dispatch<SetStateAction<ITodoState>>] => {
+  const [toDos, setTodos] = useRecoilState<ITodoState>(todoState);
+
+  useEffect(() => {
+    async function fetchTodo(date: Date) {
+      const toDos = await getTodoList(date);
+      setTodos(toDos);
+    }
+    if (date) {
+      fetchTodo(new Date(date));
+    }
+  }, [date]);
+  return [toDos, setTodos];
+};
 const useDragableTodo = () => {
-  const [toDos, setToDos] = useRecoilState(todoState);
+  const [toDos, setTodos] = useRecoilState<ITodoState>(todoState);
 
   const onDragEnd = (info: DropResult) => {
     console.log(info);
@@ -42,7 +57,7 @@ const useDragableTodo = () => {
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       // same board movement.
-      setToDos((allBoards) => {
+      setTodos((allBoards: ITodoState) => {
         const boardCopy = [...allBoards[source.droppableId]];
         const toMoveTodo = boardCopy.splice(source.index, 1)[0];
         boardCopy.splice(destination?.index, 0, toMoveTodo);
@@ -54,7 +69,7 @@ const useDragableTodo = () => {
     }
     if (destination.droppableId !== source.droppableId) {
       // cross board movement
-      setToDos((allBoards) => {
+      setTodos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
         const destinationBoard = [...allBoards[destination.droppableId]];
         const toMoveTodo = sourceBoard.splice(source.index, 1)[0];
@@ -71,7 +86,7 @@ const useDragableTodo = () => {
   return onDragEnd;
 };
 const useDeleteTodo = (): [boolean, () => void, (todoArea: string, todoId: number) => void] => {
-  const [toDos, setToDos] = useRecoilState(todoState);
+  const [toDos, setTodos] = useRecoilState<ITodoState>(todoState);
 
   const [deleteMode, setDeleteMode] = useState(false);
   const [toDeleteItems, setToDeleteItems] = useState<{
@@ -102,7 +117,7 @@ const useDeleteTodo = (): [boolean, () => void, (todoArea: string, todoId: numbe
 
   const deleteTodo = () => {
     for (const folder in toDeleteItems) {
-      setToDos((allFolder) => {
+      setTodos((allFolder) => {
         const items = [...allFolder[folder]];
         for (const item of toDeleteItems[folder]) {
           const itemIdx = items.findIndex((v) => v.id === item);
@@ -119,7 +134,7 @@ const useDeleteTodo = (): [boolean, () => void, (todoArea: string, todoId: numbe
 const Todolist: NextPage = () => {
   const [today, date, handleChangeMonth] = useCalendar();
 
-  const toDos = useRecoilValue(todoState);
+  const [toDos, setToDos] = useTodoList(date);
   const onDragEnd = useDragableTodo();
   const [deleteMode, onClickDelete, onCheckDeleteItem] = useDeleteTodo();
 
@@ -130,6 +145,9 @@ const Todolist: NextPage = () => {
   useEffect(() => {
     setWindowReady(true);
   }, []);
+  useEffect(() => {
+    saveTodoList(date, toDos);
+  }, [toDos]);
 
   return (
     <Container>
@@ -153,27 +171,30 @@ const Todolist: NextPage = () => {
               </DeleteBtn>
             </TodoUtils>
           </TodoInfoWrapper>
-          <TodoWrapper>
-            <DragDropContext onDragEnd={onDragEnd}>
-              {Object.keys(toDos).map((board: string, idx) => (
-                <Droppable key={board + (idx + '')} droppableId={board}>
-                  {(provided, snapshot) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                      <TodoArea
-                        area={board}
-                        idx={idx}
-                        dragMode={true}
-                        deleteMode={deleteMode}
-                        checkDelete={onCheckDeleteItem}
-                      >
-                        {provided.placeholder}
-                      </TodoArea>
-                    </div>
-                  )}
-                </Droppable>
-              ))}
-            </DragDropContext>
-          </TodoWrapper>
+          {Object.keys(toDos).length === 0 && 'Loading...'}
+          {Object.keys(toDos).length !== 0 && (
+            <TodoWrapper>
+              <DragDropContext onDragEnd={onDragEnd}>
+                {Object.keys(toDos).map((board: string, idx) => (
+                  <Droppable key={board + (idx + '')} droppableId={board}>
+                    {(provided, snapshot) => (
+                      <div ref={provided.innerRef} {...provided.droppableProps}>
+                        <TodoArea
+                          area={board}
+                          idx={idx}
+                          dragMode={true}
+                          deleteMode={deleteMode}
+                          checkDelete={onCheckDeleteItem}
+                        >
+                          {provided.placeholder}
+                        </TodoArea>
+                      </div>
+                    )}
+                  </Droppable>
+                ))}
+              </DragDropContext>
+            </TodoWrapper>
+          )}
 
           {todoMenuModal && <TodoMenuModal></TodoMenuModal>}
         </TodoContainer>
