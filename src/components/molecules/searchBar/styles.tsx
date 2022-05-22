@@ -53,6 +53,9 @@ const HeaderBtn = styled.button`
   position: absolute;
   right: 5px;
   top: 5px;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    top: 0.5rem;
+  }
 `;
 
 const InputModal = styled.div`

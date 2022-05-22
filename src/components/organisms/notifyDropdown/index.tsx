@@ -7,7 +7,7 @@ import { Container, DropdownWrapper } from './styles';
 import DropdownItem from '@components/molecules/profileDropdownItem';
 import Tab from '@components/molecules/profileDropdownTab';
 
-const ProfileDropdown = () => {
+const NotifyDropdown = () => {
   const dropdownRef = useRef(null);
   const [currentTab, setCurrentTab] = useState('댓글');
   const onClickTab = (tab: string) => setCurrentTab(tab);
@@ -40,4 +40,4 @@ const ProfileDropdown = () => {
     </Container>
   );
 };
-export default ProfileDropdown;
+export default NotifyDropdown;

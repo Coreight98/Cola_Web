@@ -14,6 +14,10 @@ const Container = styled.div`
   @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
     padding-top: 2.6rem;
   }
+
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.sm}) {
+    padding-right: 0;
+  }
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -34,6 +38,9 @@ const MenuBtn = styled.span`
 const Title = styled.span`
   cursor: pointer;
   padding: 0px 10px;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    padding: 0 20px 0 0;
+  }
 `;
 const SubTitle = styled.span`
   font-size: 14px;
@@ -49,7 +56,7 @@ const HeaderSection = styled.div`
 const HeaderBtn = styled.button`
   background: none;
   border: none;
-  padding: 5px 10px;
+  padding: 5px;
   font-size: 14px;
   color: whitesmoke;
   cursor: pointer;
@@ -63,6 +70,10 @@ const DropDownWrapper = styled.div`
   align-items: center;
   gap: 1rem;
   position: relative;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
 `;
 const ContentWrapper = styled.div`
   background: white;
@@ -71,6 +82,9 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   padding: 0 1rem;
   box-shadow: 0px 0px 6px #00000029;
+  span {
+    white-space: nowrap;
+  }
 `;
 const DropDownContent = styled.div<IDropdownMenu>`
   z-index: 100;
@@ -82,6 +96,11 @@ const DropDownContent = styled.div<IDropdownMenu>`
   align-items: center;
   height: fit-content;
   transition: all 300ms linear;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.sm}) {
+    position: fixed;
+    right: 0;
+    top: 5rem;
+  }
 `;
 const DropDownItem = styled.span`
   width: 100%;

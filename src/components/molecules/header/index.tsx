@@ -19,7 +19,7 @@ import {
 import Heart from '@assets/icon/heart.svg';
 import Logo from '@assets/icon/logo.svg';
 import UserDefault from '@components/atoms/icon/userDefault';
-import ProfileDropdown from '@components/organisms/profileDropdown';
+import NotifyDropdown from '@components/organisms/notifyDropdown';
 import { NAV_MENU } from '@constants/index';
 import SideBar from '@molecules/sidebar';
 import { setCookies, getCookies } from '@utils/cookie';
@@ -55,7 +55,14 @@ const Header = () => {
     };
   }, []);
 
-  const openMenu = () => setProfileMenu((prev) => !prev);
+  const openMenu = () => {
+    // setProfileMenu((prev) => !prev)
+    if (loginState) {
+      setProfileMenu(true);
+    } else {
+      router.push('/signIn');
+    }
+  };
 
   const openNotifyMenu = () => setNotifyMenu((prev) => !prev);
 
@@ -99,13 +106,13 @@ const Header = () => {
             <Heart />
           </HeaderBtn>
           <DropDownContent isOpen={notifyMenu} ref={notifyRef}>
-            <ProfileDropdown />
+            <NotifyDropdown />
           </DropDownContent>
           <HeaderBtn onClick={openMenu}>
             <UserDefault />
           </HeaderBtn>
           <DropDownContent isOpen={profileMenu} ref={dropdownRef}>
-            <ContentWrapper>{loginState ? authMenu() : notAuthMenu()}</ContentWrapper>
+            <ContentWrapper>{authMenu()}</ContentWrapper>
           </DropDownContent>
         </DropDownWrapper>
       </HeaderSection>
