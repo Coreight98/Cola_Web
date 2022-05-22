@@ -10,6 +10,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    padding: 2rem 1rem;
+    width: 24rem;
+  }
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.sm}) {
+    padding: 2rem 1rem;
+    width: 100vw;
+  }
 `;
 export const DropdownWrapper = styled.div`
   width: 100%;

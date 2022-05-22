@@ -10,6 +10,14 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transition: all 200ms linear;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    padding-top: 2.6rem;
+  }
+
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.sm}) {
+    padding-right: 0;
+  }
 `;
 const TitleWrapper = styled.div`
   display: flex;
@@ -28,10 +36,11 @@ const MenuBtn = styled.span`
   cursor: pointer;
 `;
 const Title = styled.span`
-  font-size: 36px;
-  font-weight: 600;
   cursor: pointer;
   padding: 0px 10px;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    padding: 0 20px 0 0;
+  }
 `;
 const SubTitle = styled.span`
   font-size: 14px;
@@ -47,9 +56,7 @@ const HeaderSection = styled.div`
 const HeaderBtn = styled.button`
   background: none;
   border: none;
-  padding: 5px 10px;
-  height: 53px;
-  width: 53px;
+  padding: 5px;
   font-size: 14px;
   color: whitesmoke;
   cursor: pointer;
@@ -63,6 +70,21 @@ const DropDownWrapper = styled.div`
   align-items: center;
   gap: 1rem;
   position: relative;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.md}) {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+`;
+const ContentWrapper = styled.div`
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  box-shadow: 0px 0px 6px #00000029;
+  span {
+    white-space: nowrap;
+  }
 `;
 const DropDownContent = styled.div<IDropdownMenu>`
   z-index: 100;
@@ -74,12 +96,21 @@ const DropDownContent = styled.div<IDropdownMenu>`
   align-items: center;
   height: fit-content;
   transition: all 300ms linear;
+  @media (max-width: ${({ theme: { breakpoints } }) => breakpoints.sm}) {
+    position: fixed;
+    right: 0;
+    top: 5rem;
+  }
 `;
 const DropDownItem = styled.span`
   width: 100%;
-  padding: 0.5rem 0;
   text-align: center;
-  border-bottom: 1px solid #929292;
+  border-bottom: 2px solid ${({ theme: { colors } }) => colors.blue[500]};
+  color: ${({ theme: { colors } }) => colors.blue[500]};
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
   &:nth-last-of-type(1) {
     border-bottom: 0px;
   }
@@ -98,4 +129,5 @@ export {
   DropDownWrapper,
   DropDownContent,
   DropDownItem,
+  ContentWrapper,
 };
