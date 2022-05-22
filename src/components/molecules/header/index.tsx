@@ -13,6 +13,7 @@ import {
   DropDownWrapper,
   DropDownContent,
   DropDownItem,
+  ContentWrapper,
 } from './styles';
 
 import Heart from '@assets/icon/heart.svg';
@@ -28,15 +29,21 @@ const Header = () => {
 
   const [loginState, setLoginState] = useState(getCookies('SESSION'));
   const dropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const notifyRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [profileMenu, setProfileMenu] = useState(false);
+  const [notifyMenu, setNotifyMenu] = useState(false);
 
   useEffect(() => {
     const handleRouteChange = () => {
       setProfileMenu(false);
+      setNotifyMenu(false);
     };
     const handleOutsideClick = (event: MouseEvent | React.BaseSyntheticEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setProfileMenu(false);
+      }
+      if (notifyRef.current && !notifyRef.current.contains(event.target)) {
+        setNotifyMenu(false);
       }
     };
     document.addEventListener('click', handleOutsideClick, true);
@@ -48,9 +55,9 @@ const Header = () => {
     };
   }, []);
 
-  const openMenu = () => {
-    setProfileMenu((prev) => !prev);
-  };
+  const openMenu = () => setProfileMenu((prev) => !prev);
+
+  const openNotifyMenu = () => setNotifyMenu((prev) => !prev);
 
   const authMenu = () =>
     NAV_MENU.filter((v) => v.division === 'AUTH').map((menu) => (
@@ -87,14 +94,18 @@ const Header = () => {
       </TitleWrapper>
       <HeaderSection>
         <SearchBar />
-        <HeaderBtn>알림</HeaderBtn>
         <DropDownWrapper>
-          <Heart />
+          <HeaderBtn onClick={openNotifyMenu}>
+            <Heart />
+          </HeaderBtn>
+          <DropDownContent isOpen={notifyMenu} ref={notifyRef}>
+            <ProfileDropdown />
+          </DropDownContent>
           <HeaderBtn onClick={openMenu}>
             <UserDefault />
           </HeaderBtn>
           <DropDownContent isOpen={profileMenu} ref={dropdownRef}>
-            <ProfileDropdown />
+            <ContentWrapper>{loginState ? authMenu() : notAuthMenu()}</ContentWrapper>
           </DropDownContent>
         </DropDownWrapper>
       </HeaderSection>
